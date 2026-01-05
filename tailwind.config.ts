@@ -11,21 +11,26 @@ const config: Config = {
 		extend: {
 			colors: {
 				primary: {
-					DEFAULT: '#8b5cf6',
-					light: '#a78bfa',
-					dark: '#7c3aed',
+					DEFAULT: '#CB3234', // RAL 3028 - Pure Red
+					light: '#E05456',
+					dark: '#A62829',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				accent: {
-					DEFAULT: '#ec4899',
-					light: '#f472b6',
-					dark: '#db2777',
+					DEFAULT: '#CB3234', // RAL 3028 - Ana vurgu rengi
+					light: '#E05456',
+					dark: '#A62829',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
 				dark: {
-					DEFAULT: '#2a2a2a',
-					card: '#353535',
-					lighter: '#404040'
+					DEFAULT: '#4A4A4A', // RAL 7017 - Brown Grey
+					card: '#5A5A5A',
+					lighter: '#6A6A6A'
+				},
+				light: {
+					DEFAULT: '#F1F0EA', // RAL 9016 - Traffic White
+					card: '#FFFFFF',
+					darker: '#E5E4DE'
 				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
@@ -65,7 +70,7 @@ const config: Config = {
 				]
 			},
 			backgroundImage: {
-				'gradient-primary': 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)'
+				'gradient-primary': 'linear-gradient(135deg, #CB3234 0%, #E05456 100%)' // RAL 3028 gradient
 			},
 			keyframes: {
 				'accordion-down': {
