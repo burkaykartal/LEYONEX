@@ -6,9 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Play, ChevronDown } from "lucide-react";
 
 export default function HeroSection() {
-  // Video yüklenince true yapın
-  const [videoPlaying, setVideoPlaying] = useState(false);
-  const [showContent, setShowContent] = useState(true);
+  const [videoPlaying, setVideoPlaying] = useState(true);
+  const [showContent, setShowContent] = useState(false);
 
   const handleVideoEnd = () => {
     // Video bitince içeriği göster ve videoyu yavaşça gizle
