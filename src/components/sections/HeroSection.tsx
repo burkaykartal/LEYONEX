@@ -6,14 +6,22 @@ import { Button } from "@/components/ui/button";
 import { Play, ChevronDown } from "lucide-react";
 
 export default function HeroSection() {
-  const [showVideo, setShowVideo] = useState(true);
+  // Video özelliği şimdilik kapalı - video dosyası yüklenince açılacak
+  const [showVideo, setShowVideo] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   const handleVideoEnd = () => {
     setVideoEnded(true);
     setTimeout(() => {
       setShowVideo(false);
     }, 500); // Fade out animation süresi
+  };
+
+  const handleVideoError = () => {
+    setVideoError(true);
+    // Video yoksa veya hata varsa otomatik skip et
+    skipVideo();
   };
 
   const skipVideo = () => {
@@ -35,9 +43,11 @@ export default function HeroSection() {
             muted
             playsInline
             onEnded={handleVideoEnd}
+            onError={handleVideoError}
+            onLoadedData={() => console.log('Video loaded')}
             className="w-full h-full object-cover"
           >
-            <source src="/Leyonex Video Çıkış.mp4" type="video/mp4" />
+            <source src="/leyonex-video-cikis.mp4" type="video/mp4" />
           </video>
 
           {/* Skip Button */}
