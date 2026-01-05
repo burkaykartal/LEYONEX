@@ -15,11 +15,11 @@ export default function HakkimizdaPage() {
 			<Header />
 			<main className="min-h-screen pt-20">
 				{/* Hero */}
-				<section className="py-16 bg-gradient-to-br from-primary/10 via-dark to-accent/10">
+				<section className="py-16 bg-gray-50">
 					<div className="container mx-auto px-4">
 						<div className="max-w-4xl mx-auto text-center">
 							<h1 className="text-4xl md:text-6xl font-bold mb-6">
-								<span className="bg-gradient-primary bg-clip-text text-transparent">
+								<span className="text-primary font-bold">
 									Hakkımızda
 								</span>
 							</h1>
@@ -144,7 +144,7 @@ export default function HakkimizdaPage() {
 								{ number: "100%", label: "Müşteri Memnuniyeti" },
 							].map((stat, index) => (
 								<div key={index} className="text-center">
-									<div className="text-4xl md:text-5xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-2">
+									<div className="text-4xl md:text-5xl font-bold text-primary font-bold mb-2">
 										{stat.number}
 									</div>
 									<div className="text-gray-400 text-sm md:text-base">

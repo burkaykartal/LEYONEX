@@ -35,7 +35,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
       <Header />
       <main className="min-h-screen pt-20">
         {/* Hero Section */}
-        <section className="relative py-16 bg-gradient-to-br from-primary/10 via-dark to-accent/10">
+        <section className="relative py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <Link
               href="/projeler"
@@ -47,7 +47,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
             <div className="max-w-4xl">
               <div className="flex flex-wrap gap-3 mb-4">
-                <Badge className="bg-gradient-primary text-base">
+                <Badge className="bg-primary text-base">
                   {standTypeLabels[project.standType]}
                 </Badge>
                 <Badge variant="outline" className="text-base">
@@ -138,7 +138,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                   </Card>
 
                   {/* CTA */}
-                  <Card className="bg-gradient-primary p-6">
+                  <Card className="bg-primary p-6">
                     <h3 className="text-xl font-bold mb-3 text-white">
                       Benzer Bir Proje mi İstiyorsunuz?
                     </h3>

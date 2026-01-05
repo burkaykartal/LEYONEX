@@ -28,7 +28,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
       <Header />
       <main className="min-h-screen pt-20">
         {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-primary/10 via-dark to-accent/10">
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <Link
               href="/hizmetler"
@@ -39,7 +39,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
             </Link>
 
             <div className="max-w-4xl">
-              <Badge className="mb-4 bg-gradient-primary">Hizmetlerimiz</Badge>
+              <Badge className="mb-4 bg-primary">Hizmetlerimiz</Badge>
               <h1 className="text-4xl md:text-6xl font-bold mb-6">
                 {service.title.tr}
               </h1>
@@ -100,7 +100,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
                     Bu hizmet için özel teklif almak ister misiniz?
                   </p>
                   <Link href="/teklif-al">
-                    <Button className="w-full bg-gradient-primary hover:opacity-90">
+                    <Button className="w-full bg-primary hover:opacity-90">
                       Teklif Talep Formu
                     </Button>
                   </Link>

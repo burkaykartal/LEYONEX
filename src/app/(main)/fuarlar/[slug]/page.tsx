@@ -34,7 +34,7 @@ export default async function FairDetailPage({ params }: FairDetailPageProps) {
       <Header />
       <main className="min-h-screen pt-20">
         {/* Hero Section */}
-        <section className="relative py-16 bg-gradient-to-br from-primary/10 via-dark to-accent/10">
+        <section className="relative py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <Link
               href="/fuarlar"
@@ -52,7 +52,7 @@ export default async function FairDetailPage({ params }: FairDetailPageProps) {
                   </Badge>
                 )}
                 {isUpcoming && (
-                  <Badge className="bg-gradient-primary text-base">Yaklaşan Fuar</Badge>
+                  <Badge className="bg-primary text-base">Yaklaşan Fuar</Badge>
                 )}
                 <Badge variant="outline" className="text-base">
                   {fair.sector.tr}
@@ -169,7 +169,7 @@ export default async function FairDetailPage({ params }: FairDetailPageProps) {
                   </Card>
 
                   {/* CTA */}
-                  <Card className="bg-gradient-primary p-6">
+                  <Card className="bg-primary p-6">
                     <h3 className="text-xl font-bold mb-3 text-white">
                       Bu Fuara Katılmak İster misiniz?
                     </h3>

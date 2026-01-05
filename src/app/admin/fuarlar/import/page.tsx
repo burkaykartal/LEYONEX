@@ -180,7 +180,7 @@ export default function FuarImportPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-2">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
+            <span className="text-primary font-bold">
               Fuar Excel İmport
             </span>
           </h1>
@@ -220,7 +220,7 @@ export default function FuarImportPage() {
                   file:mr-4 file:py-2 file:px-4
                   file:rounded-lg file:border-0
                   file:text-sm file:font-semibold
-                  file:bg-gradient-primary file:text-white
+                  file:bg-primary file:text-white
                   hover:file:opacity-90 file:cursor-pointer
                   cursor-pointer"
               />
@@ -271,7 +271,7 @@ export default function FuarImportPage() {
               <Button onClick={copyToClipboard} variant="outline">
                 Kodu Kopyala
               </Button>
-              <Button onClick={saveToFile} className="bg-gradient-primary">
+              <Button onClick={saveToFile} className="bg-primary">
                 Otomatik Kaydet
               </Button>
             </div>

@@ -85,7 +85,7 @@ export default function Header() {
                 <Link href="/teklif-al">
                   <Button
                     size="sm"
-                    className="bg-gradient-primary hover:opacity-90 transition-opacity"
+                    className="bg-primary hover:opacity-90 transition-opacity"
                   >
                     Teklif Al
                   </Button>
@@ -124,7 +124,7 @@ export default function Header() {
               {isSignedIn ? (
                 <>
                   <Link href="/uye/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-gradient-primary hover:opacity-90">
+                    <Button className="w-full bg-primary hover:opacity-90">
                       Panel
                     </Button>
                   </Link>
@@ -140,7 +140,7 @@ export default function Header() {
                     </Button>
                   </Link>
                   <Link href="/teklif-al" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-gradient-primary hover:opacity-90">
+                    <Button className="w-full bg-primary hover:opacity-90">
                       Teklif Al
                     </Button>
                   </Link>

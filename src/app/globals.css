@@ -54,23 +54,23 @@
 		@apply border-border;
 	}
 
-	/* Force dark background and light text */
+	/* Light background with dark text */
 	html,
 	body {
-		@apply bg-dark text-white;
+		@apply bg-white text-grey-text;
 	}
 
 	/* Override any default styles */
 	h1, h2, h3, h4, h5, h6 {
-		@apply text-white;
+		@apply text-grey-text;
 	}
 
 	p {
-		@apply text-gray-300;
+		@apply text-gray-600;
 	}
 
 	a {
-		@apply text-gray-300 hover:text-white transition-colors;
+		@apply text-gray-700 hover:text-grey-text transition-colors;
 	}
 }
 
@@ -80,11 +80,11 @@
 }
 
 ::-webkit-scrollbar-track {
-	@apply bg-dark;
+	@apply bg-gray-100;
 }
 
 ::-webkit-scrollbar-thumb {
-	@apply bg-primary/50 rounded-full;
+	@apply bg-grey rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {

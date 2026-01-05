@@ -121,7 +121,7 @@ export default function IletisimPage() {
 								<Button
 									type="submit"
 									disabled={isSubmitting}
-									className="w-full bg-gradient-primary hover:opacity-90"
+									className="w-full bg-primary hover:opacity-90"
 								>
 									{isSubmitting ? "Gönderiliyor..." : "Gönder"}
 								</Button>

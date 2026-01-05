@@ -115,7 +115,7 @@ export default function TeklifAlPage() {
 						{/* Header */}
 						<div className="text-center mb-12">
 							<h1 className="text-4xl md:text-5xl font-bold mb-4">
-								<span className="bg-gradient-primary bg-clip-text text-transparent">
+								<span className="text-primary font-bold">
 									Teklif Al
 								</span>
 							</h1>
@@ -130,7 +130,7 @@ export default function TeklifAlPage() {
 								<div key={s} className="flex items-center flex-1">
 									<div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
 										s === step
-											? "bg-gradient-primary text-white"
+											? "bg-primary text-white"
 											: s < step
 												? "bg-green-500 text-white"
 												: "bg-dark-card text-gray-400"
@@ -346,7 +346,7 @@ export default function TeklifAlPage() {
 									<Button
 										onClick={() => setStep(step + 1)}
 										disabled={!canGoNext()}
-										className="bg-gradient-primary hover:opacity-90 flex items-center gap-2"
+										className="bg-primary hover:opacity-90 flex items-center gap-2"
 									>
 										İleri
 										<ChevronRight size={20} />
@@ -355,7 +355,7 @@ export default function TeklifAlPage() {
 									<Button
 										onClick={handleSubmit}
 										disabled={isSubmitting}
-										className="bg-gradient-primary hover:opacity-90"
+										className="bg-primary hover:opacity-90"
 									>
 										{isSubmitting ? "Gönderiliyor..." : "Teklif Talebini Gönder"}
 									</Button>

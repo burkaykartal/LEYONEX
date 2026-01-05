@@ -22,7 +22,7 @@ export default function FeaturedProjects() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-primary bg-clip-text text-transparent">
+              <span className="text-primary font-bold">
                 Öne Çıkan Projeler
               </span>
             </h2>
@@ -63,7 +63,7 @@ export default function FeaturedProjects() {
 
                   {/* Category Badge */}
                   <div className="absolute top-4 right-4 z-20">
-                    <Badge className="bg-gradient-primary border-0">
+                    <Badge className="bg-primary border-0">
                       {standTypeLabels[project.standType]}
                     </Badge>
                   </div>

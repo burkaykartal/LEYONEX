@@ -66,7 +66,7 @@ export default function ServicesGrid() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
+            <span className="text-primary font-bold">
               Hizmetlerimiz
             </span>
           </h2>
@@ -84,7 +84,7 @@ export default function ServicesGrid() {
                 <Card className="group bg-dark-card border-white/10 hover:border-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20 p-6 h-full">
                   <div className="flex flex-col h-full">
                     {/* Icon */}
-                    <div className="w-14 h-14 rounded-lg bg-gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <div className="w-14 h-14 rounded-lg bg-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                       <Icon size={28} className="text-white" />
                     </div>
 
@@ -111,7 +111,7 @@ export default function ServicesGrid() {
         {/* CTA */}
         <div className="text-center mt-12">
           <Link href="/teklif-al">
-            <button className="px-8 py-4 bg-gradient-primary hover:opacity-90 transition-opacity rounded-lg font-semibold text-lg">
+            <button className="px-8 py-4 bg-primary hover:opacity-90 transition-opacity rounded-lg font-semibold text-lg">
               Teklif Alın
             </button>
           </Link>

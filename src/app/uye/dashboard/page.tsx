@@ -41,7 +41,7 @@ export default async function DashboardPage() {
 							Üye alanınıza giriş yaptınız
 						</p>
 						{isSuperAdmin && (
-							<Badge className="mt-3 bg-gradient-primary">
+							<Badge className="mt-3 bg-primary">
 								<Shield size={14} className="mr-1" />
 								Süper Admin
 							</Badge>
@@ -177,7 +177,7 @@ export default async function DashboardPage() {
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 							<Link href="/teklif-al">
 								<Button
-									className="w-full bg-gradient-primary hover:opacity-90 text-white h-auto py-4"
+									className="w-full bg-primary hover:opacity-90 text-white h-auto py-4"
 								>
 									<div className="text-left">
 										<p className="font-semibold">Yeni Teklif Talebi</p>

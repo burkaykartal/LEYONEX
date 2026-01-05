@@ -11,7 +11,8 @@
       "Bash(ls:*)",
       "Bash(ffmpeg:*)",
       "WebFetch(domain:templatekits.c-kav.com)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(find:*)"
     ]
   }
 }

@@ -23,14 +23,15 @@ const config: Config = {
 					foreground: 'hsl(var(--accent-foreground))'
 				},
 				dark: {
-					DEFAULT: '#4A4A4A', // RAL 7017 - Brown Grey
-					card: '#5A5A5A',
-					lighter: '#6A6A6A'
-				},
-				light: {
-					DEFAULT: '#F1F0EA', // RAL 9016 - Traffic White
+					DEFAULT: '#F1F0EA', // RAL 9016 - Ana arka plan (BEYAZ)
 					card: '#FFFFFF',
-					darker: '#E5E4DE'
+					lighter: '#E5E4DE'
+				},
+				grey: {
+					DEFAULT: '#4A4A4A', // RAL 7017 - Kartlar ve alanlar (GRİ)
+					card: '#5A5A5A',
+					lighter: '#6A6A6A',
+					text: '#2A2A2A'
 				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',

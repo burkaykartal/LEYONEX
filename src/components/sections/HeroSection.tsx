@@ -58,7 +58,7 @@ export default function HeroSection() {
         )}
 
         {/* Normal gradient background - video bittikten sonra görünür */}
-        <div className={`absolute inset-0 bg-gradient-to-br from-primary/20 via-dark to-accent/20 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
+        <div className={`absolute inset-0 bg-dark transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
         <div className={`absolute inset-0 bg-[url('/grid.svg')] opacity-10 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
       </div>
 
@@ -74,7 +74,7 @@ export default function HeroSection() {
 
           {/* Title */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight">
-            <span className="bg-gradient-primary bg-clip-text text-transparent">
+            <span className="text-primary font-bold">
               Fuar Dünyasında
             </span>
             <br />
@@ -91,7 +91,7 @@ export default function HeroSection() {
             <Link href="/teklif-al">
               <Button
                 size="lg"
-                className="bg-gradient-primary hover:opacity-90 transition-opacity px-8 py-6 text-lg"
+                className="bg-primary hover:opacity-90 transition-opacity px-8 py-6 text-lg"
               >
                 Hemen Başlayın
               </Button>

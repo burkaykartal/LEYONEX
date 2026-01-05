@@ -35,7 +35,7 @@ export default function FairsList() {
                   {isOngoing && (
                     <Badge className="bg-green-500 text-white">Devam Ediyor</Badge>
                   )}
-                  <Badge className="bg-gradient-primary">{fair.sector.tr}</Badge>
+                  <Badge className="bg-primary">{fair.sector.tr}</Badge>
                 </div>
 
                 {/* Title */}
