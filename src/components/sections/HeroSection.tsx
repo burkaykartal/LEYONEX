@@ -1,17 +1,59 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Play, ChevronDown } from "lucide-react";
 
 export default function HeroSection() {
+  const [showVideo, setShowVideo] = useState(true);
+  const [videoEnded, setVideoEnded] = useState(false);
+
+  const handleVideoEnd = () => {
+    setVideoEnded(true);
+    setTimeout(() => {
+      setShowVideo(false);
+    }, 500); // Fade out animation süresi
+  };
+
+  const skipVideo = () => {
+    setShowVideo(false);
+    setVideoEnded(true);
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Intro Video Overlay */}
+      {showVideo && (
+        <div
+          className={`fixed inset-0 z-50 bg-black flex items-center justify-center transition-opacity duration-500 ${
+            videoEnded ? 'opacity-0' : 'opacity-100'
+          }`}
+        >
+          <video
+            autoPlay
+            muted
+            playsInline
+            onEnded={handleVideoEnd}
+            className="w-full h-full object-cover"
+          >
+            <source src="/Leyonex Video Çıkış.mp4" type="video/mp4" />
+          </video>
+
+          {/* Skip Button */}
+          <button
+            onClick={skipVideo}
+            className="absolute bottom-8 right-8 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full text-white text-sm font-medium transition-all"
+          >
+            Atla →
+          </button>
+        </div>
+      )}
+
       {/* Background Gradient */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-dark to-accent/20" />
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        {/* TODO: Video component buraya eklenecek */}
       </div>
 
       {/* Content */}
