@@ -6,68 +6,52 @@ import { Button } from "@/components/ui/button";
 import { Play, ChevronDown } from "lucide-react";
 
 export default function HeroSection() {
-  // Video özelliği şimdilik kapalı - video dosyası yüklenince açılacak
-  const [showVideo, setShowVideo] = useState(false);
-  const [videoEnded, setVideoEnded] = useState(false);
-  const [videoError, setVideoError] = useState(false);
+  // Video yüklenince true yapın
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const [showContent, setShowContent] = useState(true);
 
   const handleVideoEnd = () => {
-    setVideoEnded(true);
+    // Video bitince içeriği göster ve videoyu yavaşça gizle
+    setShowContent(true);
     setTimeout(() => {
-      setShowVideo(false);
-    }, 500); // Fade out animation süresi
+      setVideoPlaying(false);
+    }, 1500); // Video fade out süresi
   };
 
   const handleVideoError = () => {
-    setVideoError(true);
-    // Video yoksa veya hata varsa otomatik skip et
-    skipVideo();
-  };
-
-  const skipVideo = () => {
-    setShowVideo(false);
-    setVideoEnded(true);
+    // Video yoksa direkt içeriği göster
+    setShowContent(true);
+    setVideoPlaying(false);
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Intro Video Overlay */}
-      {showVideo && (
-        <div
-          className={`fixed inset-0 z-50 bg-black flex items-center justify-center transition-opacity duration-500 ${
-            videoEnded ? 'opacity-0' : 'opacity-100'
-          }`}
-        >
-          <video
-            autoPlay
-            muted
-            playsInline
-            onEnded={handleVideoEnd}
-            onError={handleVideoError}
-            onLoadedData={() => console.log('Video loaded')}
-            className="w-full h-full object-cover"
-          >
-            <source src="/leyonex-video-cikis.mp4" type="video/mp4" />
-          </video>
-
-          {/* Skip Button */}
-          <button
-            onClick={skipVideo}
-            className="absolute bottom-8 right-8 px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-full text-white text-sm font-medium transition-all"
-          >
-            Atla →
-          </button>
-        </div>
-      )}
-
-      {/* Background Gradient */}
+      {/* Background Video - Arka planda oynar */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-dark to-accent/20" />
-        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+        {videoPlaying && (
+          <div className={`absolute inset-0 transition-opacity duration-1500 ${showContent ? 'opacity-0' : 'opacity-100'}`}>
+            <video
+              autoPlay
+              muted
+              playsInline
+              onEnded={handleVideoEnd}
+              onError={handleVideoError}
+              className="w-full h-full object-cover"
+            >
+              <source src="/leyonex-video-cikis.mp4" type="video/mp4" />
+            </video>
+            {/* Video üstüne hafif overlay */}
+            <div className="absolute inset-0 bg-black/20" />
+          </div>
+        )}
+
+        {/* Normal gradient background - video bittikten sonra görünür */}
+        <div className={`absolute inset-0 bg-gradient-to-br from-primary/20 via-dark to-accent/20 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
+        <div className={`absolute inset-0 bg-[url('/grid.svg')] opacity-10 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center pt-20">
+      {/* Content - Video bitince beliriyor */}
+      <div className={`relative z-10 container mx-auto px-4 text-center pt-20 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`}>
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Badge */}
           <div className="inline-block">
