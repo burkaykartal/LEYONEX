@@ -7,7 +7,7 @@ export default function WhatsAppButton() {
 
   const handleClick = () => {
     const message = encodeURIComponent(
-      "Merhaba, Luna 360 Expo hakkında bilgi almak istiyorum."
+      "Merhaba, Leyonex hakkında bilgi almak istiyorum."
     );
     window.open(
       `https://wa.me/${phoneNumber}?text=${message}`,

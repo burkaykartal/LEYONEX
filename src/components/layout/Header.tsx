@@ -43,7 +43,7 @@ export default function Header() {
           <Link href="/" className="flex items-center z-50">
             <Image
               src="/logo-white.png"
-              alt="Luna 360 Expo"
+              alt="Leyonex"
               width={150}
               height={50}
               priority

@@ -5,8 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, Award, Users, Zap } from "lucide-react";
 
 export const metadata = {
-  title: "Hakkımızda - Luna 360 Expo",
-  description: "15+ yıllık deneyim, 500+ başarılı proje, 25+ ülkede fuar organizasyonu. Luna 360 Expo ile tanışın.",
+  title: "Hakkımızda - Leyonex",
+  description: "15+ yıllık deneyim, 500+ başarılı proje, 25+ ülkede fuar organizasyonu. Leyonex ile tanışın.",
 };
 
 export default function HakkimizdaPage() {
@@ -66,11 +66,11 @@ export default function HakkimizdaPage() {
 					<div className="container mx-auto px-4">
 						<div className="max-w-4xl mx-auto">
 							<h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
-								Luna 360 Expo Kimdir?
+								Leyonex Kimdir?
 							</h2>
 							<div className="space-y-6 text-gray-300 text-lg leading-relaxed">
 								<p>
-									Luna 360 Expo, 2009 yılından bu yana fuar organizasyonu alanında
+									Leyonex, 2009 yılından bu yana fuar organizasyonu alanında
 									faaliyet gösteren, deneyimli ve yenilikçi bir şirkettir. Stand tasarımından
 									kuruluma, organizasyondan lojistiğe kadar tüm fuar hizmetlerini tek noktadan
 									yönetiyoruz.
@@ -160,7 +160,7 @@ export default function HakkimizdaPage() {
 				<section className="py-16">
 					<div className="container mx-auto px-4">
 						<h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-							Neden Luna 360 Expo?
+							Neden Leyonex?
 						</h2>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
 							{[

@@ -3,8 +3,8 @@ import Footer from "@/components/layout/Footer";
 import FairsList from "@/components/sections/FairsList";
 
 export const metadata = {
-  title: "Fuar Takvimi - Luna 360 Expo",
-  description: "Yaklaşan uluslararası fuarlar ve etkinlikler. Luna 360 Expo ile fuar organizasyonunuzu planlayın.",
+  title: "Fuar Takvimi - Leyonex",
+  description: "Yaklaşan uluslararası fuarlar ve etkinlikler. Leyonex ile fuar organizasyonunuzu planlayın.",
 };
 
 export default function FuarlarPage() {

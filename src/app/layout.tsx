@@ -12,12 +12,12 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-	title: "Luna 360 Expo - Fuar Dünyasında Fark Yaratan Çözümler",
+	title: "Leyonex - Fuar Dünyasında Fark Yaratan Çözümler",
 	description: "Stand tasarımından organizasyona tüm hizmetleri tek noktadan yönetin",
 	keywords: "fuar organizasyonu, stand tasarımı, fuar hizmetleri, stand kurulumu",
-	authors: [{ name: "Luna 360 Expo" }],
+	authors: [{ name: "Leyonex" }],
 	openGraph: {
-		title: "Luna 360 Expo",
+		title: "Leyonex",
 		description: "Fuar dünyasında fark yaratan çözümler",
 		type: "website",
 		locale: "tr_TR",

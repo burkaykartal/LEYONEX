@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import FeaturedProjects from "@/components/sections/FeaturedProjects";
 
 export const metadata = {
-  title: "Projelerimiz - Luna 360 Expo",
+  title: "Projelerimiz - Leyonex",
   description: "Başarıyla tamamladığımız fuar projeleri ve referanslarımız.",
 };
 

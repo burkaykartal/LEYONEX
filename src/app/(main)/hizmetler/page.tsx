@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 
 export const metadata = {
-  title: "Hizmetlerimiz - Luna 360 Expo",
+  title: "Hizmetlerimiz - Leyonex",
   description: "Fuar organizasyonu için tüm hizmetlerimizi keşfedin. Stand tasarımından danışmanlığa kadar.",
 };
 
