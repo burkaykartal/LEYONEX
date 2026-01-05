@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Play, ChevronDown } from "lucide-react";
@@ -8,6 +8,18 @@ import { Play, ChevronDown } from "lucide-react";
 export default function HeroSection() {
   const [videoPlaying, setVideoPlaying] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    // Video başladıktan 3 saniye sonra otomatik durdur
+    const timer = setTimeout(() => {
+      if (videoRef.current && videoPlaying) {
+        handleVideoEnd();
+      }
+    }, 3000); // 3 saniye
+
+    return () => clearTimeout(timer);
+  }, [videoPlaying]);
 
   const handleVideoEnd = () => {
     // Video bitince içeriği göster ve videoyu yavaşça gizle
@@ -30,6 +42,7 @@ export default function HeroSection() {
         {videoPlaying && (
           <div className={`absolute inset-0 transition-opacity duration-1500 ${showContent ? 'opacity-0' : 'opacity-100'}`}>
             <video
+              ref={videoRef}
               autoPlay
               muted
               playsInline
