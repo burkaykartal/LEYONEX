@@ -1,5 +1,18 @@
 # 🚀 LEYONEX - Kurulum ve Deploy Rehberi
 
+## 📋 Hızlı Özet
+
+**Zorunlu Servis:** Sadece **Clerk** (Kullanıcı girişi için)
+
+**Opsiyonel Servisler (sonraya bırakabilirsiniz):**
+- Resend (Email gönderimi)
+- Sentry (Hata takibi)
+- Sanity CMS (Kullanılmıyor - static data var)
+
+Bu rehber sizi **minimum kurulum** ile deploy edecek şekilde hazırlandı!
+
+---
+
 ## 📦 Flash Belleğinde Olması Gerekenler
 
 Aşağıdaki klasör ve dosyalar **MUTLAKA** olmalı:
@@ -101,33 +114,59 @@ git push -u origin main
 
 ---
 
-## 🔐 3. Adım: API Keylerini Al
+## 🔐 3. Adım: Clerk Kurulumu (ZORUNLU)
 
-### 📌 Clerk (Kullanıcı Girişi - ZORUNLU)
+### 📌 Clerk Hesabı Oluştur
 
-1. **Hesap Oluştur:** https://clerk.com
+1. **Clerk'e git:** https://clerk.com → **Sign Up**
 2. **Create Application** tıkla
-3. Application Name: **LEYONEX**
-4. Uygulamayı oluşturduktan sonra:
-   - **API Keys** sekmesine git
-   - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` kopyala
-   - `CLERK_SECRET_KEY` kopyala
-5. **Türkçe Dil Desteği:**
-   - Sol menüden **Customization** → **Localization**
-   - **Add language** → **Turkish** seç
+3. **Application Name:** LEYONEX
+4. **Sign-in Options:** (Giriş yöntemleri)
+   - ✅ Email address
+   - ✅ Password
+   - İsterseniz Google, GitHub ekleyebilirsiniz
+5. **Create Application** tıkla
 
-### 📧 Resend (Email Gönderimi - Opsiyonel)
+### 🔑 API Keylerini Kopyala
 
-1. **Hesap Oluştur:** https://resend.com
-2. **API Keys** → **Create API Key**
-3. Key'i kopyala
-4. Domain doğrulaması (prod için gerekli, test için gerekli değil)
+1. Dashboard açıldığında **API Keys** sekmesine git
+2. Şu iki key'i kopyala:
+   - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` (pk_test_ ile başlar)
+   - `CLERK_SECRET_KEY` (sk_test_ ile başlar)
+3. **Not alın, sonra lazım olacak!**
 
-### 🐛 Sentry (Hata Takibi - Opsiyonel)
+### 🇹🇷 Türkçe Dil Desteği
 
-1. **Hesap Oluştur:** https://sentry.io
-2. **Create Project** → **Next.js** seç
-3. DSN'i kopyala
+1. Sol menüden **Customization** → **Localization**
+2. **Add language** → **Turkish** seç
+3. Default language olarak Turkish seçebilirsiniz
+
+### ⚙️ URL Ayarları
+
+1. Sol menüden **Paths** sekmesine git
+2. Şu ayarları yapın:
+   - **Sign-in URL:** `/giris`
+   - **Sign-up URL:** `/kayit`
+   - **After sign-in:** `/uye/dashboard`
+   - **After sign-up:** `/uye/dashboard`
+
+---
+
+## 📦 Opsiyonel Servisler (Sonraya Bırakabilirsiniz)
+
+Şimdilik bunlara gerek yok, proje Clerk ile çalışır. İlerleyen zamanlarda ekleyebilirsiniz:
+
+### 📧 Resend (Email Gönderimi)
+- İletişim formu ve teklif alma formları çalışır
+- **Kullanım:** https://resend.com
+
+### 🐛 Sentry (Hata Takibi)
+- Production'da hata izleme
+- **Kullanım:** https://sentry.io
+
+### 🎨 Sanity CMS (İçerik Yönetimi)
+- **KULLANILMIYOR** - Proje static data kullanıyor
+- İstersen paketleri kaldırabilirsin (adım 7'de anlatıldı)
 
 ---
 
@@ -142,33 +181,50 @@ https://vercel.com → **Sign Up** (GitHub ile giriş yap)
 3. **LEYONEX** repo'sunu seç
 4. **Import** tıkla
 
-### c) Environment Variables Ekle
+### c) Environment Variables Ekle (MİNİMUM KURULUM)
 
 **HENÜZ DEPLOY ETME!** Önce **Environment Variables** ekle:
 
+#### ✅ ZORUNLU - Sadece Clerk Keyleri
+
 ```env
-# Clerk Authentication (ZORUNLU)
+# Clerk Authentication
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxx
 CLERK_SECRET_KEY=sk_test_xxxxxxxxxxxxx
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/giris
 NEXT_PUBLIC_CLERK_SIGN_UP_URL=/kayit
 NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/uye/dashboard
 NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/uye/dashboard
+```
 
-# Email - Resend (Opsiyonel)
+**Vercel'de nasıl eklersiniz:**
+1. **Environment Variables** sekmesine gidin
+2. Her satır için:
+   - **Key:** Sol taraftaki (örn: `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`)
+   - **Value:** Clerk'ten kopyaladığınız key
+   - **Add** tıklayın
+3. Clerk URL ayarları için:
+   - Değerleri **aynen yukarıdaki gibi** girin (`/giris`, `/kayit`, vb.)
+
+#### 🔧 Opsiyonel Ayarlar (Şimdilik gerekli değil)
+
+İlerleyen zamanlarda ekleyebilirsiniz:
+
+```env
+# Site Configuration
+NEXT_PUBLIC_SITE_URL=https://your-project.vercel.app
+NEXT_PUBLIC_WHATSAPP_NUMBER=905xxxxxxxxx
+
+# Resend (Email için gerekli)
 RESEND_API_KEY=re_xxxxxxxxxxxxx
 RESEND_FROM_EMAIL=noreply@yourdomain.com
 RESEND_TO_EMAIL=info@yourdomain.com
 
-# Error Tracking - Sentry (Opsiyonel)
+# Sentry (Hata takibi için)
 NEXT_PUBLIC_SENTRY_DSN=https://xxxxx@xxxxx.ingest.sentry.io/xxxxx
-
-# Site Configuration
-NEXT_PUBLIC_SITE_URL=https://your-project.vercel.app
-NEXT_PUBLIC_WHATSAPP_NUMBER=905xxxxxxxxx
 ```
 
-**NOT:** Sanity ile ilgili environment variable'lara gerek yok, sistem artık static data kullanıyor.
+**❌ Sanity değişkenlerine gerek YOK** - Proje static data kullanıyor.
 
 ### d) Deploy Et!
 **Deploy** butonuna bas. 2-3 dakika içinde siteniz hazır!
@@ -194,27 +250,28 @@ npm install
 
 ### c) Environment Variables Oluştur
 
-**Claude Code ile:**
+**Manuel olarak:**
 ```bash
-claude
-```
-
-**Claude'a söyle:**
-```
-.env.example dosyasını kopyalayıp .env.local oluştur ve bana düzenlemem için aç.
-```
-
-Veya **manuel:**
-```bash
+# .env.example'ı kopyala
 cp .env.example .env.local
 ```
 
-**.env.local dosyasını düzenle** ve Clerk keylerini ekle:
+**.env.local dosyasını aç ve sadece Clerk keylerini ekle:**
 ```env
+# Clerk Authentication (ZORUNLU)
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxx
 CLERK_SECRET_KEY=sk_test_xxxxxxxxxxxxx
-# ... diğer keyler
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/giris
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/kayit
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/uye/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/uye/dashboard
+
+# Site Configuration (İsterseniz düzenleyin)
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_WHATSAPP_NUMBER=905xxxxxxxxx
 ```
+
+**❌ Sanity, Resend, Sentry keylerini boş bırakın** - şimdilik gerekli değil.
 
 ### d) Geliştirme Sunucusunu Başlat
 ```bash
@@ -368,16 +425,16 @@ messages/
 3. DNS ayarlarını Vercel'in verdiği gibi yap
 4. Clerk Dashboard'da da yeni domain'i ekle
 
-### 📊 Sanity Kullanılmıyor
-- Önceden Sanity CMS kullanılıyordu
-- Artık static data kullanılıyor (`src/data/`)
-- Sanity paketleri package.json'da var ama kullanılmıyor
-- İstersen kaldırabilirsin (opsiyonel)
+### 📊 Sanity CMS Hakkında
+- ❌ **KULLANILMIYOR** - Proje static data kullanıyor
+- İçerik yönetimi `src/data/` klasöründeki dosyalarla yapılıyor
+- Sanity paketleri yüklü ama aktif değil
 
-**Sanity paketlerini kaldırmak için (opsiyonel):**
+**Sanity paketlerini kaldırmak isterseniz (100% opsiyonel):**
 ```bash
 npm uninstall @sanity/client @sanity/image-url next-sanity
 ```
+Bu adımı **atlayabilirsiniz**, paketler zarar vermez.
 
 ---
 
