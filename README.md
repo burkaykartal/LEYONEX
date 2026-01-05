@@ -1,10 +1,10 @@
-# Luna 360 Expo
+# Leyonex
 
 Professional trade show and exhibition organization platform built with Next.js 15 and modern web technologies.
 
-## About Luna 360 Expo
+## About Leyonex
 
-Luna 360 Expo is a comprehensive trade show organization company offering end-to-end services for international exhibitions. This website showcases our services, project portfolio, and upcoming fairs calendar.
+Leyonex is a comprehensive trade show organization company offering end-to-end services for international exhibitions. This website showcases our services, project portfolio, and upcoming fairs calendar.
 
 ## Tech Stack
 
@@ -43,7 +43,7 @@ Luna 360 Expo is a comprehensive trade show organization company offering end-to
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd luna360expo
+   cd leyonex
    ```
 
 2. **Install dependencies**
@@ -88,7 +88,7 @@ Luna 360 Expo is a comprehensive trade show organization company offering end-to
 ## Project Structure
 
 ```
-luna360expo/
+leyonex/
 ├── src/
 │   ├── app/                    # Next.js App Router pages
 │   │   ├── (main)/            # Main site pages
@@ -228,11 +228,11 @@ Add all environment variables in Vercel dashboard:
 ## Support
 
 For issues or questions:
-- Website: [www.luna360expo.com](https://www.luna360expo.com)
-- Email: info@luna360expo.com
+- Website: [www.leyonex.com](https://www.leyonex.com)
+- Email: info@leyonex.com
 - WhatsApp: +90 555 555 5555
 
 ## License
 
-© 2024 Luna 360 Expo. All rights reserved.
+© 2024 Leyonex. All rights reserved.
 

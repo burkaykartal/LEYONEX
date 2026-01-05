@@ -23,9 +23,9 @@ const config: Config = {
 					foreground: 'hsl(var(--accent-foreground))'
 				},
 				dark: {
-					DEFAULT: '#0f0f0f',
-					card: '#1a1a1a',
-					lighter: '#2a2a2a'
+					DEFAULT: '#2a2a2a',
+					card: '#353535',
+					lighter: '#404040'
 				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',

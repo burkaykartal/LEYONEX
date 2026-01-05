@@ -31,8 +31,8 @@ export async function POST(req: Request) {
 		if (process.env.RESEND_API_KEY) {
 			try {
 				const { error } = await resend.emails.send({
-					from: "Luna 360 Expo <noreply@luna360expo.com>",
-					to: ["info@luna360expo.com"],
+					from: "Leyonex <noreply@leyonex.com>",
+					to: ["info@leyonex.com"],
 					replyTo: email,
 					subject: `Yeni Teklif Talebi: ${company} - ${fairName}`,
 					react: QuoteRequestEmail({

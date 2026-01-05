@@ -18,8 +18,8 @@ export async function POST(req: Request) {
 		if (process.env.RESEND_API_KEY) {
 			try {
 				const { data, error } = await resend.emails.send({
-					from: "Luna 360 Expo <noreply@luna360expo.com>",
-					to: ["info@luna360expo.com"], // TODO: Gerçek email adresi
+					from: "Leyonex <noreply@leyonex.com>",
+					to: ["info@leyonex.com"], // TODO: Gerçek email adresi
 					replyTo: email,
 					subject: `Yeni İletişim Formu: ${name}`,
 					react: ContactFormEmail({ name, email, phone, message }),

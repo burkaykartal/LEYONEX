@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Image
               src="/logo-white.png"
-              alt="Luna 360 Expo"
+              alt="Leyonex"
               width={150}
               height={50}
               className="h-10 w-auto"
@@ -112,8 +112,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-gray-400">
                 <Mail size={18} className="flex-shrink-0 text-accent" />
-                <a href="mailto:info@luna360expo.com" className="hover:text-accent transition-colors">
-                  info@luna360expo.com
+                <a href="mailto:info@leyonex.com" className="hover:text-accent transition-colors">
+                  info@leyonex.com
                 </a>
               </li>
             </ul>
@@ -123,7 +123,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400 text-sm">
-            © {currentYear} Luna 360 Expo. Tüm hakları saklıdır.
+            © {currentYear} Leyonex. Tüm hakları saklıdır.
           </p>
           <div className="flex gap-6 text-sm">
             <Link href="/gizlilik" className="text-gray-400 hover:text-accent transition-colors">
