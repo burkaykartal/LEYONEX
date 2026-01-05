@@ -33,7 +33,7 @@
 		"lucide-react": "^0.562.0",
 		"next": "^15.0.0",
 		"next-intl": "^4.6.1",
-		"next-sanity": "^12.0.5",
+		"next-sanity": "^9.8.16",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"react-email": "^5.1.0",
