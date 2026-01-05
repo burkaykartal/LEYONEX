@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "fairs": "Fairs",
+    "contact": "Contact",
+    "getQuote": "Get Quote",
+    "login": "Login",
+    "member": "Member Area"
+  },
+  "hero": {
+    "title": "Exhibition Solutions That Make a Difference",
+    "subtitle": "Manage all services from stand design to organization in one place",
+    "cta": "Get Started",
+    "watchVideo": "Watch Video"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Tailored solutions for your needs",
+    "standDesign": "Stand Design & Installation",
+    "hostess": "Hostess & Staff Support",
+    "hotel": "Hotel & Accommodation",
+    "catering": "Stand Catering",
+    "photography": "Photography & Video Shooting",
+    "transportation": "Transportation & Shuttle",
+    "gifts": "Corporate Gifts & Promotion",
+    "gala": "Dinner & Gala Organization",
+    "consulting": "Fair Consulting"
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Successful projects we've delivered",
+    "viewAll": "View All Projects",
+    "filter": "Filter",
+    "sector": "Sector",
+    "standType": "Stand Type",
+    "location": "Location",
+    "squareMeters": "Square Meters"
+  },
+  "fairs": {
+    "title": "Fair Calendar",
+    "subtitle": "Upcoming fairs",
+    "upcoming": "Upcoming Fairs",
+    "viewDetails": "View Details"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch with us",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Your message has been sent successfully!",
+    "error": "An error occurred. Please try again."
+  },
+  "footer": {
+    "copyright": "© 2024 Luna 360 Expo. All rights reserved.",
+    "followUs": "Follow Us",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "address": "Address",
+    "contactInfo": "Contact Information"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "backToHome": "Back to Home",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+}
