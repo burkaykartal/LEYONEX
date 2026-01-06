@@ -102,12 +102,12 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-3 text-[#555555]">
                 <MapPin size={18} className="mt-1 flex-shrink-0 text-accent" />
-                <span>Adres Bilgisi<br />İstanbul, Türkiye</span>
+                <span>Küçükbakkalköy Mah. Bakırcı Sk. Yusuf Bey Plaza No: 8 A<br />Ataşehir / İstanbul</span>
               </li>
               <li className="flex items-center gap-3 text-[#555555]">
                 <Phone size={18} className="flex-shrink-0 text-accent" />
-                <a href="tel:+905xxxxxxxxx" className="hover:text-accent transition-colors">
-                  +90 5XX XXX XX XX
+                <a href="tel:+905439607076" className="hover:text-accent transition-colors">
+                  +90 543 960 70 76
                 </a>
               </li>
               <li className="flex items-center gap-3 text-[#555555]">

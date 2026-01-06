@@ -66,11 +66,11 @@ export default function ServicesGrid() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-primary font-bold">
+            <span className="text-[#004767] font-bold">
               Hizmetlerimiz
             </span>
           </h2>
-          <p className="text-[#555555] text-lg">
+          <p className="text-[#404D60] text-lg font-medium">
             İhtiyacınıza özel, paket değil seçilebilir hizmetler
           </p>
         </div>
@@ -89,10 +89,10 @@ export default function ServicesGrid() {
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-xl font-semibold mb-2 text-[#2d2d2d] group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-semibold mb-2 text-[#004767] group-hover:text-primary transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-[#555555] text-sm flex-grow leading-relaxed">
+                    <p className="text-[#404D60] text-sm flex-grow leading-relaxed">
                       {service.description}
                     </p>
 

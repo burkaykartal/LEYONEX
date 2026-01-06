@@ -11,7 +11,7 @@ const navItems = [
   { href: "/", label: "Ana Sayfa" },
   { href: "/hakkimizda", label: "Hakkımızda" },
   { href: "/hizmetler", label: "Hizmetler" },
-  { href: "/projeler", label: "Projeler" },
+  { href: "/projeler", label: "Güncel Çalışmalar" },
   { href: "/fuarlar", label: "Fuarlar" },
   { href: "/iletisim", label: "İletişim" },
 ];
@@ -33,8 +33,8 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-lg shadow-lg border-b border-[#eaecf0]"
-          : "bg-transparent"
+          ? "bg-gray-100/95 backdrop-blur-lg shadow-lg border-b border-gray-200"
+          : "bg-gray-100/50"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -58,7 +58,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 className={`transition-colors text-sm font-medium ${
-                  isScrolled ? "text-[#555555] hover:text-primary" : "text-white hover:text-white/80"
+                  isScrolled ? "text-[#404D60] hover:text-primary" : "text-[#404D60] hover:text-primary"
                 }`}
               >
                 {item.label}
@@ -80,14 +80,14 @@ export default function Header() {
             ) : (
               <>
                 <Link href="/giris">
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
                     Giriş
                   </Button>
                 </Link>
                 <Link href="/teklif-al">
                   <Button
                     size="sm"
-                    className="bg-primary hover:opacity-90 transition-opacity"
+                    className="bg-primary hover:opacity-90 transition-opacity text-white"
                   >
                     Teklif Al
                   </Button>
@@ -137,12 +137,12 @@ export default function Header() {
               ) : (
                 <>
                   <Link href="/giris" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button variant="outline" className="w-full">
+                    <Button variant="outline" className="w-full text-primary border-primary">
                       Giriş
                     </Button>
                   </Link>
                   <Link href="/teklif-al" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-primary hover:opacity-90">
+                    <Button className="w-full bg-primary hover:opacity-90 text-white">
                       Teklif Al
                     </Button>
                   </Link>

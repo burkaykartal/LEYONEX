@@ -11,14 +11,24 @@ export default function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Video başladıktan 3 saniye sonra otomatik durdur
-    const timer = setTimeout(() => {
+    // 1 saniye bekle, sonra videoyu başlat
+    const startTimer = setTimeout(() => {
+      if (videoRef.current) {
+        videoRef.current.play();
+      }
+    }, 1000); // 1 saniye gecikme
+
+    // Video başladıktan 4 saniye sonra otomatik durdur (1 sn gecikme + 3 sn video)
+    const endTimer = setTimeout(() => {
       if (videoRef.current && videoPlaying) {
         handleVideoEnd();
       }
-    }, 3000); // 3 saniye
+    }, 4000); // 4 saniye
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(startTimer);
+      clearTimeout(endTimer);
+    };
   }, [videoPlaying]);
 
   const handleVideoEnd = () => {
@@ -43,12 +53,11 @@ export default function HeroSection() {
           <div className={`absolute inset-0 transition-opacity duration-1500 ${showContent ? 'opacity-0' : 'opacity-100'}`}>
             <video
               ref={videoRef}
-              autoPlay
               muted
               playsInline
               onEnded={handleVideoEnd}
               onError={handleVideoError}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover md:object-cover object-contain"
             >
               <source src="/leyonex-video-cikis.mp4" type="video/mp4" />
             </video>
@@ -83,7 +92,7 @@ export default function HeroSection() {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
-            Stand tasarımından organizasyona tüm hizmetleri tek noktadan yönetin
+            Stand tasarımından organizasyona tüm hizmetleri tek noktadan ve en iyi fiyata yönetin
           </p>
 
           {/* CTA Buttons */}

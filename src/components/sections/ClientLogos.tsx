@@ -51,12 +51,12 @@ export default function ClientLogos() {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            <span className="text-primary font-bold">
+            <span className="text-white font-bold">
               Güvenilir Markalar Bizimle
             </span>
           </h2>
-          <p className="text-gray-400">
-            500+ şirketin fuar organizasyonlarında yanlarındayız
+          <p className="text-white">
+            100+ şirketin fuar organizasyonlarında yanlarındayız
           </p>
         </div>
 

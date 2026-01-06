@@ -61,7 +61,7 @@ export default function IletisimPage() {
 						<Card className="bg-dark-card p-8">
 							<form onSubmit={handleSubmit} className="space-y-6">
 								<div>
-									<label htmlFor="name" className="block mb-2 text-sm font-medium">
+									<label htmlFor="name" className="block mb-2 text-sm font-medium text-white">
 										Ad Soyad
 									</label>
 									<Input
@@ -75,7 +75,7 @@ export default function IletisimPage() {
 									/>
 								</div>
 								<div>
-									<label htmlFor="email" className="block mb-2 text-sm font-medium">
+									<label htmlFor="email" className="block mb-2 text-sm font-medium text-white">
 										E-posta
 									</label>
 									<Input
@@ -90,7 +90,7 @@ export default function IletisimPage() {
 									/>
 								</div>
 								<div>
-									<label htmlFor="phone" className="block mb-2 text-sm font-medium">
+									<label htmlFor="phone" className="block mb-2 text-sm font-medium text-white">
 										Telefon
 									</label>
 									<Input
