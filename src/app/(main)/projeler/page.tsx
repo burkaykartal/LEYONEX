@@ -19,7 +19,7 @@ export default function ProjelerPage() {
 								Projelerimiz
 							</span>
 						</h1>
-						<p className="text-gray-400 text-lg">
+						<p className="text-[#404D60] text-lg">
 							Gerçekleştirdiğimiz başarılı fuar projeleri
 						</p>
 					</div>

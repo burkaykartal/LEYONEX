@@ -28,7 +28,7 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
       <Header />
       <main className="min-h-screen pt-20">
         {/* Hero Section */}
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-[#F5F7FA]">
           <div className="container mx-auto px-4">
             <Link
               href="/hizmetler"
@@ -40,11 +40,11 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
 
             <div className="max-w-4xl">
               <Badge className="mb-4 bg-primary">Hizmetlerimiz</Badge>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 text-[#004767]">
                 {service.title.tr}
               </h1>
               {service.shortDescription && (
-                <p className="text-xl text-gray-300">{service.shortDescription.tr}</p>
+                <p className="text-xl text-[#404D60]">{service.shortDescription.tr}</p>
               )}
             </div>
           </div>

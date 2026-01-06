@@ -19,7 +19,7 @@ export default function HizmetlerPage() {
 								Hizmetlerimiz
 							</span>
 						</h1>
-						<p className="text-gray-400 text-lg">
+						<p className="text-[#404D60] text-lg">
 							İhtiyacınıza özel, paket değil seçilebilir hizmetler
 						</p>
 					</div>

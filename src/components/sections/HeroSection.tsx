@@ -67,7 +67,7 @@ export default function HeroSection() {
         )}
 
         {/* Normal background - video bittikten sonra görünür */}
-        <div className={`absolute inset-0 bg-[#6a6a6a] transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
+        <div className={`absolute inset-0 bg-[#F5F7FA] transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
         <div className={`absolute inset-0 bg-[url('/grid.svg')] opacity-10 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
       </div>
 
@@ -76,7 +76,7 @@ export default function HeroSection() {
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Badge */}
           <div className="inline-block">
-            <span className="px-4 py-2 bg-white backdrop-blur-sm rounded-full text-sm font-medium border border-white/30 text-[#333333] shadow-lg">
+            <span className="px-4 py-2 bg-primary/10 backdrop-blur-sm rounded-full text-sm font-medium border border-primary/30 text-primary shadow-lg">
               ✨ Fuar Dünyasında Yeni Bir Soluk
             </span>
           </div>
@@ -87,11 +87,11 @@ export default function HeroSection() {
               Fuar Dünyasında
             </span>
             <br />
-            Fark Yaratan Çözümler
+            <span className="text-[#004767]">Fark Yaratan Çözümler</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-[#404D60] max-w-2xl mx-auto font-medium">
             Stand tasarımından organizasyona tüm hizmetleri tek noktadan ve en iyi fiyata yönetin
           </p>
 
@@ -111,15 +111,15 @@ export default function HeroSection() {
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12">
             <div>
               <div className="text-3xl md:text-4xl font-bold text-accent">15+</div>
-              <div className="text-sm text-gray-400 mt-1">Yıllık Marka ve Pazarlama Yönetimi</div>
+              <div className="text-sm text-[#404D60] mt-1 font-medium">Yıllık Marka ve Pazarlama Yönetimi</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-bold text-accent">10+</div>
-              <div className="text-sm text-gray-400 mt-1">Yıllık Fuar Deneyimi</div>
+              <div className="text-sm text-[#404D60] mt-1 font-medium">Yıllık Fuar Deneyimi</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-bold text-accent">100+</div>
-              <div className="text-sm text-gray-400 mt-1">Tamamlanan Proje</div>
+              <div className="text-sm text-[#404D60] mt-1 font-medium">Tamamlanan Proje</div>
             </div>
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function HeroSection() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <ChevronDown size={32} className="text-white/50" />
+        <ChevronDown size={32} className="text-primary/50" />
       </div>
     </section>
   );

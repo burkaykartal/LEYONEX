@@ -119,7 +119,7 @@ export default function TeklifAlPage() {
 									Teklif Al
 								</span>
 							</h1>
-							<p className="text-gray-400 text-lg">
+							<p className="text-[#404D60] text-lg">
 								Size özel fuar organizasyon teklifimizi hazırlayalım
 							</p>
 						</div>

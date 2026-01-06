@@ -15,7 +15,7 @@ export default function HakkimizdaPage() {
 			<Header />
 			<main className="min-h-screen pt-20">
 				{/* Hero */}
-				<section className="py-16 bg-gray-50">
+				<section className="py-16 bg-[#F5F7FA]">
 					<div className="container mx-auto px-4">
 						<div className="max-w-4xl mx-auto text-center">
 							<h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -23,7 +23,7 @@ export default function HakkimizdaPage() {
 									Hakkımızda
 								</span>
 							</h1>
-							<p className="text-xl text-gray-300">
+							<p className="text-xl text-[#404D60]">
 								15+ yıllık deneyimimizle fuar dünyasında fark yaratıyoruz
 							</p>
 						</div>
