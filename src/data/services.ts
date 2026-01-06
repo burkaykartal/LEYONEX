@@ -267,4 +267,23 @@ export const services: Service[] = [
     order: 9,
     subServices: [],
   },
+  {
+    id: 10,
+    title: {
+      tr: "Devlet Desteği Danışmanlığı",
+      en: "Government Support Consulting",
+    },
+    slug: "devlet-destegi-danismanligi",
+    shortDescription: {
+      tr: "Fuar katılımlarınız için devlet teşvik ve destek programları danışmanlığı",
+      en: "Government incentive and support programs consulting for your fair participations",
+    },
+    fullDescription: {
+      tr: "Fuar katılımlarınızda yararlanabileceğiniz KOSGEB, TİM, TOBB ve diğer devlet teşvik programları için profesyonel danışmanlık hizmeti sunuyoruz. Başvuru süreçlerinizi yönetir ve maksimum destek almanızı sağlarız.",
+      en: "We provide professional consulting services for KOSGEB, TİM, TOBB and other government incentive programs that you can benefit from in your fair participations. We manage your application processes and ensure you receive maximum support.",
+    },
+    icon: "award",
+    order: 10,
+    subServices: [],
+  },
 ];

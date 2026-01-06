@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Play, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export default function HeroSection() {
   const [videoPlaying, setVideoPlaying] = useState(true);
@@ -58,7 +58,7 @@ export default function HeroSection() {
         )}
 
         {/* Normal background - video bittikten sonra görünür */}
-        <div className={`absolute inset-0 bg-[#4a4a4a] transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
+        <div className={`absolute inset-0 bg-[#6a6a6a] transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
         <div className={`absolute inset-0 bg-[url('/grid.svg')] opacity-10 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
       </div>
 
@@ -91,34 +91,26 @@ export default function HeroSection() {
             <Link href="/teklif-al">
               <Button
                 size="lg"
-                className="bg-primary hover:opacity-90 transition-opacity px-8 py-6 text-lg"
+                className="bg-primary hover:opacity-90 transition-opacity px-8 py-6 text-lg text-white"
               >
                 Hemen Başlayın
               </Button>
             </Link>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-white bg-white text-[#333333] hover:bg-white/90 px-8 py-6 text-lg shadow-lg"
-            >
-              <Play className="mr-2" size={20} />
-              Videoyu İzle
-            </Button>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto pt-12">
             <div>
               <div className="text-3xl md:text-4xl font-bold text-accent">15+</div>
-              <div className="text-sm text-gray-400 mt-1">Yıllık Deneyim</div>
+              <div className="text-sm text-gray-400 mt-1">Yıllık Marka ve Pazarlama Yönetimi</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-accent">500+</div>
+              <div className="text-3xl md:text-4xl font-bold text-accent">10+</div>
+              <div className="text-sm text-gray-400 mt-1">Yıllık Fuar Deneyimi</div>
+            </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-accent">100+</div>
               <div className="text-sm text-gray-400 mt-1">Tamamlanan Proje</div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-bold text-accent">25+</div>
-              <div className="text-sm text-gray-400 mt-1">Ülke</div>
             </div>
           </div>
         </div>
