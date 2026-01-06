@@ -67,7 +67,7 @@ export default function HeroSection() {
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Badge */}
           <div className="inline-block">
-            <span className="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium border border-white/20">
+            <span className="px-4 py-2 bg-white backdrop-blur-sm rounded-full text-sm font-medium border border-white/30 text-[#3f3c56] shadow-lg">
               ✨ Fuar Dünyasında Yeni Bir Soluk
             </span>
           </div>
@@ -99,7 +99,7 @@ export default function HeroSection() {
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-white/20 hover:bg-white/5 px-8 py-6 text-lg"
+              className="border-2 border-white bg-white text-[#3f3c56] hover:bg-white/90 px-8 py-6 text-lg shadow-lg"
             >
               <Play className="mr-2" size={20} />
               Videoyu İzle

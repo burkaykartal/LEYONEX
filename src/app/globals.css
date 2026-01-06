@@ -54,23 +54,23 @@
 		@apply border-border;
 	}
 
-	/* Light background with template text colors */
+	/* Light grey background with template text colors */
 	html,
 	body {
-		@apply bg-white text-[#56667b];
+		@apply bg-[#f5f5f5] text-[#3f3c56];
 	}
 
 	/* Override any default styles */
 	h1, h2, h3, h4, h5, h6 {
-		@apply text-[#3f3c56];
+		@apply text-[#2d2a3f];
 	}
 
 	p {
-		@apply text-[#56667b];
+		@apply text-[#4a4a5a];
 	}
 
 	a {
-		@apply text-[#56667b] hover:text-primary transition-colors;
+		@apply text-[#4a4a5a] hover:text-primary transition-colors;
 	}
 }
 

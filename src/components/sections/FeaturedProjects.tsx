@@ -16,7 +16,7 @@ export default function FeaturedProjects() {
   };
 
   return (
-    <section className="py-24 bg-dark-card">
+    <section className="py-24 bg-[#f5f5f5]">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
@@ -26,13 +26,13 @@ export default function FeaturedProjects() {
                 Öne Çıkan Projeler
               </span>
             </h2>
-            <p className="text-gray-400 text-lg">
+            <p className="text-[#4a4a5a] text-lg">
               Gerçekleştirdiğimiz başarılı projelerden seçmeler
             </p>
           </div>
           <Link
             href="/projeler"
-            className="mt-4 md:mt-0 flex items-center gap-2 text-accent hover:gap-3 transition-all"
+            className="mt-4 md:mt-0 flex items-center gap-2 text-primary hover:gap-3 transition-all font-medium"
           >
             <span className="font-medium">Tüm Projeleri Gör</span>
             <ArrowRight size={20} />
@@ -43,10 +43,10 @@ export default function FeaturedProjects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
             <Link key={project.id} href={`/projeler/${project.slug}`}>
-              <Card className="group bg-dark border-white/10 hover:border-accent/50 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20">
+              <Card className="group bg-white border-[#eaecf0] hover:border-primary/50 overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden bg-dark-lighter">
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent z-10" />
+                <div className="relative h-64 overflow-hidden bg-[#f5f5f5]">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent z-10" />
 
                   {project.heroImage ? (
                     <Image
@@ -71,13 +71,13 @@ export default function FeaturedProjects() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-accent transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 text-[#2d2a3f] group-hover:text-primary transition-colors">
                     {project.title.tr}
                   </h3>
-                  <p className="text-sm text-gray-400 mb-3">
+                  <p className="text-sm text-[#4a4a5a] mb-3">
                     {project.client} • {project.location.city}
                   </p>
-                  <div className="flex items-center text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-center text-primary opacity-0 group-hover:opacity-100 transition-opacity">
                     <span className="text-sm font-medium mr-2">Detayları Gör</span>
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </div>
