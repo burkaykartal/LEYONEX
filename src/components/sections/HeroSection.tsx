@@ -57,8 +57,8 @@ export default function HeroSection() {
           </div>
         )}
 
-        {/* Normal gradient background - video bittikten sonra görünür */}
-        <div className={`absolute inset-0 bg-dark transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
+        {/* Normal background - video bittikten sonra görünür */}
+        <div className={`absolute inset-0 bg-[#3f3c56] transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
         <div className={`absolute inset-0 bg-[url('/grid.svg')] opacity-10 transition-opacity duration-1000 ${showContent ? 'opacity-100' : 'opacity-0'}`} />
       </div>
 

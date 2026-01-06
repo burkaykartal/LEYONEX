@@ -33,7 +33,7 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-dark/95 backdrop-blur-lg shadow-lg border-b border-white/5"
+          ? "bg-white/95 backdrop-blur-lg shadow-lg border-b border-[#eaecf0]"
           : "bg-transparent"
       }`}
     >
@@ -57,7 +57,9 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
+                className={`transition-colors text-sm font-medium ${
+                  isScrolled ? "text-[#56667b] hover:text-primary" : "text-white hover:text-white/80"
+                }`}
               >
                 {item.label}
               </Link>
@@ -107,20 +109,20 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-20 bg-dark-card/98 backdrop-blur-lg border-t border-white/10 animate-in slide-in-from-top">
+        <div className="lg:hidden fixed inset-0 top-20 bg-white/98 backdrop-blur-lg border-t border-[#eaecf0] animate-in slide-in-from-top">
           <nav className="container mx-auto px-4 py-8 flex flex-col space-y-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-gray-300 hover:text-white transition-colors text-lg font-medium"
+                className="text-[#56667b] hover:text-primary transition-colors text-lg font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
 
-            <div className="pt-6 border-t border-white/10 flex flex-col gap-3">
+            <div className="pt-6 border-t border-[#eaecf0] flex flex-col gap-3">
               {isSignedIn ? (
                 <>
                   <Link href="/uye/dashboard" onClick={() => setIsMobileMenuOpen(false)}>

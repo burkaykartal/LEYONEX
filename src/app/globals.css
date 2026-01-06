@@ -27,25 +27,25 @@
 	}
 
 	.dark {
-		--background: 0 0% 29%; /* RAL 7017 */
+		--background: 251 26% 29%; /* Template dark #3f3c56 */
 		--foreground: 0 0% 94%;
-		--card: 0 0% 35%;
+		--card: 251 22% 35%;
 		--card-foreground: 0 0% 94%;
-		--popover: 0 0% 29%;
+		--popover: 251 26% 29%;
 		--popover-foreground: 0 0% 94%;
-		--primary: 359 59% 50%; /* RAL 3028 */
-		--primary-foreground: 0 0% 98%;
-		--secondary: 0 0% 42%;
+		--primary: 359 60% 56%; /* Template red #DB4140 */
+		--primary-foreground: 0 0% 100%;
+		--secondary: 251 26% 29%;
 		--secondary-foreground: 0 0% 98%;
-		--muted: 0 0% 42%;
-		--muted-foreground: 0 0% 65%;
-		--accent: 359 59% 50%; /* RAL 3028 */
-		--accent-foreground: 0 0% 98%;
+		--muted: 240 14% 97%; /* Template muted #f8f8fa */
+		--muted-foreground: 216 16% 42%; /* Template text #56667b */
+		--accent: 359 60% 56%; /* Template red */
+		--accent-foreground: 0 0% 100%;
 		--destructive: 0 62.8% 30.6%;
 		--destructive-foreground: 0 0% 98%;
-		--border: 0 0% 42%;
-		--input: 0 0% 42%;
-		--ring: 359 59% 50%;
+		--border: 220 16% 93%; /* Template border #eaecf0 */
+		--input: 220 16% 93%;
+		--ring: 359 60% 56%;
 	}
 }
 
@@ -54,23 +54,23 @@
 		@apply border-border;
 	}
 
-	/* Light background with dark text */
+	/* Light background with template text colors */
 	html,
 	body {
-		@apply bg-white text-grey-text;
+		@apply bg-white text-[#56667b];
 	}
 
 	/* Override any default styles */
 	h1, h2, h3, h4, h5, h6 {
-		@apply text-grey-text;
+		@apply text-[#3f3c56];
 	}
 
 	p {
-		@apply text-gray-600;
+		@apply text-[#56667b];
 	}
 
 	a {
-		@apply text-gray-700 hover:text-grey-text transition-colors;
+		@apply text-[#56667b] hover:text-primary transition-colors;
 	}
 }
 

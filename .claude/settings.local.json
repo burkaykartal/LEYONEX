@@ -12,7 +12,9 @@
       "Bash(ffmpeg:*)",
       "WebFetch(domain:templatekits.c-kav.com)",
       "Bash(curl:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm install)"
     ]
   }
 }

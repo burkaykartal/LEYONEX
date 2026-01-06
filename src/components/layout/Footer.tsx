@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-dark-card border-t border-white/5">
+    <footer className="bg-[#f8f8fa] border-t border-[#eaecf0]">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Logo ve Açıklama */}
@@ -18,7 +18,7 @@ export default function Footer() {
               height={50}
               className="h-10 w-auto"
             />
-            <p className="text-gray-400 text-sm">
+            <p className="text-[#56667b] text-sm">
               Fuar dünyasında fark yaratan çözümler. Stand tasarımından organizasyona tüm hizmetleri tek noktadan yönetin.
             </p>
             <div className="flex space-x-4">
@@ -26,7 +26,7 @@ export default function Footer() {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-accent transition-colors"
+                className="text-[#56667b] hover:text-accent transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={20} />
@@ -35,7 +35,7 @@ export default function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-accent transition-colors"
+                className="text-[#56667b] hover:text-accent transition-colors"
                 aria-label="Instagram"
               >
                 <Instagram size={20} />
@@ -44,7 +44,7 @@ export default function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-accent transition-colors"
+                className="text-[#56667b] hover:text-accent transition-colors"
                 aria-label="LinkedIn"
               >
                 <Linkedin size={20} />
@@ -54,30 +54,30 @@ export default function Footer() {
 
           {/* Hızlı Linkler */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Hızlı Linkler</h3>
+            <h3 className="text-lg font-semibold mb-4 text-[#3f3c56]">Hızlı Linkler</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/hakkimizda" className="text-gray-400 hover:text-accent transition-colors text-sm">
+                <Link href="/hakkimizda" className="text-[#56667b] hover:text-accent transition-colors text-sm">
                   Hakkımızda
                 </Link>
               </li>
               <li>
-                <Link href="/hizmetler" className="text-gray-400 hover:text-accent transition-colors text-sm">
+                <Link href="/hizmetler" className="text-[#56667b] hover:text-accent transition-colors text-sm">
                   Hizmetler
                 </Link>
               </li>
               <li>
-                <Link href="/projeler" className="text-gray-400 hover:text-accent transition-colors text-sm">
+                <Link href="/projeler" className="text-[#56667b] hover:text-accent transition-colors text-sm">
                   Projeler
                 </Link>
               </li>
               <li>
-                <Link href="/fuarlar" className="text-gray-400 hover:text-accent transition-colors text-sm">
+                <Link href="/fuarlar" className="text-[#56667b] hover:text-accent transition-colors text-sm">
                   Fuar Takvimi
                 </Link>
               </li>
               <li>
-                <Link href="/iletisim" className="text-gray-400 hover:text-accent transition-colors text-sm">
+                <Link href="/iletisim" className="text-[#56667b] hover:text-accent transition-colors text-sm">
                   İletişim
                 </Link>
               </li>
@@ -86,8 +86,8 @@ export default function Footer() {
 
           {/* Hizmetler */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">Hizmetlerimiz</h3>
-            <ul className="space-y-2 text-gray-400 text-sm">
+            <h3 className="text-lg font-semibold mb-4 text-[#3f3c56]">Hizmetlerimiz</h3>
+            <ul className="space-y-2 text-[#56667b] text-sm">
               <li>Stand Tasarımı & Kurulumu</li>
               <li>Hostes & Personel Desteği</li>
               <li>Otel & Konaklama</li>
@@ -98,19 +98,19 @@ export default function Footer() {
 
           {/* İletişim Bilgileri */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-white">İletişim</h3>
+            <h3 className="text-lg font-semibold mb-4 text-[#3f3c56]">İletişim</h3>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-3 text-gray-400">
+              <li className="flex items-start gap-3 text-[#56667b]">
                 <MapPin size={18} className="mt-1 flex-shrink-0 text-accent" />
                 <span>Adres Bilgisi<br />İstanbul, Türkiye</span>
               </li>
-              <li className="flex items-center gap-3 text-gray-400">
+              <li className="flex items-center gap-3 text-[#56667b]">
                 <Phone size={18} className="flex-shrink-0 text-accent" />
                 <a href="tel:+905xxxxxxxxx" className="hover:text-accent transition-colors">
                   +90 5XX XXX XX XX
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-gray-400">
+              <li className="flex items-center gap-3 text-[#56667b]">
                 <Mail size={18} className="flex-shrink-0 text-accent" />
                 <a href="mailto:info@leyonex.com" className="hover:text-accent transition-colors">
                   info@leyonex.com
@@ -121,15 +121,15 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">
+        <div className="border-t border-[#eaecf0] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-[#56667b] text-sm">
             © {currentYear} Leyonex. Tüm hakları saklıdır.
           </p>
           <div className="flex gap-6 text-sm">
-            <Link href="/gizlilik" className="text-gray-400 hover:text-accent transition-colors">
+            <Link href="/gizlilik" className="text-[#56667b] hover:text-accent transition-colors">
               Gizlilik Politikası
             </Link>
-            <Link href="/kvkk" className="text-gray-400 hover:text-accent transition-colors">
+            <Link href="/kvkk" className="text-[#56667b] hover:text-accent transition-colors">
               KVKK
             </Link>
           </div>

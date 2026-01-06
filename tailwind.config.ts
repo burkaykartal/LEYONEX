@@ -11,27 +11,28 @@ const config: Config = {
 		extend: {
 			colors: {
 				primary: {
-					DEFAULT: '#CB3234', // RAL 3028 - Pure Red
-					light: '#E05456',
-					dark: '#A62829',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: '#DB4140', // Template primary red
+					light: '#E85655',
+					dark: '#C23635',
+					foreground: '#FFFFFF'
 				},
 				accent: {
-					DEFAULT: '#CB3234', // RAL 3028 - Ana vurgu rengi
-					light: '#E05456',
-					dark: '#A62829',
-					foreground: 'hsl(var(--accent-foreground))'
+					DEFAULT: '#DB4140', // Template accent red
+					light: '#E85655',
+					dark: '#C23635',
+					foreground: '#FFFFFF'
 				},
 				dark: {
-					DEFAULT: '#F1F0EA', // RAL 9016 - Ana arka plan (BEYAZ)
-					card: '#FFFFFF',
-					lighter: '#E5E4DE'
+					DEFAULT: '#3f3c56', // Template secondary dark
+					card: '#4a4763',
+					lighter: '#5a5770',
+					text: '#56667b' // Template text grey
 				},
 				grey: {
-					DEFAULT: '#4A4A4A', // RAL 7017 - Kartlar ve alanlar (GRİ)
-					card: '#5A5A5A',
-					lighter: '#6A6A6A',
-					text: '#2A2A2A'
+					DEFAULT: '#f8f8fa', // Template muted/sections
+					card: '#eaecf0', // Template border
+					lighter: '#ffffff',
+					text: '#56667b' // Template text color
 				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
@@ -69,9 +70,6 @@ const config: Config = {
 					'var(--font-montserrat)',
 					'sans-serif'
 				]
-			},
-			backgroundImage: {
-				'gradient-primary': 'linear-gradient(135deg, #CB3234 0%, #E05456 100%)' // RAL 3028 gradient
 			},
 			keyframes: {
 				'accordion-down': {
