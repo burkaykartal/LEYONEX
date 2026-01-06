@@ -11,28 +11,28 @@ const config: Config = {
 		extend: {
 			colors: {
 				primary: {
-					DEFAULT: '#DB4140', // Template primary red
-					light: '#E85655',
-					dark: '#C23635',
+					DEFAULT: '#004767', // New template primary dark blue
+					light: '#03BFCB',
+					dark: '#003347',
 					foreground: '#FFFFFF'
 				},
 				accent: {
-					DEFAULT: '#DB4140', // Template accent red
-					light: '#E85655',
-					dark: '#C23635',
+					DEFAULT: '#03BFCB', // New template accent cyan
+					light: '#2DD4DF',
+					dark: '#02A8B3',
 					foreground: '#FFFFFF'
 				},
 				dark: {
-					DEFAULT: '#4a4a4a', // Koyu gri
-					card: '#555555',
-					lighter: '#666666',
-					text: '#555555' // Orta ton gri
+					DEFAULT: '#404D60', // Dark blue-grey text
+					card: '#004767',
+					lighter: '#4B86A1',
+					text: '#404D60'
 				},
 				grey: {
-					DEFAULT: '#f8f8fa', // Açık gri/sections
-					card: '#eaecf0', // Border
+					DEFAULT: '#F5F7FA', // Light grey background
+					card: '#E8ECF1', // Border
 					lighter: '#ffffff',
-					text: '#555555' // Orta ton gri
+					text: '#4B86A1' // Secondary text
 				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',

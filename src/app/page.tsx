@@ -4,7 +4,7 @@ import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import HeroSection from "@/components/sections/HeroSection";
 import ProcessManagement from "@/components/sections/ProcessManagement";
 import ServicesGrid from "@/components/sections/ServicesGrid";
-import FeaturedProjects from "@/components/sections/FeaturedProjects";
+import ActiveFairs from "@/components/sections/ActiveFairs";
 import ClientLogos from "@/components/sections/ClientLogos";
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
 				<HeroSection />
 				<ProcessManagement />
 				<ServicesGrid />
-				<FeaturedProjects />
+				<ActiveFairs />
 				<ClientLogos />
 			</main>
 			<Footer />
