@@ -44,17 +44,17 @@ export default function FairsTable() {
     <div className="space-y-6">
       {/* Filters */}
       <Card className="p-6 bg-white border-[#eaecf0]">
-        <h3 className="text-lg font-semibold mb-4 text-[#2d2a3f]">Filtreler</h3>
+        <h3 className="text-lg font-semibold mb-4 text-[#2d2d2d]">Filtreler</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {/* Country Filter */}
           <div>
-            <label className="block text-sm font-medium text-[#4a4a5a] mb-2">
+            <label className="block text-sm font-medium text-[#555555] mb-2">
               Ülke
             </label>
             <select
               value={selectedCountry}
               onChange={(e) => setSelectedCountry(e.target.value)}
-              className="w-full px-4 py-2 border border-[#eaecf0] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-[#3f3c56]"
+              className="w-full px-4 py-2 border border-[#eaecf0] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-[#333333]"
             >
               <option value="all">Tüm Ülkeler</option>
               {countries.map((country) => (
@@ -67,13 +67,13 @@ export default function FairsTable() {
 
           {/* City Filter */}
           <div>
-            <label className="block text-sm font-medium text-[#4a4a5a] mb-2">
+            <label className="block text-sm font-medium text-[#555555] mb-2">
               Şehir
             </label>
             <select
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value)}
-              className="w-full px-4 py-2 border border-[#eaecf0] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-[#3f3c56]"
+              className="w-full px-4 py-2 border border-[#eaecf0] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-[#333333]"
             >
               <option value="all">Tüm Şehirler</option>
               {cities.map((city) => (
@@ -86,13 +86,13 @@ export default function FairsTable() {
 
           {/* Sector Filter */}
           <div>
-            <label className="block text-sm font-medium text-[#4a4a5a] mb-2">
+            <label className="block text-sm font-medium text-[#555555] mb-2">
               Sektör
             </label>
             <select
               value={selectedSector}
               onChange={(e) => setSelectedSector(e.target.value)}
-              className="w-full px-4 py-2 border border-[#eaecf0] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-[#3f3c56]"
+              className="w-full px-4 py-2 border border-[#eaecf0] rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-[#333333]"
             >
               <option value="all">Tüm Sektörler</option>
               {sectors.map((sector) => (
@@ -105,7 +105,7 @@ export default function FairsTable() {
         </div>
 
         {/* Results Count */}
-        <div className="mt-4 text-sm text-[#4a4a5a]">
+        <div className="mt-4 text-sm text-[#555555]">
           <strong>{filteredFairs.length}</strong> fuar listeleniyor
         </div>
       </Card>
@@ -116,16 +116,16 @@ export default function FairsTable() {
           <table className="w-full">
             <thead className="bg-[#f5f5f5]">
               <tr>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-[#2d2a3f]">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-[#2d2d2d]">
                   Fuar Adı
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-[#2d2a3f]">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-[#2d2d2d]">
                   Tarih
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-[#2d2a3f]">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-[#2d2d2d]">
                   Konum
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-[#2d2a3f]">
+                <th className="px-6 py-4 text-left text-sm font-semibold text-[#2d2d2d]">
                   Sektör
                 </th>
               </tr>
@@ -133,7 +133,7 @@ export default function FairsTable() {
             <tbody className="divide-y divide-[#eaecf0]">
               {filteredFairs.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="px-6 py-8 text-center text-[#4a4a5a]">
+                  <td colSpan={4} className="px-6 py-8 text-center text-[#555555]">
                     Seçili filtrelere uygun fuar bulunamadı.
                   </td>
                 </tr>
@@ -151,7 +151,7 @@ export default function FairsTable() {
                       <td className="px-6 py-4">
                         <div className="flex items-start gap-3">
                           <div className="flex-1">
-                            <div className="font-semibold text-[#2d2a3f] group-hover:text-primary transition-colors">
+                            <div className="font-semibold text-[#2d2d2d] group-hover:text-primary transition-colors">
                               {fair.name.tr}
                             </div>
                             {isOngoing && (
@@ -163,7 +163,7 @@ export default function FairsTable() {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="flex items-center gap-2 text-[#4a4a5a]">
+                        <div className="flex items-center gap-2 text-[#555555]">
                           <Calendar size={16} className="text-primary" />
                           <span className="text-sm">
                             {format(startDate, "d MMM", { locale: tr })} -{" "}
@@ -172,7 +172,7 @@ export default function FairsTable() {
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="flex items-center gap-2 text-[#4a4a5a]">
+                        <div className="flex items-center gap-2 text-[#555555]">
                           <MapPin size={16} className="text-primary" />
                           <span className="text-sm">
                             {fair.location.city}, {fair.location.country}

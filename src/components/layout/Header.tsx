@@ -58,7 +58,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 className={`transition-colors text-sm font-medium ${
-                  isScrolled ? "text-[#56667b] hover:text-primary" : "text-white hover:text-white/80"
+                  isScrolled ? "text-[#555555] hover:text-primary" : "text-white hover:text-white/80"
                 }`}
               >
                 {item.label}
@@ -115,7 +115,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-[#56667b] hover:text-primary transition-colors text-lg font-medium"
+                className="text-[#555555] hover:text-primary transition-colors text-lg font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}

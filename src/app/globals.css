@@ -27,24 +27,24 @@
 	}
 
 	.dark {
-		--background: 251 26% 29%; /* Template dark #3f3c56 */
+		--background: 0 0% 29%; /* Koyu gri #4a4a4a */
 		--foreground: 0 0% 94%;
-		--card: 251 22% 35%;
+		--card: 0 0% 33%; /* #555555 */
 		--card-foreground: 0 0% 94%;
-		--popover: 251 26% 29%;
+		--popover: 0 0% 29%;
 		--popover-foreground: 0 0% 94%;
-		--primary: 359 60% 56%; /* Template red #DB4140 */
+		--primary: 359 60% 56%; /* Kırmızı #DB4140 */
 		--primary-foreground: 0 0% 100%;
-		--secondary: 251 26% 29%;
+		--secondary: 0 0% 29%;
 		--secondary-foreground: 0 0% 98%;
-		--muted: 240 14% 97%; /* Template muted #f8f8fa */
-		--muted-foreground: 216 16% 42%; /* Template text #56667b */
-		--accent: 359 60% 56%; /* Template red */
+		--muted: 0 0% 97%; /* Açık gri #f8f8fa */
+		--muted-foreground: 0 0% 33%; /* Orta gri #555555 */
+		--accent: 359 60% 56%; /* Kırmızı */
 		--accent-foreground: 0 0% 100%;
 		--destructive: 0 62.8% 30.6%;
 		--destructive-foreground: 0 0% 98%;
-		--border: 220 16% 93%; /* Template border #eaecf0 */
-		--input: 220 16% 93%;
+		--border: 0 0% 93%; /* Border #eaecf0 */
+		--input: 0 0% 93%;
 		--ring: 359 60% 56%;
 	}
 }
@@ -54,23 +54,23 @@
 		@apply border-border;
 	}
 
-	/* Light grey background with template text colors */
+	/* Light grey background with grey text colors */
 	html,
 	body {
-		@apply bg-[#f5f5f5] text-[#3f3c56];
+		@apply bg-[#f5f5f5] text-[#333333];
 	}
 
 	/* Override any default styles */
 	h1, h2, h3, h4, h5, h6 {
-		@apply text-[#2d2a3f];
+		@apply text-[#2d2d2d];
 	}
 
 	p {
-		@apply text-[#4a4a5a];
+		@apply text-[#555555];
 	}
 
 	a {
-		@apply text-[#4a4a5a] hover:text-primary transition-colors;
+		@apply text-[#555555] hover:text-primary transition-colors;
 	}
 }
 

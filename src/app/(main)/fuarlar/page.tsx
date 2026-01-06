@@ -19,11 +19,11 @@ export default function FuarlarPage() {
 								2026 ve Sonrası
 							</span>
 							<br />
-							<span className="text-[#2d2a3f]">
+							<span className="text-[#2d2d2d]">
 								Bazı Önemli Fuarlar
 							</span>
 						</h1>
-						<p className="text-[#4a4a5a] text-lg">
+						<p className="text-[#555555] text-lg">
 							Yaklaşan uluslararası fuarlar ve etkinlikler
 						</p>
 					</div>

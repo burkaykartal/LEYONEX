@@ -70,7 +70,7 @@ export default function ServicesGrid() {
               Hizmetlerimiz
             </span>
           </h2>
-          <p className="text-[#4a4a5a] text-lg">
+          <p className="text-[#555555] text-lg">
             İhtiyacınıza özel, paket değil seçilebilir hizmetler
           </p>
         </div>
@@ -89,10 +89,10 @@ export default function ServicesGrid() {
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-xl font-semibold mb-2 text-[#2d2a3f] group-hover:text-primary transition-colors">
+                    <h3 className="text-xl font-semibold mb-2 text-[#2d2d2d] group-hover:text-primary transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-[#4a4a5a] text-sm flex-grow leading-relaxed">
+                    <p className="text-[#555555] text-sm flex-grow leading-relaxed">
                       {service.description}
                     </p>
 

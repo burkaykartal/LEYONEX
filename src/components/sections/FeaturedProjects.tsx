@@ -26,7 +26,7 @@ export default function FeaturedProjects() {
                 Öne Çıkan Projeler
               </span>
             </h2>
-            <p className="text-[#4a4a5a] text-lg">
+            <p className="text-[#555555] text-lg">
               Gerçekleştirdiğimiz başarılı projelerden seçmeler
             </p>
           </div>
@@ -71,10 +71,10 @@ export default function FeaturedProjects() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 text-[#2d2a3f] group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 text-[#2d2d2d] group-hover:text-primary transition-colors">
                     {project.title.tr}
                   </h3>
-                  <p className="text-sm text-[#4a4a5a] mb-3">
+                  <p className="text-sm text-[#555555] mb-3">
                     {project.client} • {project.location.city}
                   </p>
                   <div className="flex items-center text-primary opacity-0 group-hover:opacity-100 transition-opacity">

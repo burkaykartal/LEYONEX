@@ -23,16 +23,16 @@ const config: Config = {
 					foreground: '#FFFFFF'
 				},
 				dark: {
-					DEFAULT: '#3f3c56', // Template secondary dark
-					card: '#4a4763',
-					lighter: '#5a5770',
-					text: '#56667b' // Template text grey
+					DEFAULT: '#4a4a4a', // Koyu gri
+					card: '#555555',
+					lighter: '#666666',
+					text: '#555555' // Orta ton gri
 				},
 				grey: {
-					DEFAULT: '#f8f8fa', // Template muted/sections
-					card: '#eaecf0', // Template border
+					DEFAULT: '#f8f8fa', // Açık gri/sections
+					card: '#eaecf0', // Border
 					lighter: '#ffffff',
-					text: '#56667b' // Template text color
+					text: '#555555' // Orta ton gri
 				},
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
