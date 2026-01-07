@@ -98,11 +98,11 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 z-50"
+            className="lg:hidden p-2 z-50 text-[#004767]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Menüyü aç/kapat"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={24} className="text-[#004767]" /> : <Menu size={24} className="text-[#004767]" />}
           </button>
         </div>
       </div>

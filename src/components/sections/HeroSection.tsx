@@ -57,7 +57,7 @@ export default function HeroSection() {
               playsInline
               onEnded={handleVideoEnd}
               onError={handleVideoError}
-              className="w-full h-full object-cover md:object-cover object-contain"
+              className="absolute inset-0 w-full h-full object-cover"
             >
               <source src="/leyonex-video-cikis.mp4" type="video/mp4" />
             </video>
