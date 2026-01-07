@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre Nosotros",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "fairs": "Ferias",
+    "contact": "Contacto",
+    "getQuote": "Solicitar Presupuesto",
+    "login": "Iniciar Sesión",
+    "member": "Área de Miembros"
+  },
+  "hero": {
+    "title": "Soluciones que Marcan la Diferencia en el Mundo Ferial",
+    "subtitle": "Gestione todos los servicios desde el diseño del stand hasta la organización desde un solo punto y al mejor precio",
+    "cta": "Comenzar Ahora",
+    "watchVideo": "Ver Video"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Soluciones personalizadas para sus necesidades",
+    "standDesign": "Diseño y Construcción de Stands",
+    "hostess": "Azafatas y Personal",
+    "hotel": "Hotel y Alojamiento",
+    "catering": "Catering de Stand",
+    "photography": "Fotografía y Producción de Video",
+    "transportation": "Transporte y Shuttle",
+    "gifts": "Regalos Corporativos y Promoción",
+    "gala": "Cena y Organización de Gala",
+    "consulting": "Consultoría Ferial"
+  },
+  "projects": {
+    "title": "Nuestros Proyectos",
+    "subtitle": "Proyectos exitosos que hemos completado",
+    "viewAll": "Ver Todos los Proyectos",
+    "filter": "Filtrar",
+    "sector": "Sector",
+    "standType": "Tipo de Stand",
+    "location": "Ubicación",
+    "squareMeters": "Metros Cuadrados"
+  },
+  "fairs": {
+    "title": "Calendario de Ferias",
+    "subtitle": "Próximas ferias",
+    "upcoming": "Próximas Ferias",
+    "viewDetails": "Ver Detalles"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Póngase en contacto con nosotros",
+    "name": "Nombre Completo",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "sending": "Enviando...",
+    "success": "¡Su mensaje ha sido enviado con éxito!",
+    "error": "Ocurrió un error. Por favor, inténtelo de nuevo."
+  },
+  "footer": {
+    "copyright": "© 2024 Leyonex. Todos los derechos reservados.",
+    "followUs": "Síguenos",
+    "quickLinks": "Enlaces Rápidos",
+    "services": "Servicios",
+    "address": "Dirección",
+    "contactInfo": "Información de Contacto"
+  },
+  "common": {
+    "learnMore": "Más Información",
+    "readMore": "Leer Más",
+    "backToHome": "Volver al Inicio",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito"
+  }
+}

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useUser, UserButton } from "@clerk/nextjs";
+import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 
 const navItems = [
   { href: "/", label: "Ana Sayfa" },
@@ -68,6 +69,7 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            <LanguageSwitcher />
             {isSignedIn ? (
               <>
                 <Link href="/uye/dashboard">
@@ -123,6 +125,9 @@ export default function Header() {
             ))}
 
             <div className="pt-6 border-t border-[#eaecf0] flex flex-col gap-3">
+              <div className="flex justify-center pb-2">
+                <LanguageSwitcher />
+              </div>
               {isSignedIn ? (
                 <>
                   <Link href="/uye/dashboard" onClick={() => setIsMobileMenuOpen(false)}>

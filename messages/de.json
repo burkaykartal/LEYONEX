@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über Uns",
+    "services": "Dienstleistungen",
+    "projects": "Projekte",
+    "fairs": "Messen",
+    "contact": "Kontakt",
+    "getQuote": "Angebot Anfordern",
+    "login": "Anmelden",
+    "member": "Mitgliederbereich"
+  },
+  "hero": {
+    "title": "Lösungen, die einen Unterschied in der Messewelt machen",
+    "subtitle": "Verwalten Sie alle Dienstleistungen vom Standdesign bis zur Organisation an einem Ort und zum besten Preis",
+    "cta": "Jetzt Starten",
+    "watchVideo": "Video Ansehen"
+  },
+  "services": {
+    "title": "Unsere Dienstleistungen",
+    "subtitle": "Maßgeschneiderte Lösungen für Ihre Bedürfnisse",
+    "standDesign": "Standdesign & Aufbau",
+    "hostess": "Hostess & Personal",
+    "hotel": "Hotel & Unterkunft",
+    "catering": "Stand-Catering",
+    "photography": "Fotografie & Videoproduktion",
+    "transportation": "Transport & Shuttle",
+    "gifts": "Firmengeschenke & Promotion",
+    "gala": "Abendessen & Gala-Organisation",
+    "consulting": "Messeberatung"
+  },
+  "projects": {
+    "title": "Unsere Projekte",
+    "subtitle": "Erfolgreiche Projekte, die wir abgeschlossen haben",
+    "viewAll": "Alle Projekte Ansehen",
+    "filter": "Filtern",
+    "sector": "Branche",
+    "standType": "Stand-Typ",
+    "location": "Standort",
+    "squareMeters": "Quadratmeter"
+  },
+  "fairs": {
+    "title": "Messekalender",
+    "subtitle": "Kommende Messen",
+    "upcoming": "Kommende Messen",
+    "viewDetails": "Details Ansehen"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Kontaktieren Sie uns",
+    "name": "Vollständiger Name",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "message": "Nachricht",
+    "send": "Senden",
+    "sending": "Wird gesendet...",
+    "success": "Ihre Nachricht wurde erfolgreich gesendet!",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+  },
+  "footer": {
+    "copyright": "© 2024 Leyonex. Alle Rechte vorbehalten.",
+    "followUs": "Folgen Sie Uns",
+    "quickLinks": "Schnelllinks",
+    "services": "Dienstleistungen",
+    "address": "Adresse",
+    "contactInfo": "Kontaktinformationen"
+  },
+  "common": {
+    "learnMore": "Mehr Erfahren",
+    "readMore": "Weiterlesen",
+    "backToHome": "Zurück zur Startseite",
+    "loading": "Lädt...",
+    "error": "Fehler",
+    "success": "Erfolg"
+  }
+}

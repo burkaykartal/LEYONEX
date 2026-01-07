@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "Chi Siamo",
+    "services": "Servizi",
+    "projects": "Progetti",
+    "fairs": "Fiere",
+    "contact": "Contatti",
+    "getQuote": "Richiedi Preventivo",
+    "login": "Accedi",
+    "member": "Area Membri"
+  },
+  "hero": {
+    "title": "Soluzioni che Fanno la Differenza nel Mondo delle Fiere",
+    "subtitle": "Gestisci tutti i servizi dalla progettazione dello stand all'organizzazione da un unico punto e al miglior prezzo",
+    "cta": "Inizia Ora",
+    "watchVideo": "Guarda il Video"
+  },
+  "services": {
+    "title": "I Nostri Servizi",
+    "subtitle": "Soluzioni personalizzate per le tue esigenze",
+    "standDesign": "Progettazione e Costruzione Stand",
+    "hostess": "Hostess e Personale",
+    "hotel": "Hotel e Alloggio",
+    "catering": "Catering Stand",
+    "photography": "Fotografia e Produzione Video",
+    "transportation": "Trasporto e Navetta",
+    "gifts": "Regali Aziendali e Promozione",
+    "gala": "Cena e Organizzazione Gala",
+    "consulting": "Consulenza Fieristica"
+  },
+  "projects": {
+    "title": "I Nostri Progetti",
+    "subtitle": "Progetti di successo che abbiamo completato",
+    "viewAll": "Vedi Tutti i Progetti",
+    "filter": "Filtra",
+    "sector": "Settore",
+    "standType": "Tipo di Stand",
+    "location": "Posizione",
+    "squareMeters": "Metri Quadrati"
+  },
+  "fairs": {
+    "title": "Calendario Fiere",
+    "subtitle": "Prossime fiere",
+    "upcoming": "Prossime Fiere",
+    "viewDetails": "Vedi Dettagli"
+  },
+  "contact": {
+    "title": "Contatti",
+    "subtitle": "Mettiti in contatto con noi",
+    "name": "Nome Completo",
+    "email": "Email",
+    "phone": "Telefono",
+    "message": "Messaggio",
+    "send": "Invia",
+    "sending": "Invio in corso...",
+    "success": "Il tuo messaggio è stato inviato con successo!",
+    "error": "Si è verificato un errore. Riprova."
+  },
+  "footer": {
+    "copyright": "© 2024 Leyonex. Tutti i diritti riservati.",
+    "followUs": "Seguici",
+    "quickLinks": "Link Rapidi",
+    "services": "Servizi",
+    "address": "Indirizzo",
+    "contactInfo": "Informazioni di Contatto"
+  },
+  "common": {
+    "learnMore": "Scopri di Più",
+    "readMore": "Leggi di Più",
+    "backToHome": "Torna alla Home",
+    "loading": "Caricamento...",
+    "error": "Errore",
+    "success": "Successo"
+  }
+}

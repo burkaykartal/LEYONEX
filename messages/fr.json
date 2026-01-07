@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "services": "Services",
+    "projects": "Projets",
+    "fairs": "Salons",
+    "contact": "Contact",
+    "getQuote": "Demander un Devis",
+    "login": "Connexion",
+    "member": "Espace Membre"
+  },
+  "hero": {
+    "title": "Des Solutions qui Font la Différence dans le Monde des Salons",
+    "subtitle": "Gérez tous les services de la conception du stand à l'organisation depuis un seul point et au meilleur prix",
+    "cta": "Commencer Maintenant",
+    "watchVideo": "Regarder la Vidéo"
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Solutions personnalisées pour vos besoins",
+    "standDesign": "Conception et Construction de Stands",
+    "hostess": "Hôtesses et Personnel",
+    "hotel": "Hôtel et Hébergement",
+    "catering": "Restauration de Stand",
+    "photography": "Photographie et Production Vidéo",
+    "transportation": "Transport et Navette",
+    "gifts": "Cadeaux d'Entreprise et Promotion",
+    "gala": "Dîner et Organisation de Gala",
+    "consulting": "Conseil en Salons"
+  },
+  "projects": {
+    "title": "Nos Projets",
+    "subtitle": "Projets réussis que nous avons réalisés",
+    "viewAll": "Voir Tous les Projets",
+    "filter": "Filtrer",
+    "sector": "Secteur",
+    "standType": "Type de Stand",
+    "location": "Emplacement",
+    "squareMeters": "Mètres Carrés"
+  },
+  "fairs": {
+    "title": "Calendrier des Salons",
+    "subtitle": "Salons à venir",
+    "upcoming": "Salons à Venir",
+    "viewDetails": "Voir les Détails"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Contactez-nous",
+    "name": "Nom Complet",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "message": "Message",
+    "send": "Envoyer",
+    "sending": "Envoi en cours...",
+    "success": "Votre message a été envoyé avec succès!",
+    "error": "Une erreur s'est produite. Veuillez réessayer."
+  },
+  "footer": {
+    "copyright": "© 2024 Leyonex. Tous droits réservés.",
+    "followUs": "Suivez-Nous",
+    "quickLinks": "Liens Rapides",
+    "services": "Services",
+    "address": "Adresse",
+    "contactInfo": "Informations de Contact"
+  },
+  "common": {
+    "learnMore": "En Savoir Plus",
+    "readMore": "Lire la Suite",
+    "backToHome": "Retour à l'Accueil",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès"
+  }
+}
