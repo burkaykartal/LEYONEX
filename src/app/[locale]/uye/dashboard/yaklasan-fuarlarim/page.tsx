@@ -13,6 +13,8 @@ const CONTRACT_STATUS_CONFIG = {
 	PENDING: { label: "Beklemede", color: "bg-amber-100 text-amber-800" },
 	CONFIRMED: { label: "Onaylandı", color: "bg-green-100 text-green-800" },
 	IN_PROGRESS: { label: "Devam Ediyor", color: "bg-blue-100 text-blue-800" },
+	COMPLETED: { label: "Tamamlandı", color: "bg-gray-100 text-gray-800" },
+	CANCELLED: { label: "İptal Edildi", color: "bg-red-100 text-red-800" },
 };
 
 export default async function YaklasanFuarlarimPage() {

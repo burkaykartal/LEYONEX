@@ -28,17 +28,21 @@ const companyProfileSchema = z.object({
 	contactEmail: z.string().email("Geçerli bir e-posta adresi giriniz"),
 	contactPhone: z.string().optional(),
 	sector: z.string().min(2, "Sektör seçiniz"),
-	annualFairCount: z.coerce
-		.number()
-		.min(0, "En az 0 olmalıdır")
-		.max(100, "En fazla 100 olabilir"),
-	productivityScore: z.coerce
-		.number()
-		.min(1, "En az 1 olmalıdır")
-		.max(10, "En fazla 10 olabilir"),
+	annualFairCount: z.number().min(0, "En az 0 olmalıdır").max(100, "En fazla 100 olabilir"),
+	productivityScore: z.number().min(1, "En az 1 olmalıdır").max(10, "En fazla 10 olabilir"),
 });
 
-type CompanyProfileFormData = z.infer<typeof companyProfileSchema>;
+type CompanyProfileFormData = {
+	name: string;
+	country: string;
+	city: string;
+	contactPerson: string;
+	contactEmail: string;
+	contactPhone?: string;
+	sector: string;
+	annualFairCount: number;
+	productivityScore: number;
+};
 
 // Common countries for fair participation
 const COUNTRIES = [
@@ -303,7 +307,7 @@ export default function CompanyProfileForm({
 							type="number"
 							min="0"
 							max="100"
-							{...register("annualFairCount")}
+							{...register("annualFairCount", { valueAsNumber: true })}
 							className="border-[#eaecf0]"
 						/>
 						{errors.annualFairCount && (
@@ -323,7 +327,7 @@ export default function CompanyProfileForm({
 							type="number"
 							min="1"
 							max="10"
-							{...register("productivityScore")}
+							{...register("productivityScore", { valueAsNumber: true })}
 							className="border-[#eaecf0]"
 						/>
 						<p className="text-xs text-[#404D60]">

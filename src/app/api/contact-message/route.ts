@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
 
 		if (error instanceof z.ZodError) {
 			return NextResponse.json(
-				{ error: "Invalid input data", details: error.errors },
+				{ error: "Invalid input data", details: error.issues },
 				{ status: 400 }
 			);
 		}
