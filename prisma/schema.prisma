@@ -1,0 +1,411 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// ENUMS
+// ============================================
+
+enum UserRole {
+  GUEST         // Limited access - only Teklif Al & Bize Ulaşın
+  CLIENT        // Full access - all 10 modules
+  ADMIN         // Admin access - all modules + admin panel
+}
+
+enum CompanyStatus {
+  ACTIVE
+  INACTIVE
+  PENDING
+}
+
+enum FairStatus {
+  UPCOMING
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
+
+enum QuoteStatus {
+  PENDING
+  REVIEWED
+  APPROVED
+  REJECTED
+  CONVERTED
+}
+
+enum ContractStatus {
+  PENDING
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum ReminderType {
+  DEADLINE
+  PAYMENT
+  DOCUMENT
+  PREPARATION
+  GENERAL
+}
+
+enum DocumentCategory {
+  CONTRACT
+  INVOICE
+  FLOOR_PLAN
+  DESIGN
+  PHOTO
+  VIDEO
+  OTHER
+}
+
+enum ContactMessageStatus {
+  NEW
+  READ
+  REPLIED
+  RESOLVED
+}
+
+// ============================================
+// MODELS
+// ============================================
+
+// User - Synced with Clerk
+model User {
+  id                    String              @id @default(cuid())
+  clerkId               String              @unique
+  email                 String              @unique
+  firstName             String?
+  lastName              String?
+  role                  UserRole            @default(GUEST)
+  hasCompletedProfile   Boolean             @default(false)
+
+  // Relations
+  companyId             String?
+  company               Company?            @relation(fields: [companyId], references: [id])
+
+  quoteRequests         QuoteRequest[]
+  userFairs             UserFair[]
+  reminders             Reminder[]
+  evaluations           FairEvaluation[]
+  documents             Document[]
+  contactMessages       ContactMessage[]
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([clerkId])
+  @@index([email])
+  @@index([companyId])
+}
+
+// Company - Firma Bilgileri (Module 1: Firmanı Tanımla)
+model Company {
+  id                    String              @id @default(cuid())
+  name                  String
+  country               String
+  city                  String
+  contactPerson         String
+  contactEmail          String
+  contactPhone          String?
+  sector                String
+  annualFairCount       Int                 @default(0)
+  productivityScore     Int                 @default(5) // 1-10 scale
+  status                CompanyStatus       @default(ACTIVE)
+
+  // Relations
+  users                 User[]
+  quoteRequests         QuoteRequest[]
+  userFairs             UserFair[]
+  documents             Document[]
+  contactMessages       ContactMessage[]
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([name])
+  @@index([sector])
+  @@index([country])
+}
+
+// Fair - Fuar Bilgileri (Module 4: Sektör Fuarları)
+model Fair {
+  id                    String              @id @default(cuid())
+
+  // Multilingual fields
+  name_tr               String
+  name_en               String?
+  name_it               String?
+  name_ar               String?
+  name_ru               String?
+  name_de               String?
+  name_es               String?
+  name_fr               String?
+  name_zh               String?
+
+  description_tr        String              @db.Text
+  description_en        String?             @db.Text
+  description_it        String?             @db.Text
+  description_ar        String?             @db.Text
+  description_ru        String?             @db.Text
+  description_de        String?             @db.Text
+  description_es        String?             @db.Text
+  description_fr        String?             @db.Text
+  description_zh        String?             @db.Text
+
+  // Fair details
+  sector                String
+  country               String
+  city                  String
+  venue                 String?
+  startDate             DateTime
+  endDate               DateTime
+  status                FairStatus          @default(UPCOMING)
+
+  // Optional metadata
+  websiteUrl            String?
+  logoUrl               String?
+
+  // Relations
+  quoteRequests         QuoteRequest[]
+  userFairs             UserFair[]
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([sector])
+  @@index([country])
+  @@index([city])
+  @@index([startDate])
+  @@index([status])
+}
+
+// QuoteRequest - Teklif Talepleri (Module 2: Teklif Al)
+model QuoteRequest {
+  id                    String              @id @default(cuid())
+
+  userId                String
+  user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  companyId             String
+  company               Company             @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  fairId                String?
+  fair                  Fair?               @relation(fields: [fairId], references: [id], onDelete: SetNull)
+
+  // Quote details
+  fairName              String
+  fairDate              String?
+  requestDetails        String              @db.Text
+  status                QuoteStatus         @default(PENDING)
+
+  // Admin response
+  adminNotes            String?             @db.Text
+  quotedAmount          Float?
+  quotedCurrency        String?             @default("EUR")
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([userId])
+  @@index([companyId])
+  @@index([fairId])
+  @@index([status])
+}
+
+// UserFair - Anlaşmalı Fuarlar (Module 5: Yaklaşan Fuarlarım, Module 6: Geçmiş Fuarlar)
+model UserFair {
+  id                    String              @id @default(cuid())
+
+  userId                String
+  user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  fairId                String
+  fair                  Fair                @relation(fields: [fairId], references: [id], onDelete: Cascade)
+
+  // Contract details
+  contractStatus        ContractStatus      @default(PENDING)
+  contractDate          DateTime?
+  agreedServices        String[]            @default([])
+  contractAmount        Float?
+  contractCurrency      String?             @default("EUR")
+
+  // Operational
+  operationalNotes      String?             @db.Text
+
+  // Relations
+  preparations          FairPreparation[]
+  reminders             Reminder[]
+  evaluation            FairEvaluation?
+  documents             Document[]
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@unique([userId, fairId])
+  @@index([userId])
+  @@index([fairId])
+  @@index([contractStatus])
+}
+
+// FairPreparation - Fuar Hazırlık Skoru (Module 7: Fuar Hazırlık Skoru)
+model FairPreparation {
+  id                    String              @id @default(cuid())
+
+  userFairId            String
+  userFair              UserFair            @relation(fields: [userFairId], references: [id], onDelete: Cascade)
+
+  // Checklist items (JSON array of objects: {category, item, completed, dueDate})
+  checklistItems        Json                @default("[]")
+
+  // Calculated score (0-100)
+  score                 Int                 @default(0)
+
+  // Progress tracking
+  completedItems        Int                 @default(0)
+  totalItems            Int                 @default(0)
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([userFairId])
+  @@index([score])
+}
+
+// Reminder - Hatırlatmalar & Kritik Tarihler (Module 8: Hatırlatmalar)
+model Reminder {
+  id                    String              @id @default(cuid())
+
+  userId                String
+  user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  userFairId            String?
+  userFair              UserFair?           @relation(fields: [userFairId], references: [id], onDelete: Cascade)
+
+  // Reminder details
+  title                 String
+  description           String?             @db.Text
+  type                  ReminderType        @default(GENERAL)
+  dueDate               DateTime
+
+  // Notification
+  isNotified            Boolean             @default(false)
+  notifiedAt            DateTime?
+
+  // Completion
+  isCompleted           Boolean             @default(false)
+  completedAt           DateTime?
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([userId])
+  @@index([userFairId])
+  @@index([dueDate])
+  @@index([isCompleted])
+}
+
+// FairEvaluation - Fuar Sonrası Değerlendirme (Module 9: Fuar Sonrası Değerlendirme)
+model FairEvaluation {
+  id                    String              @id @default(cuid())
+
+  userId                String
+  user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  userFairId            String              @unique
+  userFair              UserFair            @relation(fields: [userFairId], references: [id], onDelete: Cascade)
+
+  // Ratings (1-10 scale)
+  organizationRating    Int?                // Organizasyon kalitesi
+  communicationRating   Int?                // İletişim kalitesi
+  timelinessRating      Int?                // Zamanlama
+  valueRating           Int?                // Fiyat/performans
+  overallRating         Int?                // Genel memnuniyet
+
+  // Feedback
+  positiveAspects       String?             @db.Text
+  improvementAreas      String?             @db.Text
+  additionalComments    String?             @db.Text
+
+  // Results
+  leadCount             Int?                // Toplanan müşteri sayısı
+  contractCount         Int?                // Yapılan anlaşma sayısı
+  wouldRecommend        Boolean?            // Tavsiye eder misiniz?
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([userId])
+  @@index([userFairId])
+  @@index([overallRating])
+}
+
+// Document - Doküman & Dosyalarım (Module 10: Doküman & Dosyalarım)
+model Document {
+  id                    String              @id @default(cuid())
+
+  userId                String
+  user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  companyId             String
+  company               Company             @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  userFairId            String?
+  userFair              UserFair?           @relation(fields: [userFairId], references: [id], onDelete: Cascade)
+
+  // File details
+  fileName              String
+  fileUrl               String              // Cloudinary URL
+  fileSize              Int?                // In bytes
+  mimeType              String?
+  category              DocumentCategory    @default(OTHER)
+
+  // Metadata
+  description           String?             @db.Text
+  tags                  String[]            @default([])
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([userId])
+  @@index([companyId])
+  @@index([userFairId])
+  @@index([category])
+}
+
+// ContactMessage - İletişim Mesajları (Module 3: Bize Ulaşın - Enhanced)
+model ContactMessage {
+  id                    String              @id @default(cuid())
+
+  userId                String
+  user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  companyId             String
+  company               Company             @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  // Message details
+  subject               String
+  message               String              @db.Text
+  preferredContact      String              // "phone", "whatsapp", "email"
+  status                ContactMessageStatus @default(NEW)
+
+  // Admin response
+  adminResponse         String?             @db.Text
+  respondedAt           DateTime?
+
+  createdAt             DateTime            @default(now())
+  updatedAt             DateTime            @updatedAt
+
+  @@index([userId])
+  @@index([companyId])
+  @@index([status])
+  @@index([createdAt])
+}

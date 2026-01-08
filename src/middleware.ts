@@ -39,6 +39,16 @@ const isAdminRoute = createRouteMatcher([
   "/:locale/uye/admin(.*)",
 ]);
 
+const isProfileCompleteRoute = createRouteMatcher([
+  "/uye/profile/complete(.*)",
+  "/:locale/uye/profile/complete(.*)",
+]);
+
+const isDashboardRoute = createRouteMatcher([
+  "/uye/dashboard(.*)",
+  "/:locale/uye/dashboard(.*)",
+]);
+
 export default clerkMiddleware(async (auth, req: NextRequest) => {
   // Önce intl middleware'i çalıştır
   const intlResponse = intlMiddleware(req);
@@ -48,15 +58,42 @@ export default clerkMiddleware(async (auth, req: NextRequest) => {
     return intlResponse;
   }
 
-  // Admin routes için superadmin kontrolü
-  if (isAdminRoute(req)) {
-    const { userId, sessionClaims } = await auth();
+  // Get auth info
+  const { userId, sessionClaims } = await auth();
 
-    if (!userId) {
-      const url = new URL("/giris", req.url);
+  // Require authentication for protected routes
+  if (!userId) {
+    const url = new URL("/giris", req.url);
+    return NextResponse.redirect(url);
+  }
+
+  // Profile completion check for dashboard routes
+  if (isDashboardRoute(req) && !isProfileCompleteRoute(req)) {
+    const publicMetadata = sessionClaims?.publicMetadata as {
+      role?: string;
+      hasCompletedProfile?: boolean;
+    } | undefined;
+
+    const hasCompletedProfile = publicMetadata?.hasCompletedProfile === true;
+
+    // Redirect to profile complete if not completed
+    if (!hasCompletedProfile) {
+      // Extract locale from URL
+      const pathname = req.nextUrl.pathname;
+      const localeMatch = pathname.match(/^\/(en|de|es|fr|it|ru|ar|zh)\//);
+      const locale = localeMatch ? localeMatch[1] : '';
+
+      const profileUrl = locale
+        ? `/${locale}/uye/profile/complete`
+        : '/uye/profile/complete';
+
+      const url = new URL(profileUrl, req.url);
       return NextResponse.redirect(url);
     }
+  }
 
+  // Admin routes için superadmin kontrolü
+  if (isAdminRoute(req)) {
     const publicMetadata = sessionClaims?.publicMetadata as { role?: string } | undefined;
     const userRole = publicMetadata?.role;
     if (userRole !== "superadmin") {

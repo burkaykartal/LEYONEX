@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import ProfileCompleteBanner from "@/components/dashboard/ProfileCompleteBanner";
+import ModuleCard from "@/components/dashboard/ModuleCard";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -10,11 +12,18 @@ import {
 	User,
 	FileText,
 	Calendar,
-	Settings,
 	Shield,
-	ArrowRight,
 	CheckCircle2,
-	Upload
+	Upload,
+	MessageCircle,
+	Building2,
+	TrendingUp,
+	History,
+	ListChecks,
+	Bell,
+	Star,
+	FolderOpen,
+	ArrowRight
 } from "lucide-react";
 
 export default async function DashboardPage() {
@@ -26,12 +35,16 @@ export default async function DashboardPage() {
 	}
 
 	const isSuperAdmin = user?.publicMetadata?.role === "superadmin";
+	const hasCompletedProfile = user?.publicMetadata?.hasCompletedProfile === true;
 
 	return (
 		<>
 			<Header />
 			<main className="min-h-screen pt-20 bg-[#F5F7FA]">
 				<div className="container mx-auto px-4 py-12">
+					{/* Profile Complete Banner */}
+					{!hasCompletedProfile && <ProfileCompleteBanner />}
+
 					{/* Welcome Header */}
 					<div className="mb-12">
 						<h1 className="text-4xl font-bold mb-2 text-[#004767]">

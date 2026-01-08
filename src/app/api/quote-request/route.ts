@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
+import { auth } from "@clerk/nextjs/server";
 import { resend } from "@/lib/resend/client";
 import QuoteRequestEmail from "@/emails/QuoteRequest";
+import prisma from "@/lib/prisma";
+import { getCurrentUserWithCompany } from "@/lib/auth/utils";
 
 export async function POST(req: Request) {
 	try {
@@ -25,6 +28,31 @@ export async function POST(req: Request) {
 				{ error: "Zorunlu alanlar eksik" },
 				{ status: 400 }
 			);
+		}
+
+		// Get authenticated user if logged in
+		const user = await getCurrentUserWithCompany();
+
+		// Build request details
+		const requestDetails = `
+Hizmetler: ${selectedServices?.join(", ") || "Belirtilmedi"}
+Stand Alanı: ${standSize || "Belirtilmedi"} m²
+Bütçe: ${budget || "Belirtilmedi"}
+Ek Notlar: ${additionalNotes || "Yok"}
+		`.trim();
+
+		// Save to database if user is authenticated
+		if (user) {
+			await prisma.quoteRequest.create({
+				data: {
+					userId: user.id,
+					companyId: user.companyId!,
+					fairName,
+					fairDate: fairDate || null,
+					requestDetails,
+					status: "PENDING",
+				},
+			});
 		}
 
 		// Email gönderimi (Resend entegrasyonu)
