@@ -7,7 +7,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 // ============================================
@@ -228,6 +227,9 @@ model UserFair {
   userId                String
   user                  User                @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  companyId             String
+  company               Company             @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
   fairId                String
   fair                  Fair                @relation(fields: [fairId], references: [id], onDelete: Cascade)
 
@@ -252,6 +254,7 @@ model UserFair {
 
   @@unique([userId, fairId])
   @@index([userId])
+  @@index([companyId])
   @@index([fairId])
   @@index([contractStatus])
 }

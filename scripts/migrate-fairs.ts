@@ -1,7 +1,6 @@
-import { PrismaClient, FairStatus } from '@prisma/client';
+import { FairStatus } from '@prisma/client';
 import { fairs } from '../src/data/fairs';
-
-const prisma = new PrismaClient();
+import prisma from '../src/lib/prisma';
 
 async function main() {
   console.log('🚀 Starting fairs migration...');

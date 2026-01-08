@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fuar organizasyon talep formu - Luna 360 Expo ile fuar sürecinizi kolaylaştırın">
+    <title>Fuar Organizasyon Talep Formu - Luna 360 Expo</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Luna 360 expo logo.png">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="template_assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="template_assets/css/all.min.css">
+    <link rel="stylesheet" href="template_assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="template_assets/css/style.css">
+    <link rel="stylesheet" href="template_assets/css/responsive.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #8b5cf6;
+            --primary-light: #a78bfa;
+            --accent: #ec4899;
+            --bg-dark: #0f0f0f;
+            --bg-card: #1a1a1a;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif !important;
+            background: var(--bg-dark);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        .cb__header-one {
+            background: rgba(15, 15, 15, 0.95) !important;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .cb__main-header {
+            padding: 15px 20px;
+        }
+
+        .page-header-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            padding: 60px 0 40px;
+            text-align: center;
+            margin-top: -20px;
+        }
+
+        .page-header-section h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .page-header-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        fieldset {
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            margin: 20px 0;
+            padding: 24px;
+            background: linear-gradient(to bottom, #ffffff, #fafbfc);
+            transition: all 0.3s ease;
+        }
+
+        fieldset:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
+            transform: translateY(-2px);
+        }
+
+        legend {
+            font-weight: 700;
+            color: var(--primary);
+            padding: 0 12px;
+            font-size: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: white;
+            margin-bottom: 1rem;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group label {
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group label:hover {
+            background: #f8f9ff;
+            border-color: #e2e8f0;
+        }
+
+        input[type="checkbox"],
+        input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white !important;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+        }
+
+        footer {
+            background: var(--bg-dark);
+            color: var(--text-muted);
+            padding: 3rem 0 2rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        footer h5 {
+            color: var(--text-light);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--primary-light);
+        }
+
+        #whatsapp-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        #whatsapp-widget a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        #whatsapp-widget a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Language Selector Styles */
+        .language-selector {
+            position: relative;
+            margin-left: 1rem;
+        }
+
+        .current-language {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .current-language:hover {
+            background: rgba(139, 92, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: var(--bg-dark);
+            border: 2px solid var(--primary);
+            border-radius: 15px;
+            min-width: 180px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .language-dropdown.active {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        .language-option {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .language-option:hover {
+            background: rgba(139, 92, 246, 0.2);
+        }
+
+        .language-option.active {
+            background: rgba(139, 92, 246, 0.3);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .language-selector {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+
+            .current-language {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .lang-name {
+                display: inline;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        .cb-side-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background: var(--bg-dark);
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cb-side-menu.active {
+            right: 0;
+        }
+
+        .cb__closs-menu {
+            text-align: right;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        .cb__closs-menu i {
+            font-size: 24px;
+            color: var(--text-light);
+        }
+
+        .cb-menu-area {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cb-menu-area li {
+            margin-bottom: 15px;
+        }
+
+        .cb-menu-area li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .cb-menu-area li a:hover {
+            color: var(--primary);
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 8px;
+        }
+
+        .cb-logo-side {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .cb-humberger-menu {
+            cursor: pointer;
+            display: none;
+        }
+
+        .cb-humberger-menu .icon-bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .badge {
+            font-size: 12px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-weight: 600;
+            margin: 0 5px;
+            display: inline-block;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white !important;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-gradient:hover {
+            transform: scale(1.05);
+            color: white !important;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
+            .container, .container-fluid {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            .page-header-section {
+                padding: 30px 15px 20px;
+                margin-top: 0;
+            }
+
+            .page-header-section h1 {
+                font-size: 1.4rem;
+                line-height: 1.3;
+            }
+
+            .page-header-section p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+
+            .badge {
+                font-size: 10px;
+                padding: 4px 8px;
+                margin: 3px;
+                display: inline-block;
+            }
+
+            .cb__header-one-logo img {
+                height: 40px !important;
+            }
+
+            .cb-humberger-menu {
+                display: block !important;
+            }
+
+            .form-container {
+                padding: 1rem;
+                border-radius: 12px;
+                margin: 0 5px;
+            }
+
+            fieldset {
+                padding: 12px;
+                margin: 10px 0;
+                border-radius: 12px;
+            }
+
+            legend {
+                font-size: 0.95rem;
+                padding: 0 8px;
+            }
+
+            label {
+                font-size: 0.9rem;
+                margin-bottom: 6px;
+            }
+
+            .checkbox-group {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .checkbox-group label {
+                padding: 10px;
+                font-size: 0.9rem;
+                word-wrap: break-word;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            select,
+            textarea {
+                font-size: 16px;
+                padding: 10px 12px;
+                margin-bottom: 0.8rem;
+            }
+
+            textarea {
+                min-height: 80px;
+            }
+
+            .btn-submit {
+                width: 100%;
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+
+            .section-wrapper {
+                padding: 0 !important;
+            }
+
+            footer {
+                padding: 2rem 0 1rem;
+            }
+
+            footer h5 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            footer p, footer a {
+                font-size: 0.85rem;
+                word-wrap: break-word;
+                line-height: 1.6;
+            }
+
+            footer .row {
+                margin: 0 !important;
+            }
+
+            .btn-gradient {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="section-wrapper container-fluid ps-rel">
+        <header class="cb__header-one hm1-bg">
+            <div class="cb__main-header d-flex justify-content-between align-items-center">
+                <div class="cb__header-one-logo">
+                    <a href="index.html">
+                        <img src="Luna 360 expo logo beyaz.png" alt="Luna 360 Expo" style="height: 60px;">
+                    </a>
+                </div>
+                <div class="cb__nav-and-social d-flex justify-content-between align-items-center d-none d-xl-flex">
+                    <nav class="cb-navmenu hm2-navmenu text-center ul-li d-none d-lg-block">
+                        <ul class="d-flex">
+                            <li><a href="index.html" data-i18n="nav.home">Ana Sayfa</a></li>
+                            <li><a href="index.html#hizmetler" data-i18n="nav.services">Hizmetlerimiz</a></li>
+                            <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+                            <li><a href="uye-alani.html" data-i18n="nav.member">Üye Alanı</a></li>
+                        </ul>
+                    </nav>
+                    <div class="cb-social-connect social-icon-style-one justify-content-around">
+                        <a href="fuar_organizasyon_talep_formu_guncel.html" class="btn-gradient" data-i18n="nav.quote">Teklif Al</a>
+                        <div id="languageSelectorDesktop"></div>
+                    </div>
+                </div>
+                <div class="cb-humberger-menu d-block d-xl-none">
+                    <span class="icon-bar top-bar"></span>
+                    <span class="icon-bar middle-bar"></span>
+                    <span class="icon-bar bottom-bar"></span>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="cb-side-menu">
+                <div class="cb__closs-menu">
+                    <i class="iconly-Close-Square icli"></i>
+                </div>
+                <div class="cb-logo-side">
+                    <a href="index.html">
+                        <img src="Luna 360 expo logo beyaz.png" alt="Luna 360 Expo" style="max-width: 200px;">
+                    </a>
+                </div>
+                <ul id="cbaccordion" class="cb-menu-area cb-menu ul-li">
+                    <li><a href="index.html" data-i18n="nav.home">Ana Sayfa</a></li>
+                    <li><a href="index.html#hizmetler" data-i18n="nav.services">Hizmetlerimiz</a></li>
+                    <li><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+                    <li><a href="uye-alani.html" data-i18n="nav.member">Üye Alanı</a></li>
+                    <li><a href="fuar_organizasyon_talep_formu_guncel.html" class="btn-gradient" data-i18n="nav.quote">Teklif Al</a></li>
+                    <li><div id="languageSelectorMobile"></div></li>
+                </ul>
+            </div>
+        </header>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header-section">
+        <div class="container">
+            <h1 data-aos="fade-up" data-i18n="quote.header.title">Fuar Organizasyon Talep Formu</h1>
+            <p data-aos="fade-up" data-aos-delay="200">
+                <span data-i18n="quote.header.subtitle">İhtiyaç duyduğunuz hizmetleri seçin</span>
+                <span class="badge" data-i18n="quote.badge1">Tek Fatura</span>
+                <span class="badge" data-i18n="quote.badge2">7/24 Destek</span>
+                <span class="badge" data-i18n="quote.badge3">Fuar Sonrası Raporlama</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- Form Content -->
+    <div class="container-fluid" style="background: var(--bg-dark); padding: 60px 0;">
+        <div class="container">
+            <div class="form-container" data-aos="fade-up">
+                <form id="fairForm">
+                    <!-- Firma Bilgileri -->
+                    <fieldset>
+                        <legend data-i18n="quote.company_info">Firma Bilgileri</legend>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label data-i18n="quote.company_name">Firma Adı *</label>
+                                <input type="text" name="company" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label data-i18n="quote.contact_person">İlgili Kişi *</label>
+                                <input type="text" name="contact" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label data-i18n="quote.email">E-posta *</label>
+                                <input type="email" name="email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label data-i18n="quote.phone">Telefon</label>
+                                <input type="tel" name="phone" placeholder="+90 543 960 70 76">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label data-i18n="quote.expo_name">Fuar Adı</label>
+                                <input type="text" name="expo_name">
+                            </div>
+                            <div class="col-md-4">
+                                <label data-i18n="quote.country">Ülke</label>
+                                <select name="country" id="countrySelect">
+                                    <option value="">Seçiniz</option>
+                                    <option value="tr">Türkiye</option>
+                                    <option value="de">Almanya</option>
+                                    <option value="fr">Fransa</option>
+                                    <option value="it">İtalya</option>
+                                    <option value="nl">Hollanda</option>
+                                    <option value="be">Belçika</option>
+                                    <option value="gb">İngiltere</option>
+                                    <option value="pl">Polonya</option>
+                                    <option value="ru">Rusya</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label data-i18n="quote.date_range">Tarih Aralığı</label>
+                                <input type="text" name="date_range" placeholder="örn: 18-22 Kasım">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Stant Tasarımı & Kurulumu -->
+                    <fieldset>
+                        <legend data-i18n="quote.stand_design">Stant Tasarımı & Kurulumu</legend>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: inline; margin-right: 20px;">
+                                <input type="radio" name="stand_want" value="yes"> <span data-i18n="quote.yes">Evet</span>
+                            </label>
+                            <label style="display: inline;">
+                                <input type="radio" name="stand_want" value="no" checked> <span data-i18n="quote.no">Hayır</span>
+                            </label>
+                        </div>
+                        <div id="standBlock" class="hidden">
+                            <label data-i18n="quote.stand_type_label">Tercih edilen stant tipi (birden fazla seçebilirsiniz)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="stand_type" value="modular"> <span data-i18n="quote.stand_modular">Ekonomik / modüler</span></label>
+                                <label><input type="checkbox" name="stand_type" value="mid"> <span data-i18n="quote.stand_mid">Orta seviye özel tasarım</span></label>
+                                <label><input type="checkbox" name="stand_type" value="premium"> <span data-i18n="quote.stand_premium">Premium, dikkat çekici</span></label>
+                                <label><input type="checkbox" name="stand_type" value="digital"> <span data-i18n="quote.stand_digital">Dijital ekranlı / yenilikçi</span></label>
+                            </div>
+                            <label data-i18n="quote.description">Açıklama (opsiyonel)</label>
+                            <textarea name="note_stand" placeholder="Stant tasarımı hakkında ek bilgileriniz..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Hostes & Personel -->
+                    <fieldset>
+                        <legend data-i18n="quote.hostess">Hostes & Personel Desteği</legend>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: inline; margin-right: 20px;">
+                                <input type="radio" name="hostess_want" value="yes"> <span data-i18n="quote.yes">Evet</span>
+                            </label>
+                            <label style="display: inline;">
+                                <input type="radio" name="hostess_want" value="no" checked> <span data-i18n="quote.no">Hayır</span>
+                            </label>
+                        </div>
+                        <div id="hostessBlock" class="hidden">
+                            <label data-i18n="quote.hostess_type_label">Tercih edilen tip (birden fazla seçebilirsiniz)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="hostess_type" value="vip"> <span data-i18n="quote.hostess_vip">VIP karşılama / manken-hostes</span></label>
+                                <label><input type="checkbox" name="hostess_type" value="service"> <span data-i18n="quote.hostess_service">Servis hostesi</span></label>
+                                <label><input type="checkbox" name="hostess_type" value="formal"> <span data-i18n="quote.hostess_formal">Şık giyimli, protokole uygun</span></label>
+                                <label><input type="checkbox" name="hostess_type" value="product"> <span data-i18n="quote.hostess_product">Ürün anlatımı yapabilecek</span></label>
+                                <label><input type="checkbox" name="hostess_type" value="english"> <span data-i18n="quote.hostess_english">İngilizce bilen</span></label>
+                            </div>
+                            <label data-i18n="quote.description">Açıklama (opsiyonel)</label>
+                            <textarea name="note_hostess" placeholder="Personel gereksinimleri hakkında ek bilgileriniz..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Otel & Konaklama -->
+                    <fieldset>
+                        <legend data-i18n="quote.hotel">Otel & Konaklama</legend>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: inline; margin-right: 20px;">
+                                <input type="radio" name="hotel_want" value="yes"> <span data-i18n="quote.yes">Evet</span>
+                            </label>
+                            <label style="display: inline;">
+                                <input type="radio" name="hotel_want" value="no" checked> <span data-i18n="quote.no">Hayır</span>
+                            </label>
+                        </div>
+                        <div id="hotelBlock" class="hidden">
+                            <label data-i18n="quote.hotel_type_label">Konaklama tercihi (birden fazla seçebilirsiniz)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="hotel_type" value="lux5"> <span data-i18n="quote.hotel_lux5">Lüks 5 yıldız</span></label>
+                                <label><input type="checkbox" name="hotel_type" value="star4"> <span data-i18n="quote.hotel_star4">4 yıldız konfor</span></label>
+                                <label><input type="checkbox" name="hotel_type" value="star3"> <span data-i18n="quote.hotel_star3">3 yıldız ekonomik</span></label>
+                                <label><input type="checkbox" name="hotel_type" value="near"> <span data-i18n="quote.hotel_near">Fuar alanına yakın</span></label>
+                                <label><input type="checkbox" name="hotel_type" value="center"> <span data-i18n="quote.hotel_center">Şehir merkezinde</span></label>
+                            </div>
+                            <label data-i18n="quote.description">Açıklama (opsiyonel)</label>
+                            <textarea name="note_hotel" placeholder="Konaklama tercihleri hakkında ek bilgileriniz..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Stand İkramları -->
+                    <fieldset>
+                        <legend data-i18n="quote.catering">Stand İkramları (Catering)</legend>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: inline; margin-right: 20px;">
+                                <input type="radio" name="catering_want" value="yes"> <span data-i18n="quote.yes">Evet</span>
+                            </label>
+                            <label style="display: inline;">
+                                <input type="radio" name="catering_want" value="no" checked> <span data-i18n="quote.no">Hayır</span>
+                            </label>
+                        </div>
+                        <div id="cateringBlock" class="hidden">
+                            <label data-i18n="quote.catering_type_label">İkram tercihleri (birden fazla seçebilirsiniz)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="catering" value="kuru"> <span data-i18n="quote.catering_kuru">Kuru pasta & kuruyemiş</span></label>
+                                <label><input type="checkbox" name="catering" value="tatli"> <span data-i18n="quote.catering_tatli">Tatlı çeşitleri</span></label>
+                                <label><input type="checkbox" name="catering" value="cay"> <span data-i18n="quote.catering_cay">Çay / Kahve servisi</span></label>
+                                <label><input type="checkbox" name="catering" value="meyve"> <span data-i18n="quote.catering_meyve">Meyve & sağlıklı atıştırmalık</span></label>
+                                <label><input type="checkbox" name="catering" value="premium"> <span data-i18n="quote.catering_premium">Premium catering</span></label>
+                            </div>
+                            <label data-i18n="quote.description">Açıklama (opsiyonel)</label>
+                            <textarea name="note_catering" placeholder="İkram tercihleri hakkında ek bilgileriniz..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Fotoğraf & Video -->
+                    <fieldset>
+                        <legend data-i18n="quote.photo">Fotoğraf & Video Çekimi</legend>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: inline; margin-right: 20px;">
+                                <input type="radio" name="photo_want" value="yes"> <span data-i18n="quote.yes">Evet</span>
+                            </label>
+                            <label style="display: inline;">
+                                <input type="radio" name="photo_want" value="no" checked> <span data-i18n="quote.no">Hayır</span>
+                            </label>
+                        </div>
+                        <div id="photoBlock" class="hidden">
+                            <label data-i18n="quote.photo_type_label">Çekim içerikleri (birden fazla seçebilirsiniz)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="photo" value="stand"> <span data-i18n="quote.photo_stand">Genel stand görüntüleri</span></label>
+                                <label><input type="checkbox" name="photo" value="product"> <span data-i18n="quote.photo_product">Ürün odaklı çekimler</span></label>
+                                <label><input type="checkbox" name="photo" value="interview"> <span data-i18n="quote.photo_interview">Ziyaretçi röportajları</span></label>
+                                <label><input type="checkbox" name="photo" value="drone"> <span data-i18n="quote.photo_drone">Drone çekimi</span></label>
+                                <label><input type="checkbox" name="photo" value="social"> <span data-i18n="quote.photo_social">Sosyal medya içerikleri</span></label>
+                            </div>
+                            <label data-i18n="quote.description">Açıklama (opsiyonel)</label>
+                            <textarea name="note_photo" placeholder="Çekim tercihleri hakkında ek bilgileriniz..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Ulaşım & Shuttle -->
+                    <fieldset>
+                        <legend data-i18n="quote.shuttle">Ulaşım & Shuttle</legend>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: inline; margin-right: 20px;">
+                                <input type="radio" name="shuttle_want" value="yes"> <span data-i18n="quote.yes">Evet</span>
+                            </label>
+                            <label style="display: inline;">
+                                <input type="radio" name="shuttle_want" value="no" checked> <span data-i18n="quote.no">Hayır</span>
+                            </label>
+                        </div>
+                        <div id="shuttleBlock" class="hidden">
+                            <label data-i18n="quote.shuttle_type_label">Ulaşım tipi (birden fazla seçebilirsiniz)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="shuttle" value="daily"> <span data-i18n="quote.shuttle_daily">Günlük shuttle (otel ↔ fuar)</span></label>
+                                <label><input type="checkbox" name="shuttle" value="vip"> <span data-i18n="quote.shuttle_vip">VIP araç (şoförlü)</span></label>
+                                <label><input type="checkbox" name="shuttle" value="group"> <span data-i18n="quote.shuttle_group">Grup transfer</span></label>
+                                <label><input type="checkbox" name="shuttle" value="airport"> <span data-i18n="quote.shuttle_airport">Havalimanı transfer</span></label>
+                            </div>
+                            <label data-i18n="quote.description">Açıklama (opsiyonel)</label>
+                            <textarea name="note_shuttle" placeholder="Ulaşım tercihleri hakkında ek bilgileriniz..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Kurumsal Hediye -->
+                    <fieldset>
+                        <legend data-i18n="quote.gift">Kurumsal Hediye & Promosyon</legend>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: inline; margin-right: 20px;">
+                                <input type="radio" name="gift_want" value="yes"> <span data-i18n="quote.yes">Evet</span>
+                            </label>
+                            <label style="display: inline;">
+                                <input type="radio" name="gift_want" value="no" checked> <span data-i18n="quote.no">Hayır</span>
+                            </label>
+                        </div>
+                        <div id="giftBlock" class="hidden">
+                            <label data-i18n="quote.gift_type_label">Ürün tarzı (birden fazla seçebilirsiniz)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="gift" value="classic"> <span data-i18n="quote.gift_classic">Klasik promosyon</span></label>
+                                <label><input type="checkbox" name="gift" value="premium"> <span data-i18n="quote.gift_premium">Premium VIP hediyeler</span></label>
+                                <label><input type="checkbox" name="gift" value="apparel"> <span data-i18n="quote.gift_apparel">Kurumsal kıyafet</span></label>
+                                <label><input type="checkbox" name="gift" value="other"> <span data-i18n="quote.gift_other">Diğer</span></label>
+                            </div>
+                            <label data-i18n="quote.description">Açıklama (opsiyonel)</label>
+                            <textarea name="note_gift" placeholder="Hediye tercihleri hakkında ek bilgileriniz..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Akşam Yemeği & Gala -->
+                    <fieldset>
+                        <legend data-i18n="quote.dinner">Akşam Yemeği & Gala Organizasyonu</legend>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: inline; margin-right: 20px;">
+                                <input type="radio" name="dinner_want" value="yes"> <span data-i18n="quote.yes">Evet</span>
+                            </label>
+                            <label style="display: inline;">
+                                <input type="radio" name="dinner_want" value="no" checked> <span data-i18n="quote.no">Hayır</span>
+                            </label>
+                        </div>
+                        <div id="dinnerBlock" class="hidden">
+                            <label data-i18n="quote.dinner_type_label">Yemek organizasyonu tercihi (birden fazla seçebilirsiniz)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="dinner" value="gala"> <span data-i18n="quote.dinner_gala">Gala yemeği organizasyonu</span></label>
+                                <label><input type="checkbox" name="dinner" value="cocktail"> <span data-i18n="quote.dinner_cocktail">Cocktail partisi</span></label>
+                                <label><input type="checkbox" name="dinner" value="special"> <span data-i18n="quote.dinner_special">Özel davet yemeği</span></label>
+                                <label><input type="checkbox" name="dinner" value="tour"> <span data-i18n="quote.dinner_tour">Şehir turu + akşam yemeği</span></label>
+                                <label><input type="checkbox" name="dinner" value="vip"> <span data-i18n="quote.dinner_vip">VIP masa rezervasyonu</span></label>
+                            </div>
+                            <label data-i18n="quote.description">Açıklama (opsiyonel)</label>
+                            <textarea name="note_dinner" data-i18n-placeholder="quote.dinner_note" placeholder="Yemek organizasyonu tercihleri hakkında ek bilgileriniz..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Fuar Danışmanlığı -->
+                    <fieldset>
+                        <legend data-i18n="quote.consultancy">Fuar Danışmanlığı</legend>
+                        <div style="margin-bottom: 1rem;">
+                            <label style="display: inline; margin-right: 20px;">
+                                <input type="radio" name="consultancy_want" value="yes"> <span data-i18n="quote.yes">Evet</span>
+                            </label>
+                            <label style="display: inline;">
+                                <input type="radio" name="consultancy_want" value="no" checked> <span data-i18n="quote.no">Hayır</span>
+                            </label>
+                        </div>
+                        <div id="consultancyBlock" class="hidden">
+                            <label data-i18n="quote.consultancy_type_label">Danışmanlık hizmeti tercihi (birden fazla seçebilirsiniz)</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="consultancy" value="selection"> <span data-i18n="quote.consultancy_selection">Fuar seçimi danışmanlığı</span></label>
+                                <label><input type="checkbox" name="consultancy" value="budget"> <span data-i18n="quote.consultancy_budget">Bütçe planlama desteği</span></label>
+                                <label><input type="checkbox" name="consultancy" value="strategy"> <span data-i18n="quote.consultancy_strategy">Hedef belirleme ve strateji</span></label>
+                                <label><input type="checkbox" name="consultancy" value="analysis"> <span data-i18n="quote.consultancy_analysis">Fuar sonrası analiz ve raporlama</span></label>
+                                <label><input type="checkbox" name="consultancy" value="planning"> <span data-i18n="quote.consultancy_planning">Uzun dönem fuar takvimi planlama</span></label>
+                            </div>
+                            <label data-i18n="quote.description">Açıklama (opsiyonel)</label>
+                            <textarea name="note_consultancy" data-i18n-placeholder="quote.consultancy_note" placeholder="Danışmanlık ihtiyaçlarınız hakkında ek bilgileriniz..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <!-- Genel Notlar -->
+                    <fieldset>
+                        <legend data-i18n="quote.additional_info">Ek Bilgiler ve İstekler</legend>
+                        <label data-i18n="quote.general_notes">Genel Notlar</label>
+                        <textarea name="general_notes" rows="5" placeholder="Talebiniz hakkında eklemek istediğiniz diğer bilgiler..."></textarea>
+                    </fieldset>
+
+                    <div class="text-center" style="margin-top: 2rem;">
+                        <button type="submit" class="btn-submit" data-i18n="quote.submit">Teklif Talebini Gönder</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-4 mb-4">
+                    <h5 data-i18n="footer.company">Luna 360 Expo</h5>
+                    <p style="color: var(--text-muted);" data-i18n="footer.description">Fuar organizasyonunda 360° çözüm ortağınız.</p>
+                    <img src="Luna 360 expo logo beyaz.png" alt="Luna 360 Expo" style="max-width: 150px; margin-top: 1rem;">
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <h5 data-i18n="footer.contact">İletişim</h5>
+                    <p><i class="fas fa-envelope" style="color: var(--primary); margin-right: 10px;"></i>
+                    <a href="mailto:info@luna360expo.com">info@luna360expo.com</a></p>
+                    <p><i class="fas fa-phone" style="color: var(--primary); margin-right: 10px;"></i>
+                    <a href="tel:+905439607076">+90 543 960 70 76</a></p>
+                    <p><i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 10px;"></i>
+                    KÜÇÜKBAKKALKÖY MAH. BAKIRCI SK. YUSUF BEY PLAZA NO: 8 A ATASEHIR/ ISTANBUL</p>
+                </div>
+                <div class="col-12 col-md-4 mb-4">
+                    <h5 data-i18n="footer.quick_links">Hızlı Linkler</h5>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="index.html" data-i18n="nav.home">Ana Sayfa</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="index.html#hizmetler" data-i18n="nav.services">Hizmetlerimiz</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="blog.html" data-i18n="nav.blog">Blog</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="uye-alani.html" data-i18n="nav.member">Üye Alanı</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="fuar_organizasyon_talep_formu_guncel.html" data-i18n="nav.quote">Teklif Al</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center" style="border-top: 1px solid rgba(139, 92, 246, 0.1); padding-top: 2rem;">
+                    <p data-i18n="footer.copyright">&copy; 2025 Luna 360 Expo - Tüm hakları saklıdır.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Widget -->
+    <div id="whatsapp-widget">
+        <a href="https://wa.me/905439607076?text=Merhaba, fuar organizasyonu hakkında bilgi almak istiyorum." target="_blank">
+            <svg width="32" height="32" fill="white" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- JS Files -->
+    <script src="translations.js"></script>
+    <script src="i18n.js"></script>
+    <script src="template_assets/js/jquery-3.6.0.min.js"></script>
+    <script src="template_assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="template_assets/js/custom.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Initialize Language Selectors
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create and insert language selectors
+            const desktopSelector = document.getElementById('languageSelectorDesktop');
+            const mobileSelector = document.getElementById('languageSelectorMobile');
+
+            if (desktopSelector) {
+                desktopSelector.appendChild(createLanguageSelector());
+            }
+            if (mobileSelector) {
+                mobileSelector.appendChild(createLanguageSelector());
+            }
+        });
+
+        // Toggle sections based on radio buttons
+        function toggleSection(radioName, blockId) {
+            const radios = document.querySelectorAll(`input[name="${radioName}"]`);
+            const block = document.getElementById(blockId);
+
+            radios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'yes') {
+                        block.classList.remove('hidden');
+                    } else {
+                        block.classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+        // Initialize toggles for all sections
+        toggleSection('stand_want', 'standBlock');
+        toggleSection('hostess_want', 'hostessBlock');
+        toggleSection('hotel_want', 'hotelBlock');
+        toggleSection('catering_want', 'cateringBlock');
+        toggleSection('photo_want', 'photoBlock');
+        toggleSection('shuttle_want', 'shuttleBlock');
+        toggleSection('gift_want', 'giftBlock');
+        toggleSection('dinner_want', 'dinnerBlock');
+        toggleSection('consultancy_want', 'consultancyBlock');
+
+        // Form submission
+        document.getElementById('fairForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Talebiniz alındı! En kısa sürede size dönüş yapılacaktır. Teşekkür ederiz.');
+            // Here you would typically send the form data to a server
+        });
+
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.cb-humberger-menu');
+            const sideMenu = document.querySelector('.cb-side-menu');
+            const closeMenu = document.querySelector('.cb__closs-menu');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    sideMenu.classList.add('active');
+                });
+            }
+
+            if (closeMenu) {
+                closeMenu.addEventListener('click', function() {
+                    sideMenu.classList.remove('active');
+                });
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.cb-side-menu') && !event.target.closest('.cb-humberger-menu')) {
+                    sideMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

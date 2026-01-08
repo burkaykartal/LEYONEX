@@ -16,7 +16,18 @@
       "Bash(npm run build:*)",
       "Bash(npm install)",
       "Bash(python -c:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(python -m pip install:*)",
+      "Bash(dir:*)",
+      "Bash(python read_excel.py:*)",
+      "Bash(findstr:*)",
+      "Bash(cat:*)",
+      "Bash(npm install:*)",
+      "Bash(npx prisma init)",
+      "Bash(npm run dev:*)",
+      "Bash(npx prisma generate:*)",
+      "Bash(npx prisma migrate dev --name init)",
+      "Bash(npm run migrate:fairs:*)"
     ]
   }
 }
