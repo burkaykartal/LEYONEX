@@ -27,7 +27,8 @@
       "Bash(npm run dev:*)",
       "Bash(npx prisma generate:*)",
       "Bash(npx prisma migrate dev --name init)",
-      "Bash(npm run migrate:fairs:*)"
+      "Bash(npm run migrate:fairs:*)",
+      "Bash(timeout /t 10 /nobreak)"
     ]
   }
 }
