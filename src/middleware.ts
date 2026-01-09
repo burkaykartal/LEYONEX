@@ -7,7 +7,7 @@ import { locales, defaultLocale } from './i18n';
 const intlMiddleware = createMiddleware({
   locales,
   defaultLocale,
-  localePrefix: 'always', // Always show locale in URL to avoid redirect loops
+  localePrefix: 'as-needed', // Hide default locale (tr) from URL
   localeDetection: true, // Enable automatic locale detection
 });
 
