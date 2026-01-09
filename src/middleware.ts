@@ -25,13 +25,13 @@ const isDashboardRoute = createRouteMatcher([
 
 export default clerkMiddleware(
   async (auth, request: NextRequest) => {
-    // Apply i18n first using beforeAuth - this ensures intl rewrites work
-    const intlResponse = intlMiddleware(request);
-
-    // For API routes, skip all auth logic
+    // For API routes, skip all locale and auth logic
     if (request.nextUrl.pathname.startsWith('/api')) {
-      return intlResponse;
+      return NextResponse.next();
     }
+
+    // Apply i18n first - this ensures intl rewrites work
+    const intlResponse = intlMiddleware(request);
 
     const { userId, sessionClaims } = await auth();
 
