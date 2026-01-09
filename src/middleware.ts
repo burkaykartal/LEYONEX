@@ -47,6 +47,11 @@ const isDashboardRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, request: NextRequest) => {
+  // Skip i18n middleware for API routes - they don't need locale handling
+  if (request.nextUrl.pathname.startsWith('/api')) {
+    return NextResponse.next();
+  }
+
   // Apply i18n routing first for public routes
   if (isPublicRoute(request)) {
     return intlMiddleware(request);
