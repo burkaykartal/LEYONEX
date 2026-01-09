@@ -28,7 +28,8 @@
       "Bash(npx prisma generate:*)",
       "Bash(npx prisma migrate dev --name init)",
       "Bash(npm run migrate:fairs:*)",
-      "Bash(timeout /t 10 /nobreak)"
+      "Bash(timeout /t 10 /nobreak)",
+      "Bash(vercel ls:*)"
     ]
   }
 }
