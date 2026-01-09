@@ -49,6 +49,11 @@ const isDashboardRoute = createRouteMatcher([
 export default clerkMiddleware(async (auth, request: NextRequest) => {
   const { userId, sessionClaims } = await auth();
 
+  // Handle root path - redirect to default locale
+  if (request.nextUrl.pathname === '/') {
+    return NextResponse.redirect(new URL('/tr', request.url));
+  }
+
   // Extract locale from URL
   const locale = request.nextUrl.pathname.split('/')[1];
   const validLocales = ['tr', 'en', 'it', 'ar', 'ru', 'de', 'es', 'fr', 'zh'];
