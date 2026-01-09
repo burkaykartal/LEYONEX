@@ -47,12 +47,12 @@ const isDashboardRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware(async (auth, request: NextRequest) => {
-  const { userId, sessionClaims } = await auth();
-
-  // Handle root path - redirect to default locale
-  if (request.nextUrl.pathname === '/') {
-    return NextResponse.redirect(new URL('/tr', request.url));
+  // Apply i18n routing first for public routes
+  if (isPublicRoute(request)) {
+    return intlMiddleware(request);
   }
+
+  const { userId, sessionClaims } = await auth();
 
   // Extract locale from URL
   const locale = request.nextUrl.pathname.split('/')[1];
