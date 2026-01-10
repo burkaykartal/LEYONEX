@@ -1,46 +1,49 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-import { NextResponse } from 'next/server';
+import createIntlMiddleware from 'next-intl/middleware';
+import { NextRequest } from 'next/server';
+import { locales, defaultLocale } from './i18n';
+
+// Create next-intl middleware
+const intlMiddleware = createIntlMiddleware({
+  locales,
+  defaultLocale,
+  localePrefix: 'as-needed'
+});
 
 const isAdminRoute = createRouteMatcher(['/:locale/uye/admin/:path*']);
 const isDashboardRoute = createRouteMatcher(['/:locale/uye/dashboard/:path*']);
 
-export default clerkMiddleware(async (auth, req) => {
-  // Skip auth checks for API and public routes
-  if (req.nextUrl.pathname.startsWith('/api') ||
-      req.nextUrl.pathname.match(/^\/(tr|en|it|ar|ru|de|es|fr|zh)?\/(hakkimizda|hizmetler|projeler|fuarlar|iletisim|teklif-al|giris|kayit)/) ||
-      req.nextUrl.pathname === '/' ||
-      req.nextUrl.pathname.match(/^\/(tr|en|it|ar|ru|de|es|fr|zh)\/?$/)) {
-    return NextResponse.next();
-  }
-
+export default clerkMiddleware(async (auth, req: NextRequest) => {
   const { userId, sessionClaims } = await auth();
+
+  // Extract locale for auth redirects
   const pathSegments = req.nextUrl.pathname.split('/');
-  const validLocales = ['tr', 'en', 'it', 'ar', 'ru', 'de', 'es', 'fr', 'zh'];
-  const locale = validLocales.includes(pathSegments[1]) ? pathSegments[1] : 'tr';
+  const locale = locales.includes(pathSegments[1] as any) ? pathSegments[1] : defaultLocale;
 
   // Admin route protection
   if (isAdminRoute(req)) {
     if (!userId) {
-      return NextResponse.redirect(new URL(`/${locale}/giris?redirect_url=${encodeURIComponent(req.url)}`, req.url));
+      return Response.redirect(new URL(`/${locale}/giris?redirect_url=${encodeURIComponent(req.url)}`, req.url));
     }
     const metadata = sessionClaims?.publicMetadata as { role?: string } | undefined;
     if (metadata?.role !== 'superadmin') {
-      return NextResponse.redirect(new URL(`/${locale}`, req.url));
+      return Response.redirect(new URL(`/${locale}`, req.url));
     }
   }
 
   // Dashboard route protection
   if (isDashboardRoute(req)) {
     if (!userId) {
-      return NextResponse.redirect(new URL(`/${locale}/giris?redirect_url=${encodeURIComponent(req.url)}`, req.url));
+      return Response.redirect(new URL(`/${locale}/giris?redirect_url=${encodeURIComponent(req.url)}`, req.url));
     }
     const metadata = sessionClaims?.publicMetadata as { hasCompletedProfile?: boolean } | undefined;
     if (!metadata?.hasCompletedProfile && !req.nextUrl.pathname.includes('/uye/profile/complete')) {
-      return NextResponse.redirect(new URL(`/${locale}/uye/profile/complete`, req.url));
+      return Response.redirect(new URL(`/${locale}/uye/profile/complete`, req.url));
     }
   }
 
-  return NextResponse.next();
+  // Apply intl middleware to ALL requests (including public routes)
+  return intlMiddleware(req);
 });
 
 export const config = {
