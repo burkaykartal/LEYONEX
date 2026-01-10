@@ -14,6 +14,11 @@ const isAdminRoute = createRouteMatcher(['/:locale/uye/admin/:path*']);
 const isDashboardRoute = createRouteMatcher(['/:locale/uye/dashboard/:path*']);
 
 export default clerkMiddleware(async (auth, req: NextRequest) => {
+  // Skip intl middleware for API routes
+  if (req.nextUrl.pathname.startsWith('/api')) {
+    return;
+  }
+
   const { userId, sessionClaims } = await auth();
 
   // Extract locale for auth redirects
@@ -42,7 +47,7 @@ export default clerkMiddleware(async (auth, req: NextRequest) => {
     }
   }
 
-  // Apply intl middleware to ALL requests (including public routes)
+  // Apply intl middleware to all non-API requests
   return intlMiddleware(req);
 });
 
