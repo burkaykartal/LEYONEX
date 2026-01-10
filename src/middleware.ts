@@ -1,12 +1,4 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-import createMiddleware from 'next-intl/middleware';
-
-// Create intl middleware for locale handling
-const handleI18nRouting = createMiddleware({
-  locales: ['tr', 'en', 'it', 'ar', 'ru', 'de', 'es', 'fr', 'zh'],
-  defaultLocale: 'tr',
-  localePrefix: 'as-needed'
-});
 
 // Admin routes matcher
 const isAdminRoute = createRouteMatcher([
@@ -20,9 +12,29 @@ const isDashboardRoute = createRouteMatcher([
   '/uye/dashboard/:path*',
 ]);
 
+// Public routes - no auth needed
+const isPublicRoute = createRouteMatcher([
+  '/',
+  '/:locale',
+  '/:locale/hakkimizda',
+  '/:locale/hizmetler(.*)',
+  '/:locale/projeler(.*)',
+  '/:locale/fuarlar(.*)',
+  '/:locale/iletisim',
+  '/:locale/teklif-al',
+  '/:locale/giris(.*)',
+  '/:locale/kayit(.*)',
+  '/hakkimizda',
+  '/hizmetler(.*)',
+  '/projeler(.*)',
+  '/fuarlar(.*)',
+  '/iletisim',
+  '/teklif-al',
+]);
+
 export default clerkMiddleware(async (auth, req) => {
-  // Skip middleware for API routes
-  if (req.nextUrl.pathname.startsWith('/api')) {
+  // Public routes and API - no auth needed
+  if (isPublicRoute(req) || req.nextUrl.pathname.startsWith('/api')) {
     return;
   }
 
@@ -58,9 +70,6 @@ export default clerkMiddleware(async (auth, req) => {
       return Response.redirect(new URL(`/${locale}/uye/profile/complete`, req.url));
     }
   }
-
-  // Let next-intl handle locale routing
-  return handleI18nRouting(req);
 });
 
 export const config = {
