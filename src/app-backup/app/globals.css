@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 207 20% 30%; /* #404D60 */
+		--card: 0 0% 100%;
+		--card-foreground: 207 20% 30%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 207 20% 30%;
+		--primary: 199 100% 20%; /* #004767 */
+		--primary-foreground: 0 0% 100%;
+		--secondary: 207 20% 96%;
+		--secondary-foreground: 207 20% 30%;
+		--muted: 207 20% 96%;
+		--muted-foreground: 206 36% 46%; /* #4B86A1 */
+		--accent: 184 97% 40%; /* #03BFCB */
+		--accent-foreground: 0 0% 100%;
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 0 0% 100%;
+		--border: 207 20% 90%; /* #E8ECF1 */
+		--input: 207 20% 90%;
+		--ring: 199 100% 20%;
+		--radius: 0.5rem;
+	}
+
+	.dark {
+		--background: 207 20% 25%; /* Dark blue-grey */
+		--foreground: 0 0% 94%;
+		--card: 199 100% 20%; /* #004767 */
+		--card-foreground: 0 0% 94%;
+		--popover: 207 20% 25%;
+		--popover-foreground: 0 0% 94%;
+		--primary: 199 100% 20%; /* #004767 */
+		--primary-foreground: 0 0% 100%;
+		--secondary: 207 20% 25%;
+		--secondary-foreground: 0 0% 98%;
+		--muted: 207 20% 96%;
+		--muted-foreground: 206 36% 46%;
+		--accent: 184 97% 40%; /* #03BFCB */
+		--accent-foreground: 0 0% 100%;
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 0% 98%;
+		--border: 207 20% 90%;
+		--input: 207 20% 90%;
+		--ring: 184 97% 40%;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+
+	/* Light grey background with blue-grey text colors */
+	html,
+	body {
+		@apply bg-[#F5F7FA] text-[#404D60];
+	}
+
+	/* Override any default styles */
+	h1, h2, h3, h4, h5, h6 {
+		@apply text-[#004767];
+	}
+
+	p {
+		@apply text-[#404D60];
+	}
+
+	a {
+		@apply text-[#4B86A1] hover:text-accent transition-colors;
+	}
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	@apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+	@apply bg-grey rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	@apply bg-primary;
+}

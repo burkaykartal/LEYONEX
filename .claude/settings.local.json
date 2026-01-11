@@ -30,7 +30,13 @@
       "Bash(npm run migrate:fairs:*)",
       "Bash(timeout /t 10 /nobreak)",
       "Bash(vercel ls:*)",
-      "WebFetch(domain:leyonex.vercel.app)"
+      "WebFetch(domain:leyonex.vercel.app)",
+      "Bash(taskkill:*)",
+      "Bash(timeout 5 curl:*)",
+      "Bash(timeout 10 curl:*)",
+      "Bash(powershell -Command \"Invoke-WebRequest -Uri ''https://leyonex.vercel.app/api/health''\")",
+      "Bash(powershell -Command \"try { Invoke-WebRequest -Uri ''https://leyonex.vercel.app/api/health'' | Select-Object StatusCode, StatusDescription, Content } catch { Write-Output $_Exception.Message }\")",
+      "Bash(powershell -Command \"Invoke-WebRequest -Uri ''https://leyonex.vercel.app/'' -Method Head | Select-Object StatusCode, StatusDescription, Headers\")"
     ]
   }
 }

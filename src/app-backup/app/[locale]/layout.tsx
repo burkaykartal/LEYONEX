@@ -3,9 +3,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { trTR, enUS, deDE, esES, frFR, itIT } from "@clerk/localizations";
 import { Toaster } from "@/components/ui/toaster";
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { locales } from '@/i18n';
+import { locales, type Locale } from '@/i18n';
 import "../globals.css";
 
 const montserrat = Montserrat({
@@ -46,8 +45,8 @@ export default async function LocaleLayout({
 		notFound();
 	}
 
-	// Get messages for the locale
-	const messages = await getMessages();
+	// Load messages directly from the messages file
+	const messages = (await import(`../../../messages/${locale}.json`)).default;
 
 	// Get Clerk localization
 	const clerkLocale = clerkLocalizations[locale] || enUS;
@@ -56,7 +55,7 @@ export default async function LocaleLayout({
 		<ClerkProvider localization={clerkLocale}>
 			<html lang={locale} className={montserrat.variable}>
 				<body className="bg-dark text-white antialiased">
-					<NextIntlClientProvider messages={messages}>
+					<NextIntlClientProvider locale={locale} messages={messages}>
 						{children}
 						<Toaster />
 					</NextIntlClientProvider>

@@ -3,12 +3,26 @@ import createIntlMiddleware from 'next-intl/middleware';
 import { NextRequest } from 'next/server';
 import { locales, defaultLocale } from './i18n';
 
-// Create next-intl middleware
 const intlMiddleware = createIntlMiddleware({
   locales,
   defaultLocale,
   localePrefix: 'as-needed'
 });
+
+const isPublicRoute = createRouteMatcher([
+  '/',
+  '/:locale',
+  '/:locale/hizmetler',
+  '/:locale/hizmetler/:path*',
+  '/:locale/fuarlar',
+  '/:locale/fuarlar/:path*',
+  '/:locale/hakkimizda',
+  '/:locale/iletisim',
+  '/:locale/giris(.*)',
+  '/:locale/kayit(.*)',
+  '/:locale/sign-in(.*)',
+  '/:locale/sign-up(.*)',
+]);
 
 const isAdminRoute = createRouteMatcher(['/:locale/uye/admin/:path*']);
 const isDashboardRoute = createRouteMatcher(['/:locale/uye/dashboard/:path*']);
@@ -17,6 +31,14 @@ export default clerkMiddleware(async (auth, req: NextRequest) => {
   // Skip intl middleware for API routes
   if (req.nextUrl.pathname.startsWith('/api')) {
     return;
+  }
+
+  // Run intl middleware first - it handles locale detection and routing
+  const intlResponse = intlMiddleware(req);
+
+  // Skip auth for public routes
+  if (isPublicRoute(req)) {
+    return intlResponse;
   }
 
   const { userId, sessionClaims } = await auth();
@@ -47,8 +69,7 @@ export default clerkMiddleware(async (auth, req: NextRequest) => {
     }
   }
 
-  // Apply intl middleware to all non-API requests
-  return intlMiddleware(req);
+  return intlResponse;
 });
 
 export const config = {

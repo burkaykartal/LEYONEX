@@ -5,8 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useUser, UserButton } from "@clerk/nextjs";
-import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 
 const navItems = [
   { href: "/", label: "Ana Sayfa" },
@@ -18,7 +16,6 @@ const navItems = [
 ];
 
 export default function Header() {
-  const { isSignedIn } = useUser();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -69,33 +66,14 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <LanguageSwitcher />
-            {isSignedIn ? (
-              <>
-                <Link href="/uye/dashboard">
-                  <Button variant="ghost" size="sm">
-                    Panel
-                  </Button>
-                </Link>
-                <UserButton afterSignOutUrl="/" />
-              </>
-            ) : (
-              <>
-                <Link href="/giris">
-                  <Button variant="ghost" size="sm" className="text-primary hover:text-primary/80">
-                    Giriş
-                  </Button>
-                </Link>
-                <Link href="/teklif-al">
-                  <Button
-                    size="sm"
-                    className="bg-primary hover:opacity-90 transition-opacity text-white"
-                  >
-                    Teklif Al
-                  </Button>
-                </Link>
-              </>
-            )}
+            <Link href="/teklif-al">
+              <Button
+                size="sm"
+                className="bg-primary hover:opacity-90 transition-opacity text-white"
+              >
+                Teklif Al
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -125,34 +103,11 @@ export default function Header() {
             ))}
 
             <div className="pt-6 border-t border-[#eaecf0] flex flex-col gap-3">
-              <div className="flex justify-center pb-2">
-                <LanguageSwitcher />
-              </div>
-              {isSignedIn ? (
-                <>
-                  <Link href="/uye/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-primary hover:opacity-90">
-                      Panel
-                    </Button>
-                  </Link>
-                  <div className="flex justify-center pt-2">
-                    <UserButton afterSignOutUrl="/" />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <Link href="/giris" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button variant="outline" className="w-full text-primary border-primary">
-                      Giriş
-                    </Button>
-                  </Link>
-                  <Link href="/teklif-al" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button className="w-full bg-primary hover:opacity-90 text-white">
-                      Teklif Al
-                    </Button>
-                  </Link>
-                </>
-              )}
+              <Link href="/teklif-al" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button className="w-full bg-primary hover:opacity-90 text-white">
+                  Teklif Al
+                </Button>
+              </Link>
             </div>
           </nav>
         </div>
