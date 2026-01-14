@@ -50,7 +50,7 @@
 		"react-dom": "^19.0.0",
 		"react-email": "^5.1.0",
 		"react-hook-form": "^7.69.0",
-		"resend": "^6.6.0",
+		"resend": "^6.7.0",
 		"sharp": "^0.34.5",
 		"tailwind-merge": "^3.4.0",
 		"xlsx": "^0.18.5",
