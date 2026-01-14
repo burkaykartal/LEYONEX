@@ -109,16 +109,6 @@ model User {
 // Company - Firma Bilgileri (Module 1: Firmanı Tanımla)
 model Company {
   id                    String              @id @default(cuid())
-  name                  String
-  country               String
-  city                  String
-  contactPerson         String
-  contactEmail          String
-  contactPhone          String?
-  sector                String
-  annualFairCount       Int                 @default(0)
-  productivityScore     Int                 @default(5) // 1-10 scale
-  status                CompanyStatus       @default(ACTIVE)
 
   // Relations
   users                 User[]
@@ -127,12 +117,31 @@ model Company {
   documents             Document[]
   contactMessages       ContactMessage[]
 
+  // Temel Bilgiler
+  name                  String
+  country               String
+  city                  String
+  contactPerson         String
+  contactEmail          String
+  contactPhone          String?
+
+  // Yeni Alanlar
+  sector                String[]
+  annualFairCount       Int                 @default(0)
+  productivityScore     Int                 @default(5) // 1-10 arası
+  taxNumber             String?
+  address               String?
+
+  // Status
+  status                CompanyStatus       @default(PENDING)
+
+  // Meta
   createdAt             DateTime            @default(now())
   updatedAt             DateTime            @updatedAt
 
   @@index([name])
-  @@index([sector])
   @@index([country])
+  @@index([status])
 }
 
 // Fair - Fuar Bilgileri (Module 4: Sektör Fuarları)

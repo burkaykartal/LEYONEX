@@ -12,7 +12,7 @@ const companyProfileSchema = z.object({
 	contactPerson: z.string().min(2),
 	contactEmail: z.string().email(),
 	contactPhone: z.string().optional(),
-	sector: z.string().min(2),
+	sector: z.array(z.string()).min(1),
 	annualFairCount: z.number().min(0).max(100),
 	productivityScore: z.number().min(1).max(10),
 });
