@@ -5,6 +5,8 @@ export default function GirisPage() {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12 px-4">
       <div className="bg-white rounded-2xl shadow-2xl p-8">
         <SignIn
+          fallbackRedirectUrl="/uye/dashboard"
+          signUpUrl="/kayit"
           appearance={{
             elements: {
               rootBox: "mx-auto",
