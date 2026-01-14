@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import { ClerkProvider } from '@clerk/nextjs';
+import { trTR } from '@clerk/localizations';
 import "./globals.css";
 
 const poppins = Poppins({
@@ -18,8 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="tr">
-      <body className={poppins.className}>{children}</body>
-    </html>
+    <ClerkProvider localization={trTR}>
+      <html lang="tr">
+        <body className={poppins.className}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
