@@ -2,76 +2,98 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { useAuth, useUser, UserButton } from '@clerk/nextjs';
+import { useAuth, UserButton } from '@clerk/nextjs';
+import { useParams, usePathname } from 'next/navigation';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
   const { isSignedIn } = useAuth();
-  const { user } = useUser();
+  const params = useParams();
+  const pathname = usePathname();
+
+  const locale = (params?.locale as string) || 'tr';
+
+  const languages = [
+    { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
+    { code: 'en', name: 'English', flag: '🇬🇧' },
+    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+    { code: 'ar', name: 'العربية', flag: '🇸🇦' },
+    { code: 'zh', name: '中文', flag: '🇨🇳' },
+  ];
+
+  const currentLang = languages.find(l => l.code === locale) || languages[0];
+
+  const getLocalizedPath = (path: string) => {
+    return locale === 'tr' ? path : `/${locale}${path}`;
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-white">LEYONEX</span>
+          <Link href={getLocalizedPath('/')} className="text-2xl font-bold text-white">
+            LEYONEX
           </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-slate-300 hover:text-orange-500 transition-colors">
-              Ana Sayfa
+          <div className="hidden md:flex items-center space-x-6">
+            <Link href={getLocalizedPath('/')} className="text-slate-300 hover:text-orange-500 transition-colors">
+              {locale === 'en' ? 'Home' : locale === 'ru' ? 'Главная' : locale === 'ar' ? 'الرئيسية' : locale === 'zh' ? '主页' : 'Ana Sayfa'}
             </Link>
-            <Link href="/hakkimizda" className="text-slate-300 hover:text-orange-500 transition-colors">
-              Hakkımızda
+            <Link href={getLocalizedPath('/hakkimizda')} className="text-slate-300 hover:text-orange-500 transition-colors">
+              {locale === 'en' ? 'About' : locale === 'ru' ? 'О нас' : locale === 'ar' ? 'من نحن' : locale === 'zh' ? '关于' : 'Hakkımızda'}
             </Link>
-            <Link href="/hizmetler" className="text-slate-300 hover:text-orange-500 transition-colors">
-              Hizmetler
+            <Link href={getLocalizedPath('/hizmetler')} className="text-slate-300 hover:text-orange-500 transition-colors">
+              {locale === 'en' ? 'Services' : locale === 'ru' ? 'Услуги' : locale === 'ar' ? 'الخدمات' : locale === 'zh' ? '服务' : 'Hizmetler'}
             </Link>
-            <Link href="/fuarlar" className="text-slate-300 hover:text-orange-500 transition-colors">
-              Fuarlar
+            <Link href={getLocalizedPath('/fuarlar')} className="text-slate-300 hover:text-orange-500 transition-colors">
+              {locale === 'en' ? 'Fairs' : locale === 'ru' ? 'Выставки' : locale === 'ar' ? 'المعارض' : locale === 'zh' ? '展会' : 'Fuarlar'}
             </Link>
-            <Link href="/iletisim" className="text-slate-300 hover:text-orange-500 transition-colors">
-              İletişim
+            <Link href={getLocalizedPath('/iletisim')} className="text-slate-300 hover:text-orange-500 transition-colors">
+              {locale === 'en' ? 'Contact' : locale === 'ru' ? 'Контакты' : locale === 'ar' ? 'اتصل' : locale === 'zh' ? '联系' : 'İletişim'}
             </Link>
-            
+
+            {/* Language Selector */}
+            <div className="relative">
+              <button
+                onClick={() => setIsLangOpen(!isLangOpen)}
+                className="flex items-center space-x-2 px-3 py-2 bg-slate-800 rounded-lg hover:bg-slate-700"
+              >
+                <span>{currentLang.flag}</span>
+                <span className="text-white text-sm">{currentLang.code.toUpperCase()}</span>
+              </button>
+
+              {isLangOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-slate-800 rounded-lg shadow-xl py-2">
+                  {languages.map((lang) => (
+                    <Link
+                      key={lang.code}
+                      href={lang.code === 'tr' ? pathname.replace(/^\/(en|ru|ar|zh)/, '') || '/' : `/${lang.code}${pathname.replace(/^\/(tr|en|ru|ar|zh)/, '') || ''}`}
+                      className={`block px-4 py-2 hover:bg-slate-700 ${locale === lang.code ? 'text-orange-500' : 'text-slate-300'}`}
+                      onClick={() => setIsLangOpen(false)}
+                    >
+                      {lang.flag} {lang.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
             {isSignedIn ? (
               <div className="flex items-center space-x-4">
-                <Link 
-                  href="/uye/dashboard"
-                  className="text-slate-300 hover:text-orange-500 transition-colors"
-                >
+                <Link href={getLocalizedPath('/uye/dashboard')} className="text-slate-300 hover:text-orange-500">
                   Dashboard
                 </Link>
-                <UserButton 
-                  afterSignOutUrl="/"
-                  appearance={{
-                    elements: {
-                      avatarBox: "w-10 h-10",
-                      userButtonPopoverCard: "bg-slate-800 border border-slate-700",
-                      userButtonPopoverActionButton: "text-slate-300 hover:text-white hover:bg-slate-700",
-                      userButtonPopoverActionButtonText: "text-slate-300",
-                      userButtonPopoverFooter: "hidden"
-                    }
-                  }}
-                />
+                <UserButton afterSignOutUrl={getLocalizedPath('/')} />
               </div>
             ) : (
-              <Link 
-                href="/giris"
-                className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
-              >
-                Giriş Yap
+              <Link href={getLocalizedPath('/giris')} className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600">
+                {locale === 'en' ? 'Login' : locale === 'ru' ? 'Войти' : locale === 'ar' ? 'دخول' : locale === 'zh' ? '登录' : 'Giriş Yap'}
               </Link>
             )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white"
-          >
+          <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-white">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -81,56 +103,6 @@ export default function Header() {
             </svg>
           </button>
         </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden py-4 space-y-4 border-t border-slate-800">
-            <Link href="/" className="block text-slate-300 hover:text-orange-500">
-              Ana Sayfa
-            </Link>
-            <Link href="/hakkimizda" className="block text-slate-300 hover:text-orange-500">
-              Hakkımızda
-            </Link>
-            <Link href="/hizmetler" className="block text-slate-300 hover:text-orange-500">
-              Hizmetler
-            </Link>
-            <Link href="/fuarlar" className="block text-slate-300 hover:text-orange-500">
-              Fuarlar
-            </Link>
-            <Link href="/iletisim" className="block text-slate-300 hover:text-orange-500">
-              İletişim
-            </Link>
-            
-            {isSignedIn ? (
-              <div className="space-y-4 pt-4 border-t border-slate-700">
-                <Link 
-                  href="/uye/dashboard"
-                  className="block text-slate-300 hover:text-orange-500"
-                >
-                  Dashboard
-                </Link>
-                <div className="flex items-center space-x-3">
-                  <UserButton 
-                    afterSignOutUrl="/"
-                    appearance={{
-                      elements: {
-                        avatarBox: "w-10 h-10",
-                      }
-                    }}
-                  />
-                  <span className="text-slate-300">{user?.firstName || 'Hesabım'}</span>
-                </div>
-              </div>
-            ) : (
-              <Link 
-                href="/giris"
-                className="block px-4 py-2 bg-orange-500 text-white rounded-lg text-center"
-              >
-                Giriş Yap
-              </Link>
-            )}
-          </div>
-        )}
       </nav>
     </header>
   );
