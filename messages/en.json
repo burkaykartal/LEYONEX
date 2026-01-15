@@ -1,76 +1,21 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About Us",
+    "about": "About",
     "services": "Services",
-    "projects": "Projects",
-    "fairs": "Trade Fairs",
+    "fairs": "Fairs",
     "contact": "Contact",
-    "getQuote": "Get Quote",
     "login": "Login",
-    "member": "Member Area"
+    "dashboard": "Dashboard"
   },
-  "hero": {
-    "title": "Solutions That Make a Difference in the Trade Fair World",
-    "subtitle": "Manage all services from stand design to organization from a single point and at the best price",
-    "cta": "Get Started Now",
-    "watchVideo": "Watch Video"
-  },
-  "services": {
-    "title": "Our Services",
-    "subtitle": "Custom solutions for your needs",
-    "standDesign": "Stand Design & Construction",
-    "hostess": "Hostess & Staff Support",
-    "hotel": "Hotel & Accommodation",
-    "catering": "Stand Catering",
-    "photography": "Photography & Video Production",
-    "transportation": "Transportation & Shuttle",
-    "gifts": "Corporate Gifts & Promotion",
-    "gala": "Dinner & Gala Organization",
-    "consulting": "Trade Fair Consulting"
-  },
-  "projects": {
-    "title": "Our Projects",
-    "subtitle": "Successful projects we have completed",
-    "viewAll": "View All Projects",
-    "filter": "Filter",
-    "sector": "Sector",
-    "standType": "Stand Type",
-    "location": "Location",
-    "squareMeters": "Square Meters"
-  },
-  "fairs": {
-    "title": "Fair Calendar",
-    "subtitle": "Upcoming fairs",
-    "upcoming": "Upcoming Fairs",
-    "viewDetails": "View Details"
-  },
-  "contact": {
-    "title": "Contact",
-    "subtitle": "Get in touch with us",
-    "name": "Full Name",
-    "email": "Email",
-    "phone": "Phone",
-    "message": "Message",
-    "send": "Send",
-    "sending": "Sending...",
-    "success": "Your message has been sent successfully!",
-    "error": "An error occurred. Please try again."
-  },
-  "footer": {
-    "copyright": "© 2024 Leyonex. All rights reserved.",
-    "followUs": "Follow Us",
-    "quickLinks": "Quick Links",
-    "services": "Services",
-    "address": "Address",
-    "contactInfo": "Contact Information"
-  },
-  "common": {
-    "learnMore": "Learn More",
-    "readMore": "Read More",
-    "backToHome": "Back to Home",
-    "loading": "Loading...",
-    "error": "Error",
-    "success": "Success"
+  "dashboard": {
+    "welcome": "Welcome",
+    "quote": "Get Quote",
+    "quote_desc": "Request a quote for fair participation",
+    "contact": "Contact Us",
+    "contact_desc": "Get in touch with us",
+    "company": "Company Info",
+    "company_desc": "Manage your company profile",
+    "coming_soon": "Coming soon"
   }
 }

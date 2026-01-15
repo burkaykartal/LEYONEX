@@ -1,76 +1,21 @@
 {
   "nav": {
-    "home": "首页",
-    "about": "关于我们",
+    "home": "主页",
+    "about": "关于",
     "services": "服务",
-    "projects": "项目",
     "fairs": "展会",
-    "contact": "联系我们",
-    "getQuote": "获取报价",
+    "contact": "联系",
     "login": "登录",
-    "member": "会员区"
+    "dashboard": "仪表板"
   },
-  "hero": {
-    "title": "在展会世界中创造不同的解决方案",
-    "subtitle": "从展位设计到组织的所有服务都在一个地方管理，价格最优",
-    "cta": "立即开始",
-    "watchVideo": "观看视频"
-  },
-  "services": {
-    "title": "我们的服务",
-    "subtitle": "为您的需求定制解决方案",
-    "standDesign": "展位设计与搭建",
-    "hostess": "礼仪与人员支持",
-    "hotel": "酒店与住宿",
-    "catering": "展位餐饮",
-    "photography": "摄影与视频制作",
-    "transportation": "交通与班车",
-    "gifts": "企业礼品与促销",
-    "gala": "晚宴与晚会组织",
-    "consulting": "展会咨询"
-  },
-  "projects": {
-    "title": "我们的项目",
-    "subtitle": "我们完成的成功项目",
-    "viewAll": "查看所有项目",
-    "filter": "筛选",
-    "sector": "行业",
-    "standType": "展位类型",
-    "location": "位置",
-    "squareMeters": "平方米"
-  },
-  "fairs": {
-    "title": "展会日历",
-    "subtitle": "即将举行的展会",
-    "upcoming": "即将举行的展会",
-    "viewDetails": "查看详情"
-  },
-  "contact": {
-    "title": "联系我们",
-    "subtitle": "与我们联系",
-    "name": "全名",
-    "email": "电子邮件",
-    "phone": "电话",
-    "message": "留言",
-    "send": "发送",
-    "sending": "发送中...",
-    "success": "您的消息已成功发送！",
-    "error": "发生错误。请重试。"
-  },
-  "footer": {
-    "copyright": "© 2024 Leyonex. 保留所有权利。",
-    "followUs": "关注我们",
-    "quickLinks": "快速链接",
-    "services": "服务",
-    "address": "地址",
-    "contactInfo": "联系信息"
-  },
-  "common": {
-    "learnMore": "了解更多",
-    "readMore": "阅读更多",
-    "backToHome": "返回首页",
-    "loading": "加载中...",
-    "error": "错误",
-    "success": "成功"
+  "dashboard": {
+    "welcome": "欢迎",
+    "quote": "获取报价",
+    "quote_desc": "申请展会参与报价",
+    "contact": "联系我们",
+    "contact_desc": "与我们联系",
+    "company": "公司信息",
+    "company_desc": "管理公司资料",
+    "coming_soon": "即将推出"
   }
 }

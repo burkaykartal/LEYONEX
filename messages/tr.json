@@ -3,74 +3,19 @@
     "home": "Ana Sayfa",
     "about": "Hakkımızda",
     "services": "Hizmetler",
-    "projects": "Projeler",
     "fairs": "Fuarlar",
     "contact": "İletişim",
-    "getQuote": "Teklif Al",
-    "login": "Giriş",
-    "member": "Üye Alanı"
+    "login": "Giriş Yap",
+    "dashboard": "Dashboard"
   },
-  "hero": {
-    "title": "Fuar Dünyasında Fark Yaratan Çözümler",
-    "subtitle": "Stand tasarımından organizasyona tüm hizmetleri tek noktadan yönetin",
-    "cta": "Hemen Başlayın",
-    "watchVideo": "Videoyu İzle"
-  },
-  "services": {
-    "title": "Hizmetlerimiz",
-    "subtitle": "İhtiyacınıza özel çözümler",
-    "standDesign": "Stand Tasarımı & Kurulumu",
-    "hostess": "Hostes & Personel Desteği",
-    "hotel": "Otel & Konaklama",
-    "catering": "Stand İkramları",
-    "photography": "Fotoğraf & Video Çekimi",
-    "transportation": "Ulaşım & Shuttle",
-    "gifts": "Kurumsal Hediye & Promosyon",
-    "gala": "Akşam Yemeği & Gala Organizasyonu",
-    "consulting": "Fuar Danışmanlığı"
-  },
-  "projects": {
-    "title": "Projelerimiz",
-    "subtitle": "Gerçekleştirdiğimiz başarılı projeler",
-    "viewAll": "Tüm Projeleri Gör",
-    "filter": "Filtrele",
-    "sector": "Sektör",
-    "standType": "Stand Türü",
-    "location": "Lokasyon",
-    "squareMeters": "Metrekare"
-  },
-  "fairs": {
-    "title": "Fuar Takvimi",
-    "subtitle": "Yaklaşan fuarlar",
-    "upcoming": "Yaklaşan Fuarlar",
-    "viewDetails": "Detayları Gör"
-  },
-  "contact": {
-    "title": "İletişim",
-    "subtitle": "Bizimle iletişime geçin",
-    "name": "Ad Soyad",
-    "email": "E-posta",
-    "phone": "Telefon",
-    "message": "Mesaj",
-    "send": "Gönder",
-    "sending": "Gönderiliyor...",
-    "success": "Mesajınız başarıyla gönderildi!",
-    "error": "Bir hata oluştu. Lütfen tekrar deneyin."
-  },
-  "footer": {
-    "copyright": "© 2024 Leyonex. Tüm hakları saklıdır.",
-    "followUs": "Bizi Takip Edin",
-    "quickLinks": "Hızlı Linkler",
-    "services": "Hizmetler",
-    "address": "Adres",
-    "contactInfo": "İletişim Bilgileri"
-  },
-  "common": {
-    "learnMore": "Daha Fazla Bilgi",
-    "readMore": "Devamını Oku",
-    "backToHome": "Ana Sayfaya Dön",
-    "loading": "Yükleniyor...",
-    "error": "Hata",
-    "success": "Başarılı"
+  "dashboard": {
+    "welcome": "Hoş Geldiniz",
+    "quote": "Teklif Al",
+    "quote_desc": "Yeni fuar katılımı için teklif oluşturun",
+    "contact": "Bize Ulaşın",
+    "contact_desc": "Sorularınız için iletişime geçin",
+    "company": "Firma Bilgileri",
+    "company_desc": "Firma profilinizi tanımlayın",
+    "coming_soon": "Yakında aktif olacak"
   }
 }
