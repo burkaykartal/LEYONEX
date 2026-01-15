@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { useAuth, useUser } from '@clerk/nextjs';
+import { useAuth, useUser, UserButton } from '@clerk/nextjs';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,16 +35,30 @@ export default function Header() {
             <Link href="/iletisim" className="text-slate-300 hover:text-orange-500 transition-colors">
               İletişim
             </Link>
-
+            
             {isSignedIn ? (
-              <Link
-                href="/uye/dashboard"
-                className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
-              >
-                {user?.firstName || 'Hesabım'}
-              </Link>
+              <div className="flex items-center space-x-4">
+                <Link 
+                  href="/uye/dashboard"
+                  className="text-slate-300 hover:text-orange-500 transition-colors"
+                >
+                  Dashboard
+                </Link>
+                <UserButton 
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: "w-10 h-10",
+                      userButtonPopoverCard: "bg-slate-800 border border-slate-700",
+                      userButtonPopoverActionButton: "text-slate-300 hover:text-white hover:bg-slate-700",
+                      userButtonPopoverActionButtonText: "text-slate-300",
+                      userButtonPopoverFooter: "hidden"
+                    }
+                  }}
+                />
+              </div>
             ) : (
-              <Link
+              <Link 
                 href="/giris"
                 className="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
               >
@@ -70,7 +84,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden py-4 space-y-4">
+          <div className="md:hidden py-4 space-y-4 border-t border-slate-800">
             <Link href="/" className="block text-slate-300 hover:text-orange-500">
               Ana Sayfa
             </Link>
@@ -86,16 +100,29 @@ export default function Header() {
             <Link href="/iletisim" className="block text-slate-300 hover:text-orange-500">
               İletişim
             </Link>
-
+            
             {isSignedIn ? (
-              <Link
-                href="/uye/dashboard"
-                className="block px-4 py-2 bg-orange-500 text-white rounded-lg text-center"
-              >
-                {user?.firstName || 'Hesabım'}
-              </Link>
+              <div className="space-y-4 pt-4 border-t border-slate-700">
+                <Link 
+                  href="/uye/dashboard"
+                  className="block text-slate-300 hover:text-orange-500"
+                >
+                  Dashboard
+                </Link>
+                <div className="flex items-center space-x-3">
+                  <UserButton 
+                    afterSignOutUrl="/"
+                    appearance={{
+                      elements: {
+                        avatarBox: "w-10 h-10",
+                      }
+                    }}
+                  />
+                  <span className="text-slate-300">{user?.firstName || 'Hesabım'}</span>
+                </div>
+              </div>
             ) : (
-              <Link
+              <Link 
                 href="/giris"
                 className="block px-4 py-2 bg-orange-500 text-white rounded-lg text-center"
               >
