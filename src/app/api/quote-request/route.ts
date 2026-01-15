@@ -4,53 +4,86 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.json();
 
-    // Debug: Environment variable kontrolü
     const apiKey = process.env.RESEND_API_KEY;
-    console.log('API Key exists:', !!apiKey);
-    console.log('API Key starts with re_:', apiKey?.startsWith('re_'));
 
     if (!apiKey) {
       return NextResponse.json(
         {
           success: false,
-          message: 'Sistem hatası: API key bulunamadı. Lütfen site yöneticisiyle iletişime geçin.'
+          message: 'Sistem hatası: API key bulunamadı.'
         },
         { status: 500 }
       );
     }
 
-    // Resend import
     const { Resend } = await import('resend');
     const resend = new Resend(apiKey);
 
     // E-posta HTML içeriği
     const emailHtml = `
-      <h2>🎯 Yeni Fuar Organizasyon Talebi</h2>
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+          h2 { color: #f97316; }
+          h3 { color: #1e293b; margin-top: 20px; }
+          ul { list-style: none; padding: 0; }
+          li { padding: 5px 0; }
+          strong { color: #475569; }
+        </style>
+      </head>
+      <body>
+        <h2>🎯 Yeni Fuar Organizasyon Talebi</h2>
 
-      <h3>👤 Firma Bilgileri</h3>
-      <ul>
-        <li><strong>Firma:</strong> ${formData.companyName}</li>
-        <li><strong>Yetkili:</strong> ${formData.contactPerson}</li>
-        <li><strong>E-posta:</strong> ${formData.email}</li>
-        <li><strong>Telefon:</strong> ${formData.phone}</li>
-      </ul>
+        <h3>👤 Firma Bilgileri</h3>
+        <ul>
+          <li><strong>Firma:</strong> ${formData.companyName}</li>
+          <li><strong>Yetkili:</strong> ${formData.contactPerson}</li>
+          <li><strong>E-posta:</strong> ${formData.email}</li>
+          <li><strong>Telefon:</strong> ${formData.phone}</li>
+          ${formData.taxNumber ? `<li><strong>Vergi No:</strong> ${formData.taxNumber}</li>` : ''}
+        </ul>
 
-      <h3>🎪 Fuar Bilgileri</h3>
-      <ul>
-        <li><strong>Fuar:</strong> ${formData.fairName}</li>
-        <li><strong>Tarih:</strong> ${formData.fairDate}</li>
-        <li><strong>Lokasyon:</strong> ${formData.fairLocation}</li>
-      </ul>
+        <h3>🎪 Fuar Bilgileri</h3>
+        <ul>
+          <li><strong>Fuar:</strong> ${formData.fairName}</li>
+          <li><strong>Tarih:</strong> ${formData.fairDate}</li>
+          <li><strong>Lokasyon:</strong> ${formData.fairLocation}</li>
+          ${formData.standSize ? `<li><strong>Stand Alanı:</strong> ${formData.standSize} m²</li>` : ''}
+        </ul>
+
+        <h3>🛠️ Seçilen Hizmetler</h3>
+        <ul>
+          ${formData.standDesign ? `<li>✅ <strong>Stand Tasarımı:</strong> ${formData.standTypes?.join(', ') || 'Belirtilmedi'}</li>` : ''}
+          ${formData.hostesService ? `<li>✅ <strong>Hostes & Personel:</strong> ${formData.hostesCount || '-'} kişi, Diller: ${formData.hostesLanguages?.join(', ') || '-'}</li>` : ''}
+          ${formData.accommodationService ? `<li>✅ <strong>Konaklama:</strong> ${formData.accommodationParticipants || '-'} kişi, ${formData.accommodationDuration || '-'}</li>` : ''}
+          ${formData.cateringService ? `<li>✅ <strong>İkram Hizmetleri:</strong> ${formData.cateringTypes?.join(', ') || '-'}</li>` : ''}
+          ${formData.photographyService ? `<li>✅ <strong>Fotoğraf & Video:</strong> ${formData.photographyTypes?.join(', ') || '-'}</li>` : ''}
+          ${formData.transportationService ? `<li>✅ <strong>Ulaşım:</strong> ${formData.transportationTypes?.join(', ') || '-'}</li>` : ''}
+          ${formData.giftService ? `<li>✅ <strong>Kurumsal Hediye:</strong> ${formData.giftQuantity || '-'} adet</li>` : ''}
+          ${formData.galaService ? `<li>✅ <strong>Gala & Etkinlik:</strong> ${formData.galaType || '-'}, ${formData.galaParticipants || '-'} kişi</li>` : ''}
+          ${formData.consultingService ? `<li>✅ <strong>Danışmanlık:</strong> ${formData.consultingTypes?.join(', ') || '-'}</li>` : ''}
+        </ul>
+
+        ${formData.budget ? `<h3>💰 Bütçe</h3><p>${formData.budget}</p>` : ''}
+
+        ${formData.generalNotes ? `<h3>📝 Notlar</h3><p style="white-space: pre-wrap;">${formData.generalNotes}</p>` : ''}
+
+        <hr style="margin: 30px 0; border: none; border-top: 2px solid #e2e8f0;">
+        <p style="color: #64748b; font-size: 12px;">
+          Bu e-posta www.leyonex.com teklif formundan otomatik olarak gönderilmiştir.
+        </p>
+      </body>
+      </html>
     `;
 
-    console.log('Attempting to send email...');
-
-    // E-posta gönder
+    // E-posta gönder - TEST MODUNDA SADECE SENİN E-POSTANA GİDECEK
     const { data, error } = await resend.emails.send({
-      from: 'Leyonex <onboarding@resend.dev>',
-      to: ['burkay.kartal@ibavalresa.com.tr'], // GEÇİCİ: Senin e-postan
+      from: 'Leyonex Teklif Sistemi <onboarding@resend.dev>',
+      to: ['agnathe@gmail.com'], // Resend'de kayıtlı e-postan
       replyTo: formData.email,
-      subject: `Yeni Teklif: ${formData.companyName}`,
+      subject: `🎯 Yeni Teklif: ${formData.companyName} - ${formData.fairName}`,
       html: emailHtml,
     });
 
@@ -59,17 +92,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          message: `E-posta hatası: ${error.message || 'Bilinmeyen hata'}`
+          message: `E-posta gönderilemedi: ${error.message}`
         },
         { status: 500 }
       );
     }
 
-    console.log('Email sent successfully:', data?.id);
-
     return NextResponse.json({
       success: true,
-      message: 'Talebiniz başarıyla gönderildi!',
+      message: 'Talebiniz başarıyla gönderildi! En kısa sürede size dönüş yapacağız.',
       emailId: data?.id
     });
 
@@ -78,7 +109,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        message: `Sistem hatası: ${error.message || 'Bilinmeyen hata'}`
+        message: `Sistem hatası: ${error.message}`
       },
       { status: 500 }
     );
