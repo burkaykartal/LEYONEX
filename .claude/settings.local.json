@@ -37,7 +37,8 @@
       "Bash(powershell -Command \"Invoke-WebRequest -Uri ''https://leyonex.vercel.app/api/health''\")",
       "Bash(powershell -Command \"try { Invoke-WebRequest -Uri ''https://leyonex.vercel.app/api/health'' | Select-Object StatusCode, StatusDescription, Content } catch { Write-Output $_Exception.Message }\")",
       "Bash(powershell -Command \"Invoke-WebRequest -Uri ''https://leyonex.vercel.app/'' -Method Head | Select-Object StatusCode, StatusDescription, Headers\")",
-      "Bash(npx prisma db push)"
+      "Bash(npx prisma db push)",
+      "Bash(wc:*)"
     ]
   }
 }
