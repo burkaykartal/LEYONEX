@@ -141,3 +141,29 @@ body {
 .goog-te-gadget > div {
   display: inline-block !important;
 }
+
+/* Google Translate - Tamamen Gizli */
+#google_translate_element {
+  display: none !important;
+}
+
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.skiptranslate {
+  display: none !important;
+}
+
+/* Google Translate'in eklediği iframe'leri gizle */
+iframe.goog-te-menu-frame {
+  display: none !important;
+}
