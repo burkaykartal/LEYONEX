@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import { trTR } from '@clerk/localizations';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 import "./globals.css";
 
 const poppins = Poppins({
@@ -22,7 +23,11 @@ export default function RootLayout({
   return (
     <ClerkProvider localization={trTR}>
       <html lang="tr">
-        <body className={poppins.className}>{children}</body>
+        <body className={poppins.className}>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
+        </body>
       </html>
     </ClerkProvider>
   );
