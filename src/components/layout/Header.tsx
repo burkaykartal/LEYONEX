@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth, UserButton } from '@clerk/nextjs';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
+  const [isTranslateReady, setIsTranslateReady] = useState(false);
   const { isSignedIn } = useAuth();
 
   const languages = [
@@ -14,27 +15,56 @@ export default function Header() {
     { code: 'en', name: 'English', flag: '🇬🇧' },
     { code: 'ru', name: 'Русский', flag: '🇷🇺' },
     { code: 'ar', name: 'العربية', flag: '🇸🇦' },
-    { code: 'zh', name: '中文', flag: '🇨🇳' },
+    { code: 'zh-CN', name: '中文', flag: '🇨🇳' },
   ];
 
   const [currentLang, setCurrentLang] = useState(languages[0]);
+
+  useEffect(() => {
+    // Google Translate'in yüklenmesini bekle
+    const checkTranslate = setInterval(() => {
+      const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
+      if (select) {
+        setIsTranslateReady(true);
+        clearInterval(checkTranslate);
+      }
+    }, 100);
+
+    // 10 saniye sonra vazgeç
+    setTimeout(() => clearInterval(checkTranslate), 10000);
+
+    return () => clearInterval(checkTranslate);
+  }, []);
 
   const changeLanguage = (lang: typeof languages[0]) => {
     setCurrentLang(lang);
     setIsLangOpen(false);
 
+    if (!isTranslateReady) {
+      console.log('Google Translate henüz yüklenmedi');
+      return;
+    }
+
     // Google Translate'i tetikle
     const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
     if (select) {
-      select.value = lang.code;
-      select.dispatchEvent(new Event('change'));
+      // Türkçe'ye dönmek için boş string
+      select.value = lang.code === 'tr' ? '' : lang.code;
+
+      // Change event'i tetikle
+      const event = new Event('change', { bubbles: true });
+      select.dispatchEvent(event);
+
+      console.log('Dil değiştirildi:', lang.code);
+    } else {
+      console.log('Google Translate select bulunamadı');
     }
   };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
-      {/* Google Translate Widget - Gizli */}
-      <div className="hidden">
+      {/* Google Translate Widget - Gizli ama DOM'da olmalı */}
+      <div style={{ position: 'absolute', left: '-9999px', top: 0 }}>
         <div id="google_translate_element"></div>
       </div>
 
@@ -66,9 +96,10 @@ export default function Header() {
               <button
                 onClick={() => setIsLangOpen(!isLangOpen)}
                 className="flex items-center space-x-2 px-4 py-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors"
+                title={isTranslateReady ? 'Dil seçin' : 'Yükleniyor...'}
               >
                 <span className="text-xl">{currentLang.flag}</span>
-                <span className="text-white text-sm font-medium">{currentLang.code.toUpperCase()}</span>
+                <span className="text-white text-sm font-medium">{currentLang.code === 'zh-CN' ? 'ZH' : currentLang.code.toUpperCase()}</span>
                 <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -81,11 +112,17 @@ export default function Header() {
                     onClick={() => setIsLangOpen(false)}
                   />
                   <div className="absolute right-0 mt-2 w-56 bg-slate-800 rounded-lg shadow-2xl border border-slate-700 py-2 z-20">
+                    {!isTranslateReady && (
+                      <div className="px-4 py-2 text-slate-400 text-xs">
+                        Çeviri yükleniyor...
+                      </div>
+                    )}
                     {languages.map((lang) => (
                       <button
                         key={lang.code}
                         onClick={() => changeLanguage(lang)}
-                        className={`w-full px-4 py-3 text-left flex items-center space-x-3 hover:bg-slate-700 transition-colors ${
+                        disabled={!isTranslateReady}
+                        className={`w-full px-4 py-3 text-left flex items-center space-x-3 hover:bg-slate-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
                           currentLang.code === lang.code ? 'bg-slate-700 text-orange-500' : 'text-slate-300'
                         }`}
                       >
@@ -138,13 +175,16 @@ export default function Header() {
 
             {/* Mobile Language Selector */}
             <div className="pt-4 border-t border-slate-700">
-              <p className="text-slate-400 text-xs mb-3 px-2">Dil Seçimi / Language</p>
+              <p className="text-slate-400 text-xs mb-3 px-2">
+                Dil Seçimi / Language {!isTranslateReady && '(yükleniyor...)'}
+              </p>
               <div className="space-y-2">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
                     onClick={() => changeLanguage(lang)}
-                    className={`w-full px-4 py-3 rounded-lg text-left flex items-center space-x-3 transition-colors ${
+                    disabled={!isTranslateReady}
+                    className={`w-full px-4 py-3 rounded-lg text-left flex items-center space-x-3 transition-colors disabled:opacity-50 ${
                       currentLang.code === lang.code ? 'bg-slate-700 text-orange-500' : 'text-slate-300 hover:bg-slate-800'
                     }`}
                   >
