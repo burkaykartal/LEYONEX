@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import { trTR } from '@clerk/localizations';
-import Script from 'next/script';
 import "./globals.css";
 
 const poppins = Poppins({
@@ -24,21 +23,24 @@ export default function RootLayout({
     <ClerkProvider localization={trTR}>
       <html lang="tr">
         <head>
-          <Script id="google-translate-config" strategy="afterInteractive">
-            {`
-              function googleTranslateElementInit() {
-                new google.translate.TranslateElement({
-                  pageLanguage: 'tr',
-                  includedLanguages: 'en,ru,ar,zh',
-                  layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                  autoDisplay: false
-                }, 'google_translate_element');
-              }
-            `}
-          </Script>
-          <Script
+          {/* Google Translate */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                function googleTranslateElementInit() {
+                  new google.translate.TranslateElement({
+                    pageLanguage: 'tr',
+                    includedLanguages: 'en,ru,ar,zh-CN',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    autoDisplay: false
+                  }, 'google_translate_element');
+                }
+              `,
+            }}
+          />
+          <script
             src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-            strategy="afterInteractive"
+            async
           />
         </head>
         <body className={poppins.className}>
