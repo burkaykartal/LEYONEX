@@ -90,3 +90,54 @@
 ::-webkit-scrollbar-thumb:hover {
 	@apply bg-primary;
 }
+
+/* Google Translate Styling */
+.google-translate-container {
+  display: inline-block;
+}
+
+.goog-te-combo {
+  background-color: #1e293b !important;
+  color: white !important;
+  border: 1px solid #475569 !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  cursor: pointer !important;
+}
+
+.goog-te-combo:hover {
+  background-color: #334155 !important;
+}
+
+/* Hide Google Translate banner */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.skiptranslate {
+  display: inline-block !important;
+}
+
+/* Google Translate gadget styling */
+.goog-te-gadget {
+  color: transparent !important;
+  font-size: 0 !important;
+}
+
+.goog-te-gadget .goog-te-combo {
+  margin: 0 !important;
+}
+
+/* Hide "Powered by" text */
+.goog-te-gadget span {
+  display: none !important;
+}
+
+.goog-te-gadget > div {
+  display: inline-block !important;
+}
