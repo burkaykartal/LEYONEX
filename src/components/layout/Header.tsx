@@ -11,37 +11,52 @@ export default function Header() {
   const { isSignedIn } = useAuth();
 
   useEffect(() => {
-    // Daha kısa kontrol - 5 saniye
-    let attempts = 0;
-    const check = setInterval(() => {
-      attempts++;
+    // TranslateElement oluşturulmasını bekle
+    const waitForTranslate = setInterval(() => {
       const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
 
-      if (select) {
-        console.log('✅ Çeviri hazır');
+      if (select && select.options && select.options.length > 0) {
+        console.log('✅ Select hazır, options:', select.options.length);
         setIsTranslateReady(true);
-        clearInterval(check);
-      } else if (attempts >= 50) {
-        console.warn('⚠️ Çeviri yüklenemedi');
-        clearInterval(check);
+        clearInterval(waitForTranslate);
       }
-    }, 100);
+    }, 200);
 
-    return () => clearInterval(check);
-  }, []);
+    // 10 saniye timeout
+    setTimeout(() => {
+      if (!isTranslateReady) {
+        console.warn('⚠️ Timeout: Google Translate yüklenemedi');
+        // Yine de butonu aktif et (fallback)
+        setIsTranslateReady(true);
+      }
+      clearInterval(waitForTranslate);
+    }, 10000);
+
+    return () => clearInterval(waitForTranslate);
+  }, [isTranslateReady]);
 
   const toggleLanguage = () => {
-    if (!isTranslateReady) return;
+    console.log('🔘 Buton tıklandı, isTranslateReady:', isTranslateReady);
 
     const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-    if (!select) return;
+
+    if (!select) {
+      console.error('❌ Select bulunamadı!');
+      alert('Çeviri sistemi yüklenemedi. Sayfayı yenileyin.');
+      return;
+    }
 
     const newLang = currentLang === 'tr' ? 'en' : 'tr';
-    select.value = newLang === 'tr' ? '' : 'en';
-    select.dispatchEvent(new Event('change', { bubbles: true }));
-    setCurrentLang(newLang);
+    const selectValue = newLang === 'tr' ? '' : 'en';
 
-    console.log('🌍 Dil:', newLang);
+    console.log('Mevcut dil:', currentLang, '→ Yeni dil:', newLang);
+    console.log('Select value değişiyor:', select.value, '→', selectValue);
+
+    select.value = selectValue;
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+
+    setCurrentLang(newLang);
+    console.log('✅ Dil değişti:', newLang);
   };
 
   return (
@@ -69,19 +84,15 @@ export default function Header() {
               İletişim
             </Link>
 
-            {/* Simple TR/EN Toggle */}
+            {/* TR/EN Toggle */}
             <button
               onClick={toggleLanguage}
-              disabled={!isTranslateReady}
-              className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
-                isTranslateReady
-                  ? 'bg-slate-800 hover:bg-slate-700'
-                  : 'bg-slate-700 opacity-50 cursor-not-allowed'
-              }`}
-              title={isTranslateReady ? 'Dil değiştir / Change language' : 'Yükleniyor...'}
+              className="flex items-center space-x-2 px-4 py-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors cursor-pointer"
+              title="Dil değiştir / Change language"
             >
               <span className="text-xl">{currentLang === 'tr' ? '🇹🇷' : '🇬🇧'}</span>
               <span className="text-white text-sm font-medium">{currentLang.toUpperCase()}</span>
+              <span className="text-slate-400 text-xs">↔</span>
             </button>
 
             {isSignedIn ? (
@@ -117,19 +128,13 @@ export default function Header() {
             <Link href="/fuarlar" className="block text-slate-300 hover:text-orange-500">Fuarlar</Link>
             <Link href="/iletisim" className="block text-slate-300 hover:text-orange-500">İletişim</Link>
 
-            {/* Mobile Language Toggle */}
             <button
               onClick={toggleLanguage}
-              disabled={!isTranslateReady}
-              className={`w-full px-4 py-3 rounded-lg text-left flex items-center space-x-3 ${
-                isTranslateReady
-                  ? 'bg-slate-800 hover:bg-slate-700'
-                  : 'bg-slate-700 opacity-50'
-              }`}
+              className="w-full px-4 py-3 bg-slate-800 rounded-lg text-left flex items-center space-x-3 hover:bg-slate-700"
             >
               <span className="text-2xl">{currentLang === 'tr' ? '🇹🇷' : '🇬🇧'}</span>
               <span className="text-sm font-medium text-white">
-                {currentLang === 'tr' ? 'Türkçe' : 'English'}
+                {currentLang === 'tr' ? 'Türkçe → English' : 'English → Türkçe'}
               </span>
             </button>
 

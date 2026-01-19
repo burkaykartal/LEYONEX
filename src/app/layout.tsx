@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import { ClerkProvider } from '@clerk/nextjs';
 import { trTR } from '@clerk/localizations';
 import GoogleTranslate from '@/components/GoogleTranslate';
+import LanguageDebug from '@/components/LanguageDebug';
 import "./globals.css";
 
 const poppins = Poppins({
@@ -26,6 +27,7 @@ export default function RootLayout({
         <body className={poppins.className}>
           <GoogleTranslate />
           {children}
+          <LanguageDebug />
         </body>
       </html>
     </ClerkProvider>
