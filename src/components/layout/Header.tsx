@@ -6,58 +6,39 @@ import { useAuth, UserButton } from '@clerk/nextjs';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isTranslateReady, setIsTranslateReady] = useState(false);
   const [currentLang, setCurrentLang] = useState<'tr' | 'en'>('tr');
   const { isSignedIn } = useAuth();
 
-  useEffect(() => {
-    // TranslateElement oluşturulmasını bekle
-    const waitForTranslate = setInterval(() => {
-      const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-
-      if (select && select.options && select.options.length > 0) {
-        console.log('✅ Select hazır, options:', select.options.length);
-        setIsTranslateReady(true);
-        clearInterval(waitForTranslate);
-      }
-    }, 200);
-
-    // 10 saniye timeout
-    setTimeout(() => {
-      if (!isTranslateReady) {
-        console.warn('⚠️ Timeout: Google Translate yüklenemedi');
-        // Yine de butonu aktif et (fallback)
-        setIsTranslateReady(true);
-      }
-      clearInterval(waitForTranslate);
-    }, 10000);
-
-    return () => clearInterval(waitForTranslate);
-  }, [isTranslateReady]);
-
   const toggleLanguage = () => {
-    console.log('🔘 Buton tıklandı, isTranslateReady:', isTranslateReady);
-
-    const select = document.querySelector('.goog-te-combo') as HTMLSelectElement;
-
-    if (!select) {
-      console.error('❌ Select bulunamadı!');
-      alert('Çeviri sistemi yüklenemedi. Sayfayı yenileyin.');
-      return;
-    }
+    console.log('🔘 DİL DEĞİŞTİRME BAŞLADI');
 
     const newLang = currentLang === 'tr' ? 'en' : 'tr';
-    const selectValue = newLang === 'tr' ? '' : 'en';
 
-    console.log('Mevcut dil:', currentLang, '→ Yeni dil:', newLang);
-    console.log('Select value değişiyor:', select.value, '→', selectValue);
-
-    select.value = selectValue;
-    select.dispatchEvent(new Event('change', { bubbles: true }));
+    // Cookie'de sakla
+    document.cookie = `googtrans=/tr/${newLang}; path=/; max-age=31536000`;
+    document.cookie = `googtrans=/tr/${newLang}; domain=.leyonex.com; path=/; max-age=31536000`;
 
     setCurrentLang(newLang);
-    console.log('✅ Dil değişti:', newLang);
+
+    console.log('🌍 Dil değişti:', newLang);
+    console.log('📍 Sayfa yenileniyor...');
+
+    // Sayfayı yenile (Google Translate cookie'den okuyacak)
+    window.location.reload();
   };
+
+  // Sayfa yüklendiğinde cookie'den dili oku
+  useEffect(() => {
+    const cookies = document.cookie.split(';');
+    const googtrans = cookies.find(c => c.trim().startsWith('googtrans='));
+
+    if (googtrans) {
+      const lang = googtrans.split('/')[2];
+      if (lang === 'en') {
+        setCurrentLang('en');
+      }
+    }
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
@@ -84,15 +65,16 @@ export default function Header() {
               İletişim
             </Link>
 
-            {/* TR/EN Toggle */}
+            {/* TR/EN Toggle - Cookie Based */}
             <button
               onClick={toggleLanguage}
-              className="flex items-center space-x-2 px-4 py-2 bg-slate-800 rounded-lg hover:bg-slate-700 transition-colors cursor-pointer"
-              title="Dil değiştir / Change language"
+              className="flex items-center space-x-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 rounded-lg transition-colors"
             >
               <span className="text-xl">{currentLang === 'tr' ? '🇹🇷' : '🇬🇧'}</span>
-              <span className="text-white text-sm font-medium">{currentLang.toUpperCase()}</span>
-              <span className="text-slate-400 text-xs">↔</span>
+              <span className="text-white text-sm font-bold">{currentLang.toUpperCase()}</span>
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+              </svg>
             </button>
 
             {isSignedIn ? (
@@ -130,11 +112,11 @@ export default function Header() {
 
             <button
               onClick={toggleLanguage}
-              className="w-full px-4 py-3 bg-slate-800 rounded-lg text-left flex items-center space-x-3 hover:bg-slate-700"
+              className="w-full px-4 py-3 bg-orange-500 rounded-lg text-left flex items-center space-x-3 hover:bg-orange-600"
             >
               <span className="text-2xl">{currentLang === 'tr' ? '🇹🇷' : '🇬🇧'}</span>
-              <span className="text-sm font-medium text-white">
-                {currentLang === 'tr' ? 'Türkçe → English' : 'English → Türkçe'}
+              <span className="text-sm font-bold text-white">
+                {currentLang === 'tr' ? 'Switch to English' : 'Türkçe\'ye geç'}
               </span>
             </button>
 

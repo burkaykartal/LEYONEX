@@ -14,17 +14,14 @@ export default function GoogleTranslate() {
     window.googleTranslateElementInit = function() {
       console.log('🔄 Google Translate init');
 
-      const container = document.getElementById('google_translate_element');
-      if (!container) return;
-
       if (window.google && window.google.translate && window.google.translate.TranslateElement) {
         new window.google.translate.TranslateElement({
           pageLanguage: 'tr',
-          includedLanguages: 'en', // Sadece İngilizce
+          includedLanguages: 'en,ru,ar,zh-CN', // Tüm diller
           layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
           autoDisplay: false
         }, 'google_translate_element');
-        console.log('✅ TranslateElement oluşturuldu (TR/EN)');
+        console.log('✅ TranslateElement oluşturuldu');
       }
     };
 
