@@ -10,6 +10,9 @@ export const metadata = {
   title: 'LEYONEX | 360 Derece Fuar Organizasyon & Strateji Partneri',
   description: 'Fuar süreçlerinizde operasyonel yükünüzü alıyoruz. Doğru plan ve düşük efor prensibiyle, stand tasarımından lojistiğe kadar uçtan uca fuar yönetimi.',
   keywords: 'fuar organizasyon firması, fuar stand tasarımı, fuar stratejisi, fuar lojistiği',
+  verification: {
+    google: 'UWI6ZUg4ZJf7H5XvmWZbarvxOBZ7n9cH99ByQtOd9hA',
+  },
   openGraph: {
     title: 'LEYONEX | 360 Derece Fuar Organizasyon & Strateji Partneri',
     description: 'Fuar süreçlerinizde operasyonel yükünüzü alıyoruz. Doğru plan ve düşük efor prensibiyle, stand tasarımından lojistiğe kadar uçtan uca fuar yönetimi.',
